@@ -1,0 +1,26 @@
+#login-grid {
+    position: absolute;
+    top: 37%;
+    margin-top: -50px;
+    margin-left: 55px;
+}
+
+
+#name-slogen {
+    position: relative;
+    top:30%;
+    margin-top:40px;
+    left: 10%;
+    text-align: left;
+}
+#app-name {
+    font-size: 50px;
+    color: #8C3E7F;
+    text-align: left;
+    font-weight: 700;
+}
+
+#slogen {
+    font-size: 25px;
+    text-align: left;
+}
