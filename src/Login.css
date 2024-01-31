@@ -28,3 +28,8 @@
     background-color: #c067b1;
     border-color:  #c067b1;
 }
+
+#new-account:hover {
+    background-color: #be43aa;
+    border-color:  #be43aa;
+}
