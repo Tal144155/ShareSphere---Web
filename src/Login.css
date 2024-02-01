@@ -5,7 +5,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#email {
+#id {
     margin-bottom: 10px;
     height: 45px;
 }
@@ -59,4 +59,10 @@
 #slogen {
     font-size: 25px;
     text-align: left;
+}
+
+#wrongLogin {
+    color: red;
+    text-align: left;
+    font-size: 17px;
 }

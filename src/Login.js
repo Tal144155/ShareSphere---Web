@@ -1,44 +1,76 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
-function Login() {
+import Slogen from "./Slogen";
+import { useRef } from "react";
+import UserCheck from "./UserCheck";
+import ReactDOM from 'react-dom/client';
+import WrongLogin from "./WrongLogin";
+
+
+function Login(props) {
+
+  const user_name_Ref = useRef(undefined);
+  const password_ref = useRef(undefined);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    const user_name = user_name_Ref.current.value;
+    const password = password_ref.current.value;
+    console.log(props.usersList);
+    const list = props.usersList.filter((user) => user.user_name===user_name && user.password===password);
+    /*console.log(list[0].user_name);*/
+    if(list.length==0) {
+      const wronglogin = ReactDOM.createRoot(
+        document.getElementById("wrongLogin")
+      );
+      const element = (<WrongLogin/>);
+      wronglogin.render(element);
+    }
+    else {
+      console.log("i came here");
+    }
+  }
+  
+
   return (
     <div id="login-grid" className="container text-center">
       <div className="row">
-        <div className="col" id="name-slogen">
-          <div id="app-name">ShareSphere</div>
-          <div id="slogen">
-            Connect with friends and the world
-            <br /> around you on ShareSphere
-          </div>
-        </div>
+        <Slogen />
         <div className="col">
-          <div class="card text-center mb-3" id="card-style">
-            <div class="card-body">
-              <div class="mb-3">
+          <div className="card text-center mb-3" id="card-style">
+            <div className="card-body">
+              <form className="Login">
+              <div className="mb-3">
                 <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="Email or phone number"
+                  type="user_name"
+                  name="user_name"
+                  className="form-control"
+                  ref={user_name_Ref}
+                  id="id"
+                  placeholder="User Name"
                 ></input>
                 <input
                   type="password"
                   id="password"
+                  name="password"
                   placeholder="Password"
-                  class="form-control"
+                  className="form-control"
+                  ref={password_ref}
                   aria-describedby="passwordHelpBlock"
                 ></input>
               </div>
-              <div class="d-grid gap-2 col-12 mx-auto">
-                <a href="/" class="btn btn-primary" type="button">
-                  Login
-                </a>
+              <div id="wrongLogin">
+              </div>
+              <div className="d-grid gap-2 col-12 mx-auto">
+                <button onClick={handleSubmit} className="btn btn-primary" type="submit">Login</button>
               </div>
               <div id="forgot">
-                <text>Forgot password?</text>
+                <a href="/">Forgot password?</a>
               </div>
               <hr id="border-line"></hr>
-              <Link to="/register" id="new-account" class="btn btn-primary" type="submit">Create new account</Link>
+              <Link to="/" id="new-account" className="btn btn-primary">Create new account!</Link>
+              </form>
             </div>
           </div>
         </div>

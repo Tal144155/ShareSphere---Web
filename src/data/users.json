@@ -1,16 +1,16 @@
 [
     {
-    "id": "1",
-          "title":"blabla",
-          "author":"tal",
-          "category":"natur" ,
-          "public_date":"24/1/2024"
+        "user_name": "tal144155",
+        "password":"tal2024",
+        "first_name":"Tal",
+        "last_name":"Ariel Ziv" ,
+        "pic":"talpic.jpeg"
     },
     {
-        "id": "3",
-              "title":"tilili",
-              "author":"yuly",
-              "category":"game" ,
-              "public_date":"25/1/2024"
-        }
-    ]
+        "user_name": "yael2023",
+        "password":"yael1234",
+        "first_name":"Yael",
+        "last_name":"Dahari" ,
+        "pic":"yaelpic.jpeg"
+     }
+]
