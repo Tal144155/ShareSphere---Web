@@ -1,0 +1,16 @@
+[
+    {
+    "id": "1",
+          "title":"blabla",
+          "author":"tal",
+          "category":"natur" ,
+          "public_date":"24/1/2024"
+    },
+    {
+        "id": "3",
+              "title":"tilili",
+              "author":"yuly",
+              "category":"game" ,
+              "public_date":"25/1/2024"
+        }
+    ]
