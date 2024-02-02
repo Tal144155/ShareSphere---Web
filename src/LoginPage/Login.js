@@ -42,7 +42,7 @@ function Login(props) {
                   <a href="/">Forgot password?</a>
                 </div>
                 <hr id="border-line"></hr>
-                <Link to="/" id="new-account" className="btn btn-primary">
+                <Link to="/register" id="new-account" className="btn btn-primary">
                   Create new account!
                 </Link>
               </form>
