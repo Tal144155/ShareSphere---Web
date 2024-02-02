@@ -1,6 +1,9 @@
 import "./Register.css";
 import Slogen from "../Slogen";
 import React from "react";
+import UploadAndDisplayImage from "./UploadImage";
+
+
 
 function Register(props) {
   return (
@@ -11,10 +14,8 @@ function Register(props) {
           <div className="card text-center mb-3" id="card-style">
             <div className="card-body">
               <form class="row g-3 needs-validation" novalidate>
+                <label  class="form-label">Sign up</label>
                 <div class="col-md-6">
-                  <label for="validationCustom01" class="form-label">
-                    First name
-                  </label>
                   <input
                     type="text"
                     class="form-control"
@@ -25,9 +26,6 @@ function Register(props) {
                   <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="col-md-6">
-                  <label for="validationCustom02" class="form-label">
-                    Last name
-                  </label>
                   <input
                     type="text"
                     class="form-control"
@@ -38,9 +36,6 @@ function Register(props) {
                   <div class="valid-feedback">Looks good!</div>
                 </div>
                 <div class="col-md-12">
-                  <label for="validationCustomUsername" class="form-label">
-                    Username
-                  </label>
                   <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">
                       @
@@ -58,10 +53,8 @@ function Register(props) {
                     </div>
                   </div>
                 </div>
+                <label id="must">Password must include 8 letters and numbers!</label>
                 <div class="col-md-6">
-                  <label for="validationCustom03" class="form-label">
-                    Password
-                  </label>
                   <input
                     type="password"
                     class="form-control"
@@ -74,9 +67,6 @@ function Register(props) {
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="validationCustom03" class="form-label">
-                    Re-enter password
-                  </label>
                   <input
                     type="password"
                     class="form-control"
@@ -88,7 +78,7 @@ function Register(props) {
                     Please provide a valid password.
                   </div>
                 </div>
-                
+                <UploadAndDisplayImage/>
                 <div class="col-12">
                   <button class="btn btn-primary" type="submit">
                     Sign me Up!
