@@ -65,8 +65,8 @@ function Register(props) {
                   <div className="valid-feedback">Looks good!</div>
                 </div>
                 <div className="col-md-12">
-                  <div className="input-group has-validation">
-                    <span className="input-group-text" id="inputGroupPrepend">
+                  <div className="input-group">
+                    <span className="input-group-text">
                       @
                     </span>
                     <TextArea
@@ -114,6 +114,7 @@ function Register(props) {
                     setErrors={setErrors}
                     setSubmitting={setSubmitting}
                     submitting={submitting}
+                    errors={errors}
                   />
                 </div>
               </form>

@@ -1,8 +1,21 @@
-import React, {useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpButton = (props) => {
 
+    const navigate = useNavigate();
 
+
+    const finishSubmit = useCallback(() => {
+        const newRoute = "/feed";
+        navigate(newRoute);
+      }, [navigate]);
+
+      useEffect(() => {
+        if (Object.keys(props.errors).length === 0 && props.submitting) {
+          finishSubmit();
+        }
+      }, [props.errors, props.submitting, finishSubmit]);
     
 
 
@@ -33,6 +46,7 @@ const SignUpButton = (props) => {
     event.preventDefault();
     props.setErrors(validateValues(props.inputFields));
     props.setSubmitting(true);
+    console.log(props.submitting);
   };
 
   return (
