@@ -1,26 +1,37 @@
-import React, { useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUpButton = (props) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const finishSubmit = useCallback(() => {
+    const user = {
+      user_name: props.inputFields.username,
+      password: props.inputFields.password,
+      first_name: props.inputFields.firstname,
+      last_name: props.inputFields.lastname,
+      pic: props.inputFields.imgurl,
+    };
+    console.log(user);
+    props.setusersList([...props.usersList, user]);
+    const newRoute = "/feed";
+    navigate(newRoute);
+  }, [navigate, props]);
 
-
-    const finishSubmit = useCallback(() => {
-        const newRoute = "/feed";
-        navigate(newRoute);
-      }, [navigate]);
-
-      useEffect(() => {
-        if (Object.keys(props.errors).length === 0 && props.submitting) {
-          finishSubmit();
-        }
-      }, [props.errors, props.submitting, finishSubmit]);
-    
-
+  useEffect(() => {
+    if (Object.keys(props.errors).length === 0 && props.submitting) {
+      finishSubmit();
+    }
+  }, [props.errors, props.submitting, finishSubmit]);
 
   const validateValues = (inputValues) => {
     let errors = {};
+    const list = props.usersList.filter(
+      (user) => user.user_name === inputValues.username
+    );
+    if (list.length !== 0) {
+      errors.username = "User name already exists!";
+    }
     if (inputValues.password.length < 5) {
       errors.password = "Password is too short";
     }
@@ -34,10 +45,10 @@ const SignUpButton = (props) => {
       errors.lastname = "Must provide last name!";
     }
     if (inputValues.username.length === 0) {
-        errors.username = "Must provide user name!";
+      errors.username = "Must provide user name!";
     }
     if (inputValues.repassword !== inputValues.password) {
-        errors.repassword = "Password doesn't match!";
+      errors.repassword = "Password doesn't match!";
     }
     return errors;
   };

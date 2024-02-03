@@ -35,9 +35,7 @@ function Register(props) {
                     inputFields={inputFields}
                     setInputFields={setInputFields}
                   />
-                  <InvalidCom
-                    errors={errors.imgurl}
-                  />
+                  <InvalidCom errors={errors.imgurl} />
                 </div>
                 <div className="col-md-6">
                   <TextArea
@@ -47,9 +45,7 @@ function Register(props) {
                     type={"text"}
                     placeholder={"first name"}
                   />
-                  <InvalidCom
-                    errors={errors.firstname}
-                  />
+                  <InvalidCom errors={errors.firstname} />
                 </div>
                 <div className="col-md-6">
                   <TextArea
@@ -59,16 +55,12 @@ function Register(props) {
                     type={"text"}
                     placeholder={"last name"}
                   />
-                  <InvalidCom
-                    errors={errors.lastname}
-                  />
+                  <InvalidCom errors={errors.lastname} />
                   <div className="valid-feedback">Looks good!</div>
                 </div>
                 <div className="col-md-12">
                   <div className="input-group">
-                    <span className="input-group-text">
-                      @
-                    </span>
+                    <span className="input-group-text">@</span>
                     <TextArea
                       inputFields={inputFields}
                       setInputFields={setInputFields}
@@ -77,9 +69,7 @@ function Register(props) {
                       placeholder={"user name"}
                     />
                   </div>
-                  <InvalidCom
-                    errors={errors.username}
-                  />
+                  <InvalidCom errors={errors.username} />
                 </div>
                 <label id="must">
                   Password must include 8 letters and numbers!
@@ -92,9 +82,7 @@ function Register(props) {
                     type={"password"}
                     placeholder={"password"}
                   />
-                  <InvalidCom
-                    errors={errors.password}
-                  />
+                  <InvalidCom errors={errors.password} />
                 </div>
                 <div className="col-md-6">
                   <TextArea
@@ -104,9 +92,7 @@ function Register(props) {
                     type={"password"}
                     placeholder={"re-enter password"}
                   />
-                  <InvalidCom
-                    errors={errors.repassword}
-                  />
+                  <InvalidCom errors={errors.repassword} />
                 </div>
                 <div className="col-12">
                   <SignUpButton
@@ -115,6 +101,8 @@ function Register(props) {
                     setSubmitting={setSubmitting}
                     submitting={submitting}
                     errors={errors}
+                    usersList={props.usersList}
+                    setusersList={props.setusersList}
                   />
                 </div>
               </form>

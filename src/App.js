@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login usersList={usersList} />} />
         <Route path="/register" element={<Register usersList={usersList} setusersList={setusersList} />} />
-        <Route path="/feed" element={<Feed />} />
+        <Route path="/feed" element={<Feed usersList={usersList} setusersList={setusersList} />} />
 
       </Routes>
     </BrowserRouter>
