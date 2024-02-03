@@ -73,4 +73,11 @@
     text-align: left;
   }
 
+  .invalid {
+    text-align: left;
+    color: red;
+    font-size: 14px;
+
+  }
+
 

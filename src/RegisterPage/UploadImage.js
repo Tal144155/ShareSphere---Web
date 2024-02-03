@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import './Register.css'
-const UploadAndDisplayImage = () => {
+const UploadAndDisplayImage = (props) => {
 
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+    props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
+  };
 
   return (
     <div >
@@ -23,13 +28,10 @@ const UploadAndDisplayImage = () => {
 
       <input
         type="file"
-        name="myImage"
+        name="imgurl"
         className="form-control"
         id="inputGroupFile01"
-        onChange={(event) => {
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
-        }}
+        onChange={handleChange}
       ></input>
     </div>
   );

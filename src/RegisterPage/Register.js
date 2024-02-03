@@ -5,6 +5,8 @@ import UploadAndDisplayImage from "./UploadImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import TextArea from "./TextArea";
+import SignUpButton from "./SignUpButton.js";
+import InvalidCom from "./InvalidCom.js";
 
 function Register(props) {
   const [inputFields, setInputFields] = useState({
@@ -29,15 +31,24 @@ function Register(props) {
                 <label>Sign up</label>
                 <label id="profile">choose propfile picture</label>
                 <div className="col-md-12">
-                  <UploadAndDisplayImage />
+                  <UploadAndDisplayImage
+                    inputFields={inputFields}
+                    setInputFields={setInputFields}
+                  />
+                  <InvalidCom
+                    errors={errors.imgurl}
+                  />
                 </div>
                 <div className="col-md-6">
                   <TextArea
                     inputFields={inputFields}
                     setInputFields={setInputFields}
-                    name={"username"}
+                    name={"firstname"}
                     type={"text"}
                     placeholder={"first name"}
+                  />
+                  <InvalidCom
+                    errors={errors.firstname}
                   />
                 </div>
                 <div className="col-md-6">
@@ -47,6 +58,9 @@ function Register(props) {
                     name={"lastname"}
                     type={"text"}
                     placeholder={"last name"}
+                  />
+                  <InvalidCom
+                    errors={errors.lastname}
                   />
                   <div className="valid-feedback">Looks good!</div>
                 </div>
@@ -58,44 +72,49 @@ function Register(props) {
                     <TextArea
                       inputFields={inputFields}
                       setInputFields={setInputFields}
-                      name={"lastname"}
+                      name={"username"}
                       type={"text"}
                       placeholder={"user name"}
                     />
-                    <div className="invalid-feedback">
-                      Please choose a username.
-                    </div>
                   </div>
+                  <InvalidCom
+                    errors={errors.username}
+                  />
                 </div>
                 <label id="must">
                   Password must include 8 letters and numbers!
                 </label>
                 <div className="col-md-6">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="password"
-                    required
-                  ></input>
-                  <div className="invalid-feedback">
-                    Please provide a valid password.
-                  </div>
+                  <TextArea
+                    inputFields={inputFields}
+                    setInputFields={setInputFields}
+                    name={"password"}
+                    type={"password"}
+                    placeholder={"password"}
+                  />
+                  <InvalidCom
+                    errors={errors.password}
+                  />
                 </div>
                 <div className="col-md-6">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="re-enter password"
-                    required
-                  ></input>
-                  <div className="invalid-feedback">
-                    Please provide a valid password.
-                  </div>
+                  <TextArea
+                    inputFields={inputFields}
+                    setInputFields={setInputFields}
+                    name={"repassword"}
+                    type={"password"}
+                    placeholder={"re-enter password"}
+                  />
+                  <InvalidCom
+                    errors={errors.repassword}
+                  />
                 </div>
                 <div className="col-12">
-                  <button className="btn btn-primary" type="submit">
-                    Sign me Up!
-                  </button>
+                  <SignUpButton
+                    inputFields={inputFields}
+                    setErrors={setErrors}
+                    setSubmitting={setSubmitting}
+                    submitting={submitting}
+                  />
                 </div>
               </form>
               <hr id="border-line"></hr>

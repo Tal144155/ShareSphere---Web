@@ -1,11 +1,8 @@
 import React from 'react';
 
 const TextArea = (props) =>{
-
-
     const handleChange = (e) => {
         props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
-        console.log(e.target.value);
       };
     return(
     <input
