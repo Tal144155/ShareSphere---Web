@@ -4,17 +4,16 @@ import React from "react";
 import UploadAndDisplayImage from "./UploadImage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import TextArea from "./TextArea";
 
 function Register(props) {
-
-  
   const [inputFields, setInputFields] = useState({
     firstname: "",
     lastname: "",
     username: "",
-    password:"",
-    repassword:"",
-    imgurl:""
+    password: "",
+    repassword: "",
+    imgurl: "",
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
@@ -27,36 +26,28 @@ function Register(props) {
           <div className="card text-center mb-3" id="card-style2">
             <div className="card-body">
               <form className="row g-3 needs-validation" noValidate>
-                <label >Sign up</label>
-                <label id="profile">
-                  choose propfile picture
-                </label>
+                <label>Sign up</label>
+                <label id="profile">choose propfile picture</label>
                 <div className="col-md-12">
-                <UploadAndDisplayImage />
+                  <UploadAndDisplayImage />
                 </div>
                 <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="validationCustom01"
-                    placeholder="first name"
-                    required
-                  ></input>
-                  {errors.email ? (
-                    <div className="invalid-feedback">
-                    Please choose a username.
-                  </div>
-                  ) : null}
-                  <div className="valid-feedback">Looks good!</div>
+                  <TextArea
+                    inputFields={inputFields}
+                    setInputFields={setInputFields}
+                    name={"username"}
+                    type={"text"}
+                    placeholder={"first name"}
+                  />
                 </div>
                 <div className="col-md-6">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="validationCustom02"
-                    placeholder="last name"
-                    required
-                  ></input>
+                  <TextArea
+                    inputFields={inputFields}
+                    setInputFields={setInputFields}
+                    name={"lastname"}
+                    type={"text"}
+                    placeholder={"last name"}
+                  />
                   <div className="valid-feedback">Looks good!</div>
                 </div>
                 <div className="col-md-12">
@@ -64,14 +55,13 @@ function Register(props) {
                     <span className="input-group-text" id="inputGroupPrepend">
                       @
                     </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="validationCustomUsername"
-                      aria-describedby="inputGroupPrepend"
-                      placeholder="user name"
-                      required
-                    ></input>
+                    <TextArea
+                      inputFields={inputFields}
+                      setInputFields={setInputFields}
+                      name={"lastname"}
+                      type={"text"}
+                      placeholder={"user name"}
+                    />
                     <div className="invalid-feedback">
                       Please choose a username.
                     </div>
@@ -109,9 +99,9 @@ function Register(props) {
                 </div>
               </form>
               <hr id="border-line"></hr>
-                <Link to="/" id="new-account" className="btn btn-primary">
-                  Already have an account? Login!
-                </Link>
+              <Link to="/" id="new-account" className="btn btn-primary">
+                Already have an account? Login!
+              </Link>
             </div>
           </div>
         </div>
