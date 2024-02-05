@@ -6,7 +6,7 @@ const UploadAndDisplayImage = (props) => {
 
   const handleChange = (e) => {
     setSelectedImage(e.target.files[0]);
-    props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
+    props.setInputFields({ ...props.inputFields, [e.target.name]: URL.createObjectURL(e.target.files[0]) });
   };
 
   return (
@@ -17,6 +17,7 @@ const UploadAndDisplayImage = (props) => {
           <img
             alt="not found"
             width={"250px"}
+            value={URL.createObjectURL(selectedImage)}
             src={URL.createObjectURL(selectedImage)}
           />
           </span>
