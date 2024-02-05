@@ -1,18 +1,25 @@
 import React, { useState } from "react";
-
-const UploadAndDisplayImage = () => {
+import './Register.css'
+const UploadAndDisplayImage = (props) => {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const handleChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+    props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div class="mb-3">
+    <div >
       {selectedImage && (
         <div>
+          <span className="circle-image">
           <img
             alt="not found"
             width={"250px"}
             src={URL.createObjectURL(selectedImage)}
           />
+          </span>
           <br />
           <br />
 
@@ -21,13 +28,10 @@ const UploadAndDisplayImage = () => {
 
       <input
         type="file"
-        name="myImage"
-        class="form-control"
+        name="imgurl"
+        className="form-control"
         id="inputGroupFile01"
-        onChange={(event) => {
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
-        }}
+        onChange={handleChange}
       ></input>
     </div>
   );

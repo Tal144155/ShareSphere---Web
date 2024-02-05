@@ -22,7 +22,7 @@ const LoginButton = ({ props, pref, unr }) => {
       const element = <WrongLogin />;
       wronglogin.render(element);
     } else {
-      const newRoute = "/register";
+      const newRoute = "/feed";
       navigate(newRoute);
     }
   };

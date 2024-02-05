@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import users from "./data/users.json";
 import { useState } from "react";
 import Register from './RegisterPage/Register.js'
+import Feed from "./FeedPage/Feed.js";
 
 function App() {
   const [usersList, setusersList] = useState(users);
@@ -13,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login usersList={usersList} />} />
         <Route path="/register" element={<Register usersList={usersList} setusersList={setusersList} />} />
+        <Route path="/feed" element={<Feed usersList={usersList} setusersList={setusersList} />} />
+
       </Routes>
     </BrowserRouter>
   );
