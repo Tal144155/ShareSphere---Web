@@ -22,6 +22,7 @@ const LoginButton = ({ props, pref, unr }) => {
       const element = <WrongLogin />;
       wronglogin.render(element);
     } else {
+      props.setlogedinuser({username: user_name})
       const newRoute = "/feed";
       navigate(newRoute);
     }

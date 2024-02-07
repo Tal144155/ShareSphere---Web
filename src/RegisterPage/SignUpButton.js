@@ -14,7 +14,7 @@ const SignUpButton = (props) => {
     };
     console.log(user);
     props.setusersList([...props.usersList, user]);
-    const newRoute = "/feed";
+    const newRoute = "/";
     navigate(newRoute);
   }, [navigate, props]);
 

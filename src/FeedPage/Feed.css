@@ -1,0 +1,18 @@
+#top-bar {
+    background-color: #e59ed9 !important;
+}
+
+#slogen {
+    font-size: 25px;
+    color: #8C3E7F;
+    text-align: left;
+    font-weight: 700;
+}
+
+#feed-grid {
+    margin-top: 16px;
+}
+
+#left-bar {
+    padding: 0 !important;
+}
