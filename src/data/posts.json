@@ -1,0 +1,19 @@
+[
+    {
+        "user_name": "tal144155",
+        "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "user_pic":"/src/pics/talpic.jpg",
+        "time" : "2 days ago",
+        "text" : "heyyyyy",
+        "post_pic" : "/src/pics/talpic.jpg",
+        "like_number" : 10,
+        "comment_number" :5,
+        "did_like": "no",
+        "comments" : [
+            {"user_name": "tal144155",
+            "pic" : "/src/pics/talpic.jpg",
+            "comment" :"hello"}
+        ]
+    }
+]

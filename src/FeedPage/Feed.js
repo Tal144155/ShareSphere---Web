@@ -1,13 +1,13 @@
 import "./Feed.css";
-import LeftMenu from "./LeftMenu";
+import LeftMenu from "./LeftMenu/LeftMenu";
 import SearchBox from "./SearchBox";
-import Feature from "./Feature";
+import Feature from "./LeftMenu/Feature";
 import Post from "./Post";
 
 const Feed = (props) => {
   return (
     <div>
-        <Feature />
+      <Feature />
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
@@ -20,10 +20,13 @@ const Feed = (props) => {
       <div id="feed-grid" className="container-fluid text-center .d-flex">
         <div className="row">
           <div className="col-3" id="left-bar">
-            <LeftMenu usersList={props.usersList} logedinuser={props.logedinuser} />
+            <LeftMenu
+              usersList={props.usersList}
+              logedinuser={props.logedinuser}
+            />
           </div>
           <div className="col-6" id="posts">
-            <Post usersList={props.usersList} logedinuser={props.logedinuser}/>
+            <Post usersList={props.usersList} logedinuser={props.logedinuser} />
             <h1>hello</h1>
             <h1>hello</h1>
             <h1>hello</h1>
@@ -44,7 +47,6 @@ const Feed = (props) => {
             <h1>hello</h1>
             <h1>hello</h1>
             <h1>hello</h1>
-
           </div>
           <div className="col-3">v</div>
         </div>
