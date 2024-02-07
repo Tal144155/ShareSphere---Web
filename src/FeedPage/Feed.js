@@ -4,7 +4,10 @@ import SearchBox from "./TopBar/SearchBox";
 import Feature from "./LeftMenu/Feature";
 import Post from "./Post/Post";
 
+
+
 const Feed = (props) => {
+
   return (
     <div>
       <Feature />
@@ -27,28 +30,8 @@ const Feed = (props) => {
           </div>
           <div className="col-6" id="posts">
             {props.postsList.map((post) => (
-              <Post {...post} />
+              <Post {...post} setpostsList={props.setpostsList} />
             ))}
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
-            <h1>hello</h1>
           </div>
           <div className="col-3">v</div>
         </div>

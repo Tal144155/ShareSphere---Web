@@ -1,0 +1,26 @@
+.circle-image2{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+  }
+  .circle-image2 img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
+  #image-place {
+    float: left;
+  }
+
+  #name-style2 {
+    font-size: 17px;
+    font-weight: 600;
+    padding-right: 300px;
+  }
+  
+  #time {
+    color: gray;
+    padding-right: 320px;
+  }
