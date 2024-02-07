@@ -4,7 +4,7 @@
         "password":"tal2024",
         "first_name":"Tal",
         "last_name":"Ariel Ziv" ,
-        "pic":"talpic.jpeg"
+        "pic":"/src/pics/talpic.jpg"
     },
     {
         "user_name": "yael2023",

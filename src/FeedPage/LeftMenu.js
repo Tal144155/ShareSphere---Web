@@ -1,24 +1,69 @@
 import "./LeftMenu.css";
+import ProfileShow from "./ProfileShow";
+import Feature from "./Feature.js";
 
-const LeftMenu = () => {
+const LeftMenu = (props) => {
   return (
-    <div class="list-group" id="menu-style">
+    <div className="list-group" id="menu-style">
       <button
         type="button"
-        class="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action"
         aria-current="true"
       >
-        The current button
+        <ProfileShow
+          usersList={props.usersList}
+          logedinuser={props.logedinuser}
+        />
       </button>
-      <button type="button" class="list-group-item list-group-item-action">
-        <i class="bi bi-0-circle"></i>A second button item
-        <i class="bi-alarm"></i>
+      <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div className="buttons-style">
+          <i className="bi bi-people"></i> Friends
+        </div>
       </button>
-      <button type="button" class="list-group-item list-group-item-action">
-        A third button item
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i className="bi bi-people-fill"></i> Groups
+        </div>
       </button>
-      <button type="button" class="list-group-item list-group-item-action">
-        A fourth button item
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i className="bi bi-clock-history"></i> Memories
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i className="bi bi-bookmark-fill"></i> Saved
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i className="bi bi-youtube"></i> Videos
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i className="bi bi-calendar-fill"></i> Events
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i class="bi bi-balloon-heart-fill"></i> Fundings
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+          <i class="bi bi-basket2-fill"></i> MarkerPlace
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+        <i class="bi bi-chat-dots-fill"></i> Messenger
+        </div>
+      </button>
+      <button type="button" className="list-group-item list-group-item-action">
+        <div className="buttons-style">
+        <i class="bi bi-joystick"></i> Gaming
+        </div>
       </button>
     </div>
   );
