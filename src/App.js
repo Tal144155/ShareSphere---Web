@@ -5,10 +5,12 @@ import users from "./data/users.json";
 import { useState } from "react";
 import Register from "./RegisterPage/Register.js";
 import Feed from "./FeedPage/Feed.js";
+import posts from "./data/posts.json"
 
 function App() {
   const [usersList, setusersList] = useState(users);
   const [logedinuser, setlogedinuser] = useState({ username: "" });
+  const [postsList, setpostsList] = useState(posts);
 
   return (
     <BrowserRouter>
@@ -22,7 +24,7 @@ function App() {
         />
         <Route
           path="/feed"
-          element={<Feed usersList={usersList} setusersList={setusersList} logedinuser={logedinuser} />}
+          element={<Feed usersList={usersList} logedinuser={logedinuser} postsList={postsList} setpostsList={setpostsList}/>}
         />
       </Routes>
     </BrowserRouter>

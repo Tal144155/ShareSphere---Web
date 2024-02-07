@@ -6,7 +6,7 @@
         "user_pic":"/src/pics/talpic.jpg",
         "time" : "2 days ago",
         "text" : "heyyyyy",
-        "post_pic" : "/src/pics/talpic.jpg",
+        "post_pic" : "../profilepics/talpic.jpg",
         "like_number" : 10,
         "comment_number" :5,
         "did_like": "no",
