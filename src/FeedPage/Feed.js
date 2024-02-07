@@ -2,6 +2,7 @@ import "./Feed.css";
 import LeftMenu from "./LeftMenu";
 import SearchBox from "./SearchBox";
 import Feature from "./Feature";
+import Post from "./Post";
 
 const Feed = (props) => {
   return (
@@ -21,8 +22,8 @@ const Feed = (props) => {
           <div className="col-3" id="left-bar">
             <LeftMenu usersList={props.usersList} logedinuser={props.logedinuser} />
           </div>
-          <div className="col-6">
-            <h1>hello</h1>
+          <div className="col-6" id="posts">
+            <Post usersList={props.usersList} logedinuser={props.logedinuser}/>
             <h1>hello</h1>
             <h1>hello</h1>
             <h1>hello</h1>
