@@ -6,7 +6,6 @@ import PostHeader from "./PostHeader";
 const Post = (props) => {
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
-
   return (
     <div className="card" id="post-style">
       <div className="card-body">

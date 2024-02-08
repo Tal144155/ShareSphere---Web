@@ -18,7 +18,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-people"></i> Friends
@@ -28,7 +28,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-people-fill"></i> Groups
@@ -38,7 +38,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-clock-history"></i> Memories
@@ -48,7 +48,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-bookmark-fill"></i> Saved
@@ -58,7 +58,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-youtube"></i> Videos
@@ -68,7 +68,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-calendar-fill"></i> Events
@@ -78,7 +78,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-balloon-heart-fill"></i> Fundings
@@ -88,7 +88,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-basket2-fill"></i> MarkerPlace
@@ -98,7 +98,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-chat-dots-fill"></i> Messenger
@@ -108,7 +108,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#featureModal"
       >
         <div className="buttons-style">
           <i className="bi bi-joystick"></i> Gaming
