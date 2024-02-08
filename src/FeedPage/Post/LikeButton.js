@@ -1,5 +1,5 @@
 const LikeButton = (props) => {
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     if (props.like) {
       props.setnumLike(props.numlike - 1);
     } else {

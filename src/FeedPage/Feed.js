@@ -3,11 +3,13 @@ import LeftMenu from "./LeftMenu/LeftMenu";
 import SearchBox from "./TopBar/SearchBox";
 import Feature from "./LeftMenu/Feature";
 import Post from "./Post/Post";
+import { useState } from "react";
+import posts from '../data/posts.json'
 
 
 
 const Feed = (props) => {
-
+    const [postsList, setpostsList] = useState(posts)
   return (
     <div>
       <Feature />
@@ -29,8 +31,8 @@ const Feed = (props) => {
             />
           </div>
           <div className="col-6" id="posts">
-            {props.postsList.map((post) => (
-              <Post {...post} setpostsList={props.setpostsList} />
+            {postsList.map((post) => (
+              <Post {...post} setpostsList={setpostsList} />
             ))}
           </div>
           <div className="col-3">v</div>

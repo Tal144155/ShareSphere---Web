@@ -27,7 +27,7 @@ const Post = (props) => {
         <i className="bi bi-chat-fill"></i> {props.comment_number}
       </div>
       <hr id="border-line2"></hr>
-      <LikeButton like={like} setLike={setLike} numlike={numlike} setnumLike={setnumLike}/>
+      <LikeButton like={like} setLike={setLike} numlike={numlike} setnumLike={setnumLike} setpostslist={props.setpostsList}/>
     </div>
   );
 };
