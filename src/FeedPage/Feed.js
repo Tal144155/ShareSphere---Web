@@ -15,7 +15,7 @@ const Feed = (props) => {
   return (
     <div>
       <Feature />
-      <NewPostModal />
+      <NewPostModal postsList={postsList} setpostsList={setpostsList}/>
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>

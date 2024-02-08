@@ -3,6 +3,7 @@ import PostText from "./PostText";
 import "./NewPostModal.css";
 import PostImage from "./PostImage";
 import InvalidCom from "../../RegisterPage/InvalidCom";
+import PostButton from "./PostButton";
 
 const NewPostModal = (props) => {
   const [inputFields, setInputFields] = useState({
@@ -39,21 +40,21 @@ const NewPostModal = (props) => {
               setInputFields={setInputFields}
             />
             <InvalidCom errors={errors.text} />
+            <br/>
             <PostImage
               inputFields={inputFields}
               setInputFields={setInputFields}
             />
-            <InvalidCom errors={errors.imgurl} />
           </div>
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-              id="button-closed"
-            >
-              Close
-            </button>
+            <PostButton inputFields={inputFields}
+                    setErrors={setErrors}
+                    setSubmitting={setSubmitting}
+                    submitting={submitting}
+                    errors={errors}
+                    postsList={props.postsList}
+                    setpostsList={props.setpostsList}
+                    />
           </div>
         </div>
       </div>
