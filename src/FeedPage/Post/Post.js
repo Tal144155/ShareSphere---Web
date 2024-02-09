@@ -19,14 +19,24 @@ const Post = (props) => {
           {props.text}
         </p>
       </div>
-      <img src={props.post_pic} className="card-img-bottom-top" alt=""></img>
+      <img
+        src={props.post_pic}
+        className="card-img-bottom-top"
+        alt=""
+      ></img>
       <div id="likecomments">
         <i className="bi bi-hand-thumbs-up-fill"></i> {numlike}
         &nbsp;&nbsp;
         <i className="bi bi-chat-fill"></i> {props.comment_number}
       </div>
       <hr id="border-line2"></hr>
-      <LikeButton like={like} setLike={setLike} numlike={numlike} setnumLike={setnumLike} setpostslist={props.setpostsList}/>
+      <LikeButton
+        like={like}
+        setLike={setLike}
+        numlike={numlike}
+        setnumLike={setnumLike}
+        setpostslist={props.setpostsList}
+      />
     </div>
   );
 };

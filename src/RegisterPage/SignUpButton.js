@@ -12,7 +12,6 @@ const SignUpButton = (props) => {
       last_name: props.inputFields.lastname,
       pic: props.inputFields.imgurl,
     };
-    console.log(user);
     props.setusersList([...props.usersList, user]);
     const newRoute = "/";
     navigate(newRoute);

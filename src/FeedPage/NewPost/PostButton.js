@@ -11,12 +11,13 @@ const PostButton = (props) => {
       user_pic: "/profilepics/talpic.jpg",
       time: "just now",
       text: props.inputFields.text,
-      post_pic: props.inputFields.img,
+      post_pic: props.inputFields.post_pic,
       like_number: 0,
       comment_number: 0,
       did_like: false,
       comments: [],
     };
+    console.log(post);
     props.setSubmitting(false);
     props.setpostsList([post, ...props.postsList]);
   }, [props]);
