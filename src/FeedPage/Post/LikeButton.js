@@ -1,3 +1,5 @@
+import "./LikeButton.css";
+
 const LikeButton = (props) => {
   const handleSubmit = () => {
     if (props.like) {
@@ -9,11 +11,19 @@ const LikeButton = (props) => {
   };
 
   return !props.like ? (
-    <button className="btn btn-light white" onClick={handleSubmit}>
+    <button
+      id="button-like"
+      className="btn btn-light white"
+      onClick={handleSubmit}
+    >
       <i className="bi bi-hand-thumbs-up-fill">Like</i>
     </button>
   ) : (
-    <button className="btn btn-block btn-secondary" onClick={handleSubmit}>
+    <button
+      id="button-like-liked"
+      className="btn btn-block btn-secondary"
+      onClick={handleSubmit}
+    >
       <i className="bi bi-hand-thumbs-up-fill">Like</i>
     </button>
   );

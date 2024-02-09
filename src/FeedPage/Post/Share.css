@@ -1,0 +1,12 @@
+#share-design {
+    width: 100%;
+    border-bottom-right-radius: 20px;
+}
+
+#button-share-style {
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+    
+}
