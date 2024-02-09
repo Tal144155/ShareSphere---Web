@@ -4,7 +4,7 @@ const PostButton = (props) => {
   const [buttonPost, setbuttonPost] = useState(false);
   const finishSubmit = useCallback(() => {
     const post = {
-      key: "10",
+      key: props.id,
       user_name: "tal144155",
       first_name: "Tal",
       last_name: "Ariel Ziv",
@@ -17,7 +17,7 @@ const PostButton = (props) => {
       did_like: false,
       comments: [],
     };
-    console.log(post);
+    props.setid(props.id + 1);
     props.setSubmitting(false);
     props.setpostsList([post, ...props.postsList]);
   }, [props]);

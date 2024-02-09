@@ -16,8 +16,8 @@ const Share = () => {
       <ul className="dropdown-menu">
         <li>
           <button className="dropdown-item"><i className="bi bi-whatsapp"></i>&nbsp;&nbsp;Whatsapp</button>
-          <button className="dropdown-item"><i class="bi bi-instagram"></i>&nbsp;&nbsp;Instagram</button>
-          <button className="dropdown-item"><i class="bi bi-messenger"></i>&nbsp;&nbsp;Messenger</button>
+          <button className="dropdown-item"><i className="bi bi-instagram"></i>&nbsp;&nbsp;Instagram</button>
+          <button className="dropdown-item"><i className="bi bi-messenger"></i>&nbsp;&nbsp;Messenger</button>
 
         </li>
       </ul>

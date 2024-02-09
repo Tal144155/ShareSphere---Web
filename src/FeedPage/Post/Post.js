@@ -3,6 +3,7 @@ import LikeButton from "./LikeButton";
 import "./Post.css";
 import PostHeader from "./PostHeader";
 import Share from "./Share";
+import EditDeleteButton from "./EditDeleteButton";
 
 const Post = (props) => {
   const [like, setLike] = useState(false);
@@ -10,12 +11,14 @@ const Post = (props) => {
   return (
     <div className="card" id="post-style">
       <div className="card-body">
+      <EditDeleteButton />
         <PostHeader
           firstname={props.first_name}
           lastname={props.last_name}
           time={props.time}
           user_pic={props.user_pic}
         />
+        
         <p className="card-text" id="text-style">
           {props.text}
         </p>

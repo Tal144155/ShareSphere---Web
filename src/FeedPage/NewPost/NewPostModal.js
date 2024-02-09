@@ -13,6 +13,8 @@ const NewPostModal = (props) => {
 
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [id, setid] = useState(10);
+  console.log(id);
   return (
     <div
       className="modal fade"
@@ -54,6 +56,8 @@ const NewPostModal = (props) => {
                     errors={errors}
                     postsList={props.postsList}
                     setpostsList={props.setpostsList}
+                    id={id}
+                    setid={setid}
                     />
           </div>
         </div>
