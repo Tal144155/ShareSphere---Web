@@ -7,12 +7,17 @@ import { useState } from "react";
 import posts from "../data/posts.json";
 import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
+import EditPostModal from "./EditPost/EditPostModal";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
+  const [posttoedit, setposttoedit] = useState({
+    text: "",
+    imgurl: "",
+    id: "",
+  });
 
   function handleDelete(id) {
-    console.log(id);
     const arrayNewPost = [];
     for (let i = 0; i < postsList.length; i++) {
       if (postsList[i].id !== id) {
@@ -22,11 +27,27 @@ const Feed = (props) => {
     setpostsList(arrayNewPost);
   }
 
+  function handleEdit(id, text, img) {
+    setposttoedit({
+      text: text,
+      imgurl: img,
+      id: id,
+    });
+  }
+
   return (
     <div>
       <Feature />
 
       <NewPostModal postsList={postsList} setpostsList={setpostsList} />
+
+      <EditPostModal
+      posttoedit={posttoedit}
+      setposttoedit={setposttoedit}
+        text={posttoedit.text}
+        img={posttoedit.imgurl}
+        id={posttoedit.id}
+      />
 
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
@@ -54,6 +75,7 @@ const Feed = (props) => {
                 setpostsList={setpostsList}
                 postsList={postsList}
                 handleDelete={handleDelete}
+                handleEdit={handleEdit}
               />
             ))}
           </div>

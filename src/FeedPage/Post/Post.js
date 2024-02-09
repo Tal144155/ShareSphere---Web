@@ -5,7 +5,7 @@ import PostHeader from "./PostHeader";
 import Share from "./Share";
 import EditDeleteButton from "./EditDeleteButton";
 
-function Post (props, handleDelete) {
+function Post(props) {
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
   return (
@@ -15,7 +15,10 @@ function Post (props, handleDelete) {
           setpostsList={props.setpostsList}
           postsList={props.postsList}
           id={props.id}
+          text={props.text}
+          img={props.post_pic}
           handleDelete={props.handleDelete}
+          handleEdit={props.handleEdit}
         />
         <PostHeader
           firstname={props.first_name}
@@ -54,6 +57,6 @@ function Post (props, handleDelete) {
       </div>
     </div>
   );
-};
+}
 
 export default Post;

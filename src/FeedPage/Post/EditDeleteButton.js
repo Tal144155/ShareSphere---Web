@@ -1,7 +1,7 @@
 import DeleteButton from "./DeleteButton";
 import "./EditDelete.css";
 
-const EditDeleteButton = (props, handleDelete) => {
+const EditDeleteButton = (props) => {
   return (
     <div id="edit-delete-design" className="btn-group dropend">
       <button
@@ -15,7 +15,12 @@ const EditDeleteButton = (props, handleDelete) => {
       </button>
       <ul className="dropdown-menu">
         <li>
-          <button className="dropdown-item">
+          <button
+            className="dropdown-item"
+            data-bs-toggle="modal"
+            data-bs-target="#editpostModal"
+            onClick={() => props.handleEdit(props.id, props.text, props.img)}
+          >
             <i className="bi bi-pen"></i>&nbsp;&nbsp;Edit
           </button>
           <DeleteButton
