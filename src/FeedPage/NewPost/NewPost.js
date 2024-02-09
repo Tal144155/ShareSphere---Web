@@ -1,6 +1,7 @@
 import "./NewPost.css";
 
 const NewPost = (props) => {
+    
   return (
     <div className="card" id="new-post">
       <div className="card-body">

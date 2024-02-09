@@ -19,7 +19,7 @@ const NewPostModal = (props) => {
       id="newpostModal"
       tabIndex="-1"
       aria-labelledby="newpostModalLabel"
-      aria-hidden="true"
+      aria-hidden="false"
     >
       <div className="modal-dialog">
         <div className="modal-content">
