@@ -5,20 +5,25 @@ import PostHeader from "./PostHeader";
 import Share from "./Share";
 import EditDeleteButton from "./EditDeleteButton";
 
-const Post = (props) => {
+function Post (props, handleDelete) {
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
   return (
     <div className="card" id="post-style">
       <div className="card-body">
-      <EditDeleteButton />
+        <EditDeleteButton
+          setpostsList={props.setpostsList}
+          postsList={props.postsList}
+          id={props.id}
+          handleDelete={props.handleDelete}
+        />
         <PostHeader
           firstname={props.first_name}
           lastname={props.last_name}
           time={props.time}
           user_pic={props.user_pic}
         />
-        
+
         <p className="card-text" id="text-style">
           {props.text}
         </p>
@@ -41,8 +46,7 @@ const Post = (props) => {
               setpostslist={props.setpostsList}
             />
           </div>
-          <div id="containers-option" className="col-4">
-          </div>
+          <div id="containers-option" className="col-4"></div>
           <div id="containers-option" className="col-4">
             <Share />
           </div>

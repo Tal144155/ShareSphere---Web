@@ -5,6 +5,7 @@ const PostButton = (props) => {
   const finishSubmit = useCallback(() => {
     const post = {
       key: props.id,
+      id: props.id,
       user_name: "tal144155",
       first_name: "Tal",
       last_name: "Ariel Ziv",
@@ -46,7 +47,6 @@ const PostButton = (props) => {
     event.preventDefault();
     props.setErrors(validateValues(props.inputFields));
     props.setSubmitting(true);
-    console.log(props.submitting);
   };
 
   if (buttonPost) {

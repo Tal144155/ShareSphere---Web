@@ -10,6 +10,18 @@ import NewPostModal from "./NewPost/NewPostModal";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
+
+  function handleDelete(id) {
+    console.log(id);
+    const arrayNewPost = [];
+    for (let i = 0; i < postsList.length; i++) {
+      if (postsList[i].id !== id) {
+        arrayNewPost.push(postsList[i]);
+      }
+    }
+    setpostsList(arrayNewPost);
+  }
+
   return (
     <div>
       <Feature />
@@ -37,10 +49,15 @@ const Feed = (props) => {
             <br />
             <NewPost user_pic={"/profilepics/talpic.jpg"} />
             {postsList.map((post) => (
-              <Post {...post} setpostsList={setpostsList} />
+              <Post
+                {...post}
+                setpostsList={setpostsList}
+                postsList={postsList}
+                handleDelete={handleDelete}
+              />
             ))}
           </div>
-          <div className="col-3">v</div>
+          <div className="col-3"></div>
         </div>
       </div>
     </div>
