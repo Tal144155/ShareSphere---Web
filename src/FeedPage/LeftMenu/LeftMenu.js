@@ -112,6 +112,16 @@ const LeftMenu = (props) => {
       >
         <div className="buttons-style">
           <i className="bi bi-joystick"></i> Gaming
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+
         </div>
       </button>
     </div>

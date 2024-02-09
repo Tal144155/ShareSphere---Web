@@ -42,8 +42,10 @@ const Feed = (props) => {
       <NewPostModal postsList={postsList} setpostsList={setpostsList} />
 
       <EditPostModal
-      posttoedit={posttoedit}
-      setposttoedit={setposttoedit}
+        postsList={postsList}
+        setpostsList={setpostsList}
+        posttoedit={posttoedit}
+        setposttoedit={setposttoedit}
         text={posttoedit.text}
         img={posttoedit.imgurl}
         id={posttoedit.id}

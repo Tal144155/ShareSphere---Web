@@ -1,6 +1,8 @@
 import { useState } from "react";
 import TextEdit from "./TextEdit";
 import ImageEdit from "./ImageEdit";
+import EditButton from "./EditButton";
+import InvalidCom from "../../RegisterPage/InvalidCom";
 
 const EditPostModal = (props) => {
   const inputFields = props.posttoedit;
@@ -35,14 +37,26 @@ const EditPostModal = (props) => {
               setInputFields={setInputFields}
               initvalue={props.text}
             />
-            <br/>
+            <InvalidCom errors={errors.text}/>
+            <br />
             <ImageEdit
               inputFields={inputFields}
               setInputFields={setInputFields}
               initvalue={props.img}
             />
           </div>
-          <div className="modal-footer"></div>
+          <div className="modal-footer">
+            <EditButton
+              id={props.id}
+              inputFields={inputFields}
+              setErrors={setErrors}
+              setSubmitting={setSubmitting}
+              submitting={submitting}
+              errors={errors}
+              postsList={props.postsList}
+              setpostsList={props.setpostsList}
+            />
+          </div>
         </div>
       </div>
     </div>
