@@ -13,7 +13,8 @@ const AddComment = (props) => {
           id="comment-block"
           className="btn btn-light"
           data-bs-toggle="modal"
-          data-bs-target="#newpostModal"
+          data-bs-target="#newcommentModal"
+          onClick={() => props.handleAddComment(props.postid)}
         >
           Share your thoughts...
         </button>

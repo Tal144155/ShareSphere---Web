@@ -1,35 +1,46 @@
 import React, { useEffect, useCallback, useState } from "react";
 
-const PostButton = (props) => {
+const CommentButton = (props) => {
   const [buttonPost, setbuttonPost] = useState(false);
   const finishSubmit = useCallback(() => {
-    const post = {
+    const comment = {
       key: props.id,
       id: props.id,
       user_name: "tal144155",
       first_name: "Tal",
       last_name: "Ariel Ziv",
-      user_pic: "/profilepics/talpic.jpg",
-      time: "just now",
-      text: props.inputFields.text,
-      post_pic: props.inputFields.post_pic,
-      like_number: 0,
-      comment_number: 0,
-      did_like: false,
-      comments: [],
+      pic: "/profilepics/talpic.jpg",
+      comment: props.inputFields.comment,
     };
+    const arrayNewPost = [];
+    for (let i = 0; i < props.postsList.length; i++) {
+      if (props.postsList[i].id !== props.postid) {
+        arrayNewPost.push(props.postsList[i]);
+      } else {
+        const commentslist = props.postsList[i].comments;
+        commentslist.push(comment);
+        const newobj = {
+          ...props.postsList[i],
+          comments: commentslist,
+        };
+        arrayNewPost.push(newobj);
+      }
+    }
+    props.setpostsList(arrayNewPost);
     props.setid(props.id + 1);
     props.setSubmitting(false);
-    props.setpostsList([post, ...props.postsList]);
+    props.setInputFields({
+      comment: "helllooo",
+    });
   }, [props]);
 
   useEffect(() => {
-    if (props.inputFields.text.length !== 0) {
+    if (props.inputFields.comment.length !== 0) {
       setbuttonPost(true);
     } else {
       setbuttonPost(false);
     }
-  }, [props.inputFields.text.length, buttonPost, setbuttonPost]);
+  }, [props.inputFields.comment.length, buttonPost, setbuttonPost]);
 
   useEffect(() => {
     if (Object.keys(props.errors).length === 0 && props.submitting) {
@@ -39,8 +50,8 @@ const PostButton = (props) => {
 
   const validateValues = (inputValues) => {
     let errors = {};
-    if (inputValues.text.length === 0) {
-      errors.text = "Must write some text!";
+    if (inputValues.comment.length === 0) {
+      errors.comment = "Must write some text!";
     }
     return errors;
   };
@@ -60,7 +71,7 @@ const PostButton = (props) => {
           className="btn btn-primary"
           type="submit"
         >
-          Uplaod post!
+          Uplaod comment!
         </button>
       </div>
     );
@@ -72,11 +83,10 @@ const PostButton = (props) => {
           className="btn btn-primary"
           type="submit"
         >
-          Uplaod post!
+          Uplaod comment!
         </button>
       </div>
     );
   }
 };
-
-export default PostButton;
+export default CommentButton;

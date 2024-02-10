@@ -76,7 +76,7 @@ function Post(props) {
       </div>
       {showcomments && (
         <div>
-          <AddComment pic={"/profilepics/talpic.jpg"}  postid={props.id}/>
+          <AddComment pic={"/profilepics/talpic.jpg"}  postid={props.id} handleAddComment={props.handleAddComment}/>
           <div>
             {comments.map((comment) => (
               <ShowComments {...comment} />

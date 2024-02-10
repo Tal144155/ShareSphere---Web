@@ -8,6 +8,7 @@ import posts from "../data/posts.json";
 import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";
+import AddCommentModal from "./Comments/AddCommentModal";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
@@ -17,6 +18,12 @@ const Feed = (props) => {
     id: "",
   });
 
+  const [postaddcomment, setpostaddcomment] = useState(0);
+
+  function handleAddComment(id) {
+    setpostaddcomment(id);
+    console.log(postaddcomment);
+  }
 
   function handleDelete(id) {
     const arrayNewPost = [];
@@ -39,7 +46,11 @@ const Feed = (props) => {
   return (
     <div>
       <Feature />
-
+      <AddCommentModal
+        postid={postaddcomment}
+        postsList={postsList}
+        setpostsList={setpostsList}
+      />
       <NewPostModal postsList={postsList} setpostsList={setpostsList} />
 
       <EditPostModal
@@ -79,6 +90,7 @@ const Feed = (props) => {
                 postsList={postsList}
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
+                handleAddComment={handleAddComment}
               />
             ))}
           </div>
