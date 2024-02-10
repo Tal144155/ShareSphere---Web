@@ -64,12 +64,11 @@ const Feed = (props) => {
           }
         }
         const newobj = {
-          ...props.postsList[i],
+          ...postsList[i],
           comment_number: postsList[i].comment_number - 1,
           comments: arrayNewComment,
         };
         arrayNewPost.push(newobj);
-        console.log(newobj);
       }
     }
     setpostsList(arrayNewPost);
