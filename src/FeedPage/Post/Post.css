@@ -28,3 +28,13 @@
     padding: 0px !important;
 }
 
+#comment-button {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+}
+

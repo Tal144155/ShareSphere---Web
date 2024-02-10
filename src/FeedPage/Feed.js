@@ -17,6 +17,7 @@ const Feed = (props) => {
     id: "",
   });
 
+
   function handleDelete(id) {
     const arrayNewPost = [];
     for (let i = 0; i < postsList.length; i++) {
