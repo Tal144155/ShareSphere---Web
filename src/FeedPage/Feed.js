@@ -81,9 +81,10 @@ const Feed = (props) => {
       postid: postid,
     });
   }
+  const [isDark, setisDark] = useState(false);
 
   return (
-    <div>
+    <div data-theme={isDark ? "dark" : "light"}>
       <Feature />
       <AddCommentModal
         postid={postaddcomment}
