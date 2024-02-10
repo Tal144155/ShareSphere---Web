@@ -1,0 +1,16 @@
+#edit-delete-design-comment {
+    position: absolute;
+    float:right;
+    margin-left: 120px;
+}
+
+#buttonedit-comment {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+#icon-place {
+    font-size: 13px;
+}
+

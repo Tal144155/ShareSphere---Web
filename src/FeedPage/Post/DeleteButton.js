@@ -1,4 +1,4 @@
-const DeleteButton = (props, handleDelete) => {
+const DeleteButton = (props) => {
 
   return (
     <button className="dropdown-item" onClick={() =>props.handleDelete(props.id)}>

@@ -21,6 +21,7 @@ const CommentButton = (props) => {
         commentslist.push(comment);
         const newobj = {
           ...props.postsList[i],
+          comment_number: props.postsList[i].comment_number + 1,
           comments: commentslist,
         };
         arrayNewPost.push(newobj);

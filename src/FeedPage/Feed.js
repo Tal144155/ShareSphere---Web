@@ -43,6 +43,35 @@ const Feed = (props) => {
     });
   }
 
+  function handleDeleteComment(postid, commentid) {
+      console.log(postid);
+      console.log(commentid);
+      const arrayNewPost = [];
+      const arrayNewComment = [];
+      for (let i = 0; i < postsList.length; i++) {
+        if (postsList[i].id !== postid) {
+          arrayNewPost.push(postsList[i]);
+        } else {
+          const commentslist = postsList[i].comments;
+          for(let j=0;j<commentslist.length;j++) {
+            if(commentslist[j].id!==commentid) {
+              arrayNewComment.push(commentslist[j]);
+            }
+          }
+          const newobj = {
+            ...props.postsList[i],
+            comment_number: postsList[i].comment_number - 1,
+            comments: arrayNewComment,
+          };
+          arrayNewPost.push(newobj);
+          console.log(newobj);
+        }
+      }
+      setpostsList(arrayNewPost);
+
+
+  }
+
   return (
     <div>
       <Feature />
@@ -91,6 +120,7 @@ const Feed = (props) => {
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
                 handleAddComment={handleAddComment}
+                handleDeleteComment={handleDeleteComment}
               />
             ))}
           </div>
