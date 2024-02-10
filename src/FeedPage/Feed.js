@@ -9,6 +9,7 @@ import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";
 import AddCommentModal from "./Comments/AddCommentModal";
+import EditCommentModal from "./EditComment/EditCommentModal";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
@@ -19,6 +20,12 @@ const Feed = (props) => {
   });
 
   const [postaddcomment, setpostaddcomment] = useState(0);
+
+  const [commenttoedit, setcommenttoedit] = useState({
+    commentid: "",
+    comment: "",
+    postid: "",
+  });
 
   function handleAddComment(id) {
     setpostaddcomment(id);
@@ -44,32 +51,36 @@ const Feed = (props) => {
   }
 
   function handleDeleteComment(postid, commentid) {
-      console.log(postid);
-      console.log(commentid);
-      const arrayNewPost = [];
-      const arrayNewComment = [];
-      for (let i = 0; i < postsList.length; i++) {
-        if (postsList[i].id !== postid) {
-          arrayNewPost.push(postsList[i]);
-        } else {
-          const commentslist = postsList[i].comments;
-          for(let j=0;j<commentslist.length;j++) {
-            if(commentslist[j].id!==commentid) {
-              arrayNewComment.push(commentslist[j]);
-            }
+    const arrayNewPost = [];
+    const arrayNewComment = [];
+    for (let i = 0; i < postsList.length; i++) {
+      if (postsList[i].id !== postid) {
+        arrayNewPost.push(postsList[i]);
+      } else {
+        const commentslist = postsList[i].comments;
+        for (let j = 0; j < commentslist.length; j++) {
+          if (commentslist[j].id !== commentid) {
+            arrayNewComment.push(commentslist[j]);
           }
-          const newobj = {
-            ...props.postsList[i],
-            comment_number: postsList[i].comment_number - 1,
-            comments: arrayNewComment,
-          };
-          arrayNewPost.push(newobj);
-          console.log(newobj);
         }
+        const newobj = {
+          ...props.postsList[i],
+          comment_number: postsList[i].comment_number - 1,
+          comments: arrayNewComment,
+        };
+        arrayNewPost.push(newobj);
+        console.log(newobj);
       }
-      setpostsList(arrayNewPost);
+    }
+    setpostsList(arrayNewPost);
+  }
 
-
+  function handleEditComment(commentid, postid, comment) {
+    setcommenttoedit({
+      commentid: commentid,
+      comment: comment,
+      postid: postid,
+    });
   }
 
   return (
@@ -81,6 +92,13 @@ const Feed = (props) => {
         setpostsList={setpostsList}
       />
       <NewPostModal postsList={postsList} setpostsList={setpostsList} />
+
+      <EditCommentModal
+        postsList={postsList}
+        setpostsList={setpostsList}
+        commenttoedit={commenttoedit}
+        setcommenttoedit={setcommenttoedit}
+      />
 
       <EditPostModal
         postsList={postsList}
@@ -121,6 +139,7 @@ const Feed = (props) => {
                 handleEdit={handleEdit}
                 handleAddComment={handleAddComment}
                 handleDeleteComment={handleDeleteComment}
+                handleEditComment={handleEditComment}
               />
             ))}
           </div>

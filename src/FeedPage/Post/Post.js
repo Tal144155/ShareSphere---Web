@@ -76,10 +76,19 @@ function Post(props) {
       </div>
       {showcomments && (
         <div>
-          <AddComment pic={"/profilepics/talpic.jpg"}  postid={props.id} handleAddComment={props.handleAddComment}/>
+          <AddComment
+            pic={"/profilepics/talpic.jpg"}
+            postid={props.id}
+            handleAddComment={props.handleAddComment}
+          />
           <div>
             {comments.map((comment) => (
-              <ShowComments {...comment} postid={props.id} handleDeleteComment={props.handleDeleteComment}/>
+              <ShowComments
+                {...comment}
+                postid={props.id}
+                handleDeleteComment={props.handleDeleteComment}
+                handleEditComment={props.handleEditComment}
+              />
             ))}
           </div>
         </div>

@@ -8,4 +8,12 @@
 
 #buttonedit {
     border-radius: 50%;
+    background-color: white;
+}
+
+#buttonedit:hover {
+    border-radius: 50%;
+    background-color: rgb(234, 234, 234);
+    border-color: rgb(234, 234, 234);
+
 }

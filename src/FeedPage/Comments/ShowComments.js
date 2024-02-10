@@ -10,7 +10,13 @@ const ShowComments = (props) => {
         </span>
       </div>
       <div id="comment-style">
-        <CommentOption postid={props.postid} commentid={props.id} handleDeleteComment={props.handleDeleteComment}/>
+        <CommentOption
+          postid={props.postid}
+          commentid={props.id}
+          comment={props.comment}
+          handleDeleteComment={props.handleDeleteComment}
+          handleEditComment={props.handleEditComment}
+        />
         <div id="name-placing">
           {props.first_name} {props.last_name}
         </div>
