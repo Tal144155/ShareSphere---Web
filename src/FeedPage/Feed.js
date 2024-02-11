@@ -91,8 +91,13 @@ const Feed = (props) => {
         postid={postaddcomment}
         postsList={postsList}
         setpostsList={setpostsList}
+        logedinuser={props.logedinuser}
       />
-      <NewPostModal postsList={postsList} setpostsList={setpostsList} />
+      <NewPostModal
+        postsList={postsList}
+        setpostsList={setpostsList}
+        logedinuser={props.logedinuser}
+      />
 
       <EditCommentModal
         postsList={postsList}
@@ -142,6 +147,7 @@ const Feed = (props) => {
                 handleAddComment={handleAddComment}
                 handleDeleteComment={handleDeleteComment}
                 handleEditComment={handleEditComment}
+                logedinuser={props.logedinuser}
               />
             ))}
           </div>

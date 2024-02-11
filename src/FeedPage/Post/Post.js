@@ -80,6 +80,7 @@ function Post(props) {
             pic={"/profilepics/talpic.jpg"}
             postid={props.id}
             handleAddComment={props.handleAddComment}
+            logedinuser={props.logedinuser}
           />
           <div>
             {comments.map((comment) => (

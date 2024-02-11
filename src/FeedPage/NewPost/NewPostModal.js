@@ -59,6 +59,7 @@ const NewPostModal = (props) => {
                     setpostsList={props.setpostsList}
                     id={id}
                     setid={setid}
+                    logedinuser={props.logedinuser}
                     />
           </div>
         </div>
