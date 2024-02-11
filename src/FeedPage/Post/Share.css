@@ -7,6 +7,17 @@
     border-bottom-right-radius: 5px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    background-color: var(--button-like);
+    border-color: var(--button-like);
+    color: var(--primary-text-color);
+}
 
-    
+#button-share-style:hover {
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: var(--button-like-hover);
+    border-color: var(--button-like-hover);
+    color: var(--primary-text-color);
+
 }

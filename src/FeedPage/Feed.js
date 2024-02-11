@@ -10,6 +10,7 @@ import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";
 import AddCommentModal from "./Comments/AddCommentModal";
 import EditCommentModal from "./EditComment/EditCommentModal";
+import Toggle from "./Toggle/Toggle";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
@@ -81,9 +82,10 @@ const Feed = (props) => {
       postid: postid,
     });
   }
+  const [isDark, setisDark] = useState(false);
 
   return (
-    <div>
+    <div data-theme={isDark ? "dark" : "light"}>
       <Feature />
       <AddCommentModal
         postid={postaddcomment}
@@ -113,6 +115,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
+          <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>
       <div id="top-bar">
@@ -128,7 +131,7 @@ const Feed = (props) => {
           </div>
           <div className="col-6" id="posts">
             <br />
-            <NewPost user_pic={"/profilepics/talpic.jpg"} />
+            <NewPost logedinuser={props.logedinuser} />
             {postsList.map((post) => (
               <Post
                 {...post}

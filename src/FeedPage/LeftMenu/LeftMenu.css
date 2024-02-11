@@ -9,3 +9,14 @@
     float: left;
     font-size: 18px;
 }
+
+.button-color {
+    background-color: var(--butoon-color);
+    color: var(--primary-text-color);
+    border-color: var(--butoon-border-color);
+}
+
+.button-color:hover {
+    background-color: var(--butoon-color-hover);
+    color: var(--primary-text-color);
+}

@@ -1,12 +1,11 @@
 import "./Login.css";
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 import WrongLogin from "./WrongLogin";
 import { useNavigate } from "react-router-dom";
 
-
 const LoginButton = ({ props, pref, unr }) => {
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const user_name = unr.current.value;
@@ -22,7 +21,13 @@ const LoginButton = ({ props, pref, unr }) => {
       const element = <WrongLogin />;
       wronglogin.render(element);
     } else {
-      props.setlogedinuser({username: user_name})
+      props.setlogedinuser({
+        username: user_name,
+        first_name: list[0].first_name,
+        last_name: list[0].last_name,
+        user_pic: list[0].pic
+      });
+      console.log(user_name, list[0].first_name, list[0].last_name, list[0].pic)
       const newRoute = "/feed";
       navigate(newRoute);
     }

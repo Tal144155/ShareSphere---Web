@@ -1,5 +1,5 @@
 #top-bar {
-    background-color: #e59ed9 !important;
+    background-color: var(--top-bar-color) !important;
 }
 
 #slogen {
@@ -11,6 +11,7 @@
 
 #feed-grid {
     margin-top: 16px;
+    background-color: var(--background-color);
 }
 
 #left-bar {

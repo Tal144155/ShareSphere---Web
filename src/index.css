@@ -1,4 +1,39 @@
 body {
   margin: 0;
-  background-color: #f2f2f2;
+  background-color: var(--background-color);
 }
+
+:root {
+  --post-background: #ffffff;
+  --background-color: #f2f2f2;
+  --butoon-color: #ffffff;
+  --top-bar-color:#e59ed9;
+  --butoon-border-color:#d1d1d1;
+  --butoon-color-hover:#d1d1d1;
+  --primary-text-color:#000000 ;
+  --buttn-edit-color-hover:rgb(234, 234, 234);
+  --secondary-text-color:#ffffff ;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
+  --button-like:#f1f1f1;
+  --button-like-hover:#b9b9b9;
+
+}
+
+[data-theme="dark"] {
+  --post-background: #393939;
+  --background-color: #1e1e1e;
+  --butoon-color: #2c2c2c;
+  --butoon-border-color:#646464;
+  --top-bar-color:#e26ccf;
+  --butoon-color-hover:#646464;
+  --foreground-color: #1b1b1b;
+  --primary-text-color:#ffffff ;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+  --buttn-edit-color-hover:rgb(179, 179, 179);
+  --button-like:#797979;
+  --button-like-hover:#5a5a5a;
+}
+
+
