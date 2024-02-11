@@ -1,32 +1,28 @@
 import { useState } from "react";
-import PostText from "./PostText";
-import "./NewPostModal.css";
-import PostImage from "./PostImage";
+import TextEdit from "./TextEdit";
+import ImageEdit from "./ImageEdit";
+import EditButton from "./EditButton";
 import InvalidCom from "../../RegisterPage/InvalidCom";
-import PostButton from "./PostButton";
 
-const NewPostModal = (props) => {
-  const [inputFields, setInputFields] = useState({
-    text: "",
-    imgurl: "",
-  });
+const EditPostModal = (props) => {
+  const inputFields = props.posttoedit;
+  const setInputFields = props.setposttoedit;
 
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-  const [id, setid] = useState(10);
   return (
     <div
       className="modal fade"
-      id="newpostModal"
+      id="editpostModal"
       tabIndex="-1"
-      aria-labelledby="newpostModalLabel"
+      aria-labelledby="editpostModalLabel"
       aria-hidden="false"
     >
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="newpostModalLabel">
-              Write your thoughts on ShareSphere
+              Edit your post on ShareSphere
             </h1>
             <button
               type="button"
@@ -36,32 +32,35 @@ const NewPostModal = (props) => {
             ></button>
           </div>
           <div className="modal-body">
-            <PostText
+            <TextEdit
               inputFields={inputFields}
               setInputFields={setInputFields}
+              initvalue={props.text}
             />
-            <InvalidCom errors={errors.text} />
-            <br/>
-            <PostImage
+            <InvalidCom errors={errors.text}/>
+            <br />
+            <ImageEdit
               inputFields={inputFields}
               setInputFields={setInputFields}
+              initvalue={props.img}
             />
           </div>
           <div className="modal-footer">
-            <PostButton inputFields={inputFields}
-                    setErrors={setErrors}
-                    setSubmitting={setSubmitting}
-                    submitting={submitting}
-                    errors={errors}
-                    postsList={props.postsList}
-                    setpostsList={props.setpostsList}
-                    id={id}
-                    setid={setid}
-                    />
+            <EditButton
+              id={props.id}
+              inputFields={inputFields}
+              setErrors={setErrors}
+              setSubmitting={setSubmitting}
+              submitting={submitting}
+              errors={errors}
+              postsList={props.postsList}
+              setpostsList={props.setpostsList}
+            />
           </div>
         </div>
       </div>
     </div>
   );
 };
-export default NewPostModal;
+
+export default EditPostModal;

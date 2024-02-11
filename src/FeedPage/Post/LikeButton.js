@@ -16,7 +16,7 @@ const LikeButton = (props) => {
       className="btn btn-light white"
       onClick={handleSubmit}
     >
-      <i className="bi bi-hand-thumbs-up-fill">Like</i>
+      <i className="bi bi-hand-thumbs-up-fill">&nbsp;&nbsp;</i>Like
     </button>
   ) : (
     <button
@@ -24,7 +24,7 @@ const LikeButton = (props) => {
       className="btn btn-block btn-secondary"
       onClick={handleSubmit}
     >
-      <i className="bi bi-hand-thumbs-up-fill">Like</i>
+      <i className="bi bi-hand-thumbs-up-fill">&nbsp;&nbsp;</i>Like
     </button>
   );
 };

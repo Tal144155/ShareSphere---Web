@@ -1,0 +1,11 @@
+#edit-delete-design {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    float:right;
+    margin-left: 190px;
+}
+
+#buttonedit {
+    border-radius: 50%;
+}

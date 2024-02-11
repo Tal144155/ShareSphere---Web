@@ -1,31 +1,30 @@
 import React, { useEffect, useCallback, useState } from "react";
 
-const PostButton = (props) => {
+const EditButton = (props) => {
   const [buttonPost, setbuttonPost] = useState(false);
   const finishSubmit = useCallback(() => {
-    const post = {
-      key: props.id,
-      id: props.id,
-      user_name: "tal144155",
-      first_name: "Tal",
-      last_name: "Ariel Ziv",
-      user_pic: "/profilepics/talpic.jpg",
-      time: "just now",
-      text: props.inputFields.text,
-      post_pic: props.inputFields.post_pic,
-      like_number: 0,
-      comment_number: 0,
-      did_like: false,
-      comments: [],
-    };
-    props.setid(props.id + 1);
+    const arrayNewPost = [];
+    for (let i = 0; i < props.postsList.length; i++) {
+      if (props.postsList[i].id !== props.id) {
+        arrayNewPost.push(props.postsList[i]);
+      } else {
+        const newobj = {
+          ...props.postsList[i],
+          text: props.inputFields.text,
+          post_pic: props.inputFields.imgurl,
+        };
+        arrayNewPost.push(newobj);
+      }
+    }
     props.setSubmitting(false);
-    props.setpostsList([post, ...props.postsList]);
+    props.setpostsList(arrayNewPost);
   }, [props]);
 
   useEffect(() => {
     if (props.inputFields.text.length !== 0) {
       setbuttonPost(true);
+    } else {
+      setbuttonPost(false);
     }
   }, [props.inputFields.text.length, buttonPost, setbuttonPost]);
 
@@ -58,7 +57,7 @@ const PostButton = (props) => {
           className="btn btn-primary"
           type="submit"
         >
-          Uplaod post!
+          Uplaod edit!
         </button>
       </div>
     );
@@ -70,11 +69,11 @@ const PostButton = (props) => {
           className="btn btn-primary"
           type="submit"
         >
-          Uplaod post!
+          Upload edit!
         </button>
       </div>
     );
   }
 };
 
-export default PostButton;
+export default EditButton;

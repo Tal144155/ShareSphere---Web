@@ -1,28 +1,25 @@
-import { useState } from "react";
-import "./PostImage.css";
-const PostImage = (props) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+import './EditPost.css'
+
+const ImageEdit = (props) => {
 
   const handleChange = (e) => {
-    setSelectedImage(e.target.files[0]);
     props.setInputFields({
       ...props.inputFields,
       [e.target.name]: URL.createObjectURL(e.target.files[0]),
     });
-    console.log(e.target.name);
   };
 
   return (
-    <div>
-      {selectedImage && (
+    <div >
+      { props.initvalue && (
         <div>
           <span>
             <img
-            id="image-in-center"
+            id="image-center2"
               alt="not found"
               width={"250px"}
-              value={URL.createObjectURL(selectedImage)}
-              src={URL.createObjectURL(selectedImage)}
+              value={props.initvalue}
+              src={props.initvalue}
             />
           </span>
           <br />
@@ -30,13 +27,12 @@ const PostImage = (props) => {
       )}
       <input
         type="file"
-        name="post_pic"
+        name="imgurl"
         className="form-control"
-        id="inputGroupFile01"
         onChange={handleChange}
       ></input>
     </div>
   );
 };
 
-export default PostImage;
+export default ImageEdit;
