@@ -6,7 +6,7 @@ const LeftMenu = (props) => {
     <div className="list-group" id="menu-style">
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action button-color"
         aria-current="true"
       >
         <ProfileShow
@@ -16,7 +16,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -26,7 +26,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -36,7 +36,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -46,7 +46,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -56,7 +56,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -66,7 +66,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -76,7 +76,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -86,7 +86,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -96,7 +96,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -106,7 +106,7 @@ const LeftMenu = (props) => {
       </button>
       <button
         type="button"
-        className="list-group-item list-group-item-action"
+        className="list-group-item list-group-item-action  button-color"
         data-bs-toggle="modal"
         data-bs-target="#featureModal"
       >
@@ -117,11 +117,10 @@ const LeftMenu = (props) => {
           <br />
           <br />
           <br />
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       </button>
     </div>

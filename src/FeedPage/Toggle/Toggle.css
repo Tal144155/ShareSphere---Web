@@ -1,6 +1,10 @@
+#check {
+    float: right;
+}
+
 .toggle-container {
     position: absolute;
-    top: 1px;
+    top: 15px;
     right: 3px;
   }
   

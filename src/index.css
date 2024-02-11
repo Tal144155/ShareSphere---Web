@@ -5,6 +5,7 @@ body {
 
 :root {
   --background-color: #f2f2f2;
+  --butoon-color: #ffffff;
   --primary-text-color:#000000 ;
   --secondary-text-color:#ffffff ;
   --toggle-bg: #f0eb9d;
@@ -14,6 +15,7 @@ body {
 
 [data-theme="dark"] {
   --background-color: #1e1e1e;
+  --butoon-color: #2c2c2c;
   --foreground-color: #1b1b1b;
   --primary-text-color:#ffffff ;
   --toggle-bg: #283452;
