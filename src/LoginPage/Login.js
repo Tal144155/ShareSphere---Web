@@ -37,6 +37,7 @@ function Login(props) {
                   props={props}
                   pref={password_ref}
                   unr={user_name_Ref}
+                  setlogedinuser={props.setlogedinuser}
                 />
                 <div id="forgot">
                   <a href="/">Forgot password?</a>

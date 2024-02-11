@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./Register.css";
-const UploadAndDisplayImage = (props) => {
+import { useState } from "react";
+import "./PostImage.css";
+const PostImage = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleChange = (e) => {
@@ -9,14 +9,14 @@ const UploadAndDisplayImage = (props) => {
       ...props.inputFields,
       [e.target.name]: URL.createObjectURL(e.target.files[0]),
     });
-    console.log(e.target.files[0]);
+    console.log(e.target.name);
   };
 
   return (
     <div>
       {selectedImage && (
         <div>
-          <span className="circle-image">
+          <span className="image">
             <img
               alt="not found"
               width={"250px"}
@@ -31,7 +31,7 @@ const UploadAndDisplayImage = (props) => {
 
       <input
         type="file"
-        name="imgurl"
+        name="post_pic"
         className="form-control"
         id="inputGroupFile01"
         onChange={handleChange}
@@ -40,4 +40,4 @@ const UploadAndDisplayImage = (props) => {
   );
 };
 
-export default UploadAndDisplayImage;
+export default PostImage;

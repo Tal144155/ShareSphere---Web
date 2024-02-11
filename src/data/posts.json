@@ -1,0 +1,38 @@
+[
+    {
+        "key": 1,
+        "user_name": "tal144155",
+        "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "user_pic":"/profilepics/talpic.jpg",
+        "time" : "2 days ago",
+        "text" : "I have uploaded the image, but I need to preview it before uploading in ReactJS. Could someone assist me by providing the solution or a sample program? I have been stuck with this for quite some time. Please find my code below.",
+        "post_pic" : "/postpics/pic1.jpg",
+        "like_number" : 10,
+        "comment_number" :5,
+        "did_like": false,
+        "comments" : [
+            {"user_name": "tal144155",
+            "pic" : "/src/pics/talpic.jpg",
+            "comment" :"hello"}
+        ]
+    },
+    {
+        "key": 2,
+        "user_name": "tal144155",
+        "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "user_pic":"/profilepics/talpic.jpg",
+        "time" : "2 days ago",
+        "text" : "heyyyyy",
+        "post_pic" : "/profilepics/talpic.jpg",
+        "like_number" : 10,
+        "comment_number" :5,
+        "did_like": false,
+        "comments" : [
+            {"user_name": "tal144155",
+            "pic" : "/src/pics/talpic.jpg",
+            "comment" :"hello"}
+        ]
+    }
+]
