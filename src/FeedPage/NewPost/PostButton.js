@@ -20,6 +20,10 @@ const PostButton = (props) => {
     };
     props.setid(props.id + 1);
     props.setSubmitting(false);
+    props.setInputFields({
+        text: "",
+        imgurl: "",
+      });
     props.setpostsList([post, ...props.postsList]);
   }, [props]);
 

@@ -31,7 +31,7 @@ const CommentButton = (props) => {
     props.setid(props.id + 1);
     props.setSubmitting(false);
     props.setInputFields({
-      comment: "helllooo",
+      comment: ""
     });
   }, [props]);
 

@@ -60,6 +60,7 @@ const NewPostModal = (props) => {
                     id={id}
                     setid={setid}
                     logedinuser={props.logedinuser}
+                    setInputFields={setInputFields}
                     />
           </div>
         </div>
