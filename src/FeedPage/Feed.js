@@ -8,6 +8,8 @@ import posts from "../data/posts.json";
 import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";
+import AddCommentModal from "./Comments/AddCommentModal";
+import EditCommentModal from "./EditComment/EditCommentModal";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
@@ -16,6 +18,19 @@ const Feed = (props) => {
     imgurl: "",
     id: "",
   });
+
+  const [postaddcomment, setpostaddcomment] = useState(0);
+
+  const [commenttoedit, setcommenttoedit] = useState({
+    commentid: "",
+    comment: "",
+    postid: "",
+  });
+
+  function handleAddComment(id) {
+    setpostaddcomment(id);
+    console.log(postaddcomment);
+  }
 
   function handleDelete(id) {
     const arrayNewPost = [];
@@ -35,11 +50,54 @@ const Feed = (props) => {
     });
   }
 
+  function handleDeleteComment(postid, commentid) {
+    const arrayNewPost = [];
+    const arrayNewComment = [];
+    for (let i = 0; i < postsList.length; i++) {
+      if (postsList[i].id !== postid) {
+        arrayNewPost.push(postsList[i]);
+      } else {
+        const commentslist = postsList[i].comments;
+        for (let j = 0; j < commentslist.length; j++) {
+          if (commentslist[j].id !== commentid) {
+            arrayNewComment.push(commentslist[j]);
+          }
+        }
+        const newobj = {
+          ...postsList[i],
+          comment_number: postsList[i].comment_number - 1,
+          comments: arrayNewComment,
+        };
+        arrayNewPost.push(newobj);
+      }
+    }
+    setpostsList(arrayNewPost);
+  }
+
+  function handleEditComment(commentid, postid, comment) {
+    setcommenttoedit({
+      commentid: commentid,
+      comment: comment,
+      postid: postid,
+    });
+  }
+
   return (
     <div>
       <Feature />
-
+      <AddCommentModal
+        postid={postaddcomment}
+        postsList={postsList}
+        setpostsList={setpostsList}
+      />
       <NewPostModal postsList={postsList} setpostsList={setpostsList} />
+
+      <EditCommentModal
+        postsList={postsList}
+        setpostsList={setpostsList}
+        commenttoedit={commenttoedit}
+        setcommenttoedit={setcommenttoedit}
+      />
 
       <EditPostModal
         postsList={postsList}
@@ -78,6 +136,9 @@ const Feed = (props) => {
                 postsList={postsList}
                 handleDelete={handleDelete}
                 handleEdit={handleEdit}
+                handleAddComment={handleAddComment}
+                handleDeleteComment={handleDeleteComment}
+                handleEditComment={handleEditComment}
               />
             ))}
           </div>

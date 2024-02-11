@@ -4,10 +4,20 @@ import "./Post.css";
 import PostHeader from "./PostHeader";
 import Share from "./Share";
 import EditDeleteButton from "./EditDeleteButton";
+import ShowComments from "../Comments/ShowComments";
+import AddComment from "../Comments/AddComment";
 
 function Post(props) {
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
+  const [showcomments, setShowcomments] = useState(false);
+
+  const showComments = () => {
+    setShowcomments(!showcomments);
+  };
+
+  const comments = props.comments;
+
   return (
     <div className="card" id="post-style">
       <div className="card-body">
@@ -49,12 +59,40 @@ function Post(props) {
               setpostslist={props.setpostsList}
             />
           </div>
-          <div id="containers-option" className="col-4"></div>
+          <div id="containers-option" className="col-4">
+            <button
+              className="btn btn-light white"
+              id="comment-button"
+              onClick={showComments}
+            >
+              <i className="bi bi-chat-dots"></i>
+              &nbsp;&nbsp;Comments
+            </button>
+          </div>
           <div id="containers-option" className="col-4">
             <Share />
           </div>
         </div>
       </div>
+      {showcomments && (
+        <div>
+          <AddComment
+            pic={"/profilepics/talpic.jpg"}
+            postid={props.id}
+            handleAddComment={props.handleAddComment}
+          />
+          <div>
+            {comments.map((comment) => (
+              <ShowComments
+                {...comment}
+                postid={props.id}
+                handleDeleteComment={props.handleDeleteComment}
+                handleEditComment={props.handleEditComment}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

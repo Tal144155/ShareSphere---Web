@@ -1,0 +1,17 @@
+#edit-delete-design-comment {
+    float:right;
+    margin-left: 120px;
+}
+
+#buttonedit-comment {
+    border-radius: 50%;
+    background-color: #e8e8e8;
+    border-color: #e8e8e8;
+}
+
+#buttonedit-comment:hover {
+    border-radius: 50%;
+    background-color: rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
+}
+
