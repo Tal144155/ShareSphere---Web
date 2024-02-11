@@ -9,7 +9,7 @@ import posts from "./data/posts.json"
 
 function App() {
   const [usersList, setusersList] = useState(users);
-  const [logedinuser, setlogedinuser] = useState({ username: "" });
+  const [logedinuser, setlogedinuser] = useState({ username: "", first_name:"", last_name:"", user_pic:"" });
   const [postsList, setpostsList] = useState(posts);
   
 
@@ -23,10 +23,13 @@ function App() {
             <Register usersList={usersList} setusersList={setusersList} />
           }
         />
-        <Route
+        {logedinuser.username ? <Route
           path="/feed"
-          element={<Feed usersList={usersList} logedinuser={logedinuser} postsList={postsList} setpostsList={setpostsList}/>}
-        />
+          element={<Feed usersList={usersList} setlogedinuser={setlogedinuser} logedinuser={logedinuser} postsList={postsList} setpostsList={setpostsList}/>}
+        /> : <Route
+        path="/feed"
+        element={<Login usersList={usersList} setlogedinuser={setlogedinuser} />}
+      />}
       </Routes>
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import CommentText from "./CommentText";
 import InvalidCom from "../../RegisterPage/InvalidCom";
 import CommentButton from "./CommentButton";
+import "../Modals.css";
 
 const AddCommentModal = (props) => {
   const [inputFields, setInputFields] = useState({
@@ -20,7 +21,7 @@ const AddCommentModal = (props) => {
       aria-hidden="false"
     >
       <div className="modal-dialog">
-        <div className="modal-content">
+        <div className="modal-content  modals-background">
           <div className="modal-header">
             <h1 className="modal-title fs-5">Share your comment</h1>
             <button

@@ -3,7 +3,7 @@ import './SearchBox.css'
 const SearchBox = () => {
   return (
     <form className="d-flex" role="search" id="search">
-    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+    <input id="search-box" className="form-control me-2" type="search" placeholder="Search..." aria-label="Search"></input>
   </form>
 
   );

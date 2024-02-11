@@ -1,12 +1,11 @@
 import "./NewPost.css";
 
 const NewPost = (props) => {
-    
   return (
     <div className="card" id="new-post">
       <div className="card-body">
         <span className="circle-image2" id="newpost-pro">
-          <img src={props.user_pic} alt="" />
+          <img src={props.logedinuser.user_pic} alt="" />
         </span>
         <button
           type="button"
@@ -15,7 +14,7 @@ const NewPost = (props) => {
           data-bs-toggle="modal"
           data-bs-target="#newpostModal"
         >
-          Tal, what are you thinking about?
+          {props.logedinuser.first_name}, what are you thinking about?
         </button>
       </div>
     </div>

@@ -3,6 +3,19 @@
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    background-color: var(--button-like);
+    border-color: var(--button-like);
+    color: var(--primary-text-color);
+}
+
+#button-like:hover {
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: var(--button-like-hover);
+    border-color: var(--button-like-hover);
+    color: var(--primary-text-color);
 }
 
 #button-like-liked {

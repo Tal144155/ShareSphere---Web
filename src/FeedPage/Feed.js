@@ -115,7 +115,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
-          <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)}/>
+          <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>
       <div id="top-bar">
@@ -131,7 +131,7 @@ const Feed = (props) => {
           </div>
           <div className="col-6" id="posts">
             <br />
-            <NewPost user_pic={"/profilepics/talpic.jpg"} />
+            <NewPost logedinuser={props.logedinuser} />
             {postsList.map((post) => (
               <Post
                 {...post}

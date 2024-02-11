@@ -4,13 +4,13 @@
         "password":"tal2024",
         "first_name":"Tal",
         "last_name":"Ariel Ziv" ,
-        "pic":"/src/pics/talpic.jpg"
+        "pic":"/profilepics/talpic.jpg"
     },
     {
         "user_name": "yael2023",
         "password":"yael1234",
         "first_name":"Yael",
         "last_name":"Dahari" ,
-        "pic":"yaelpic.jpeg"
+        "pic":"/profilepics/talpic.jpg"
      }
 ]

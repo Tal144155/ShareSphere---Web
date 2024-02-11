@@ -18,6 +18,7 @@
     font-size: 17px;
     font-weight: 600;
     padding-right: 300px;
+    color: var(--primary-text-color);
   }
   
   #time {

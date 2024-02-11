@@ -1,5 +1,5 @@
 #top-bar {
-    background-color: #e59ed9 !important;
+    background-color: var(--top-bar-color) !important;
 }
 
 #slogen {

@@ -4,6 +4,8 @@ import "./NewPostModal.css";
 import PostImage from "./PostImage";
 import InvalidCom from "../../RegisterPage/InvalidCom";
 import PostButton from "./PostButton";
+import "../Modals.css";
+
 
 const NewPostModal = (props) => {
   const [inputFields, setInputFields] = useState({
@@ -23,7 +25,7 @@ const NewPostModal = (props) => {
       aria-hidden="false"
     >
       <div className="modal-dialog">
-        <div className="modal-content">
+        <div className="modal-content modals-background">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="newpostModalLabel">
               Write your thoughts on ShareSphere

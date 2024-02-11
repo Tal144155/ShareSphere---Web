@@ -2,6 +2,7 @@ import { useState } from "react";
 import ComTextEdit from "./ComTextEdit";
 import InvalidCom from "../../RegisterPage/InvalidCom";
 import EditComButton from "./EditComButton";
+import "../Modals.css";
 
 const EditCommentModal = (props) => {
   const inputFields = props.commenttoedit;
@@ -18,7 +19,7 @@ const EditCommentModal = (props) => {
       aria-hidden="false"
     >
       <div className="modal-dialog">
-        <div className="modal-content">
+        <div className="modal-content  modals-background">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="newpostModalLabel">
               Edit your comment on ShareSphere
