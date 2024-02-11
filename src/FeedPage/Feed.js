@@ -121,7 +121,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
-          <LogOutButton />
+          <LogOutButton setlogedinuser={props.setlogedinuser}/>
           <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>
