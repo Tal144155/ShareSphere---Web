@@ -28,11 +28,22 @@ const SignUpButton = (props) => {
     const list = props.usersList.filter(
       (user) => user.user_name === inputValues.username
     );
+    let regexname = /^[a-zA-Z]+$/;
+    let regexPassword = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
     if (list.length !== 0) {
       errors.username = "User name already exists!";
     }
     if (inputValues.password.length < 5) {
       errors.password = "Password is too short";
+    }
+    if(!regexname.test(inputValues.firstname)) {
+      errors.firstname="Name with letters only!"
+    }
+    if(!regexname.test(inputValues.lastname)) {
+      errors.lastname="Letters only!"
+    }
+    if(!regexPassword.test(inputValues.password)) {
+      errors.password = "Must contains letters & numbers";
     }
     if (inputValues.imgurl.length === 0) {
       errors.imgurl = "Must upload picture!";

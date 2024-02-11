@@ -6,10 +6,10 @@ const PostButton = (props) => {
     const post = {
       key: props.id,
       id: props.id,
-      user_name: "tal144155",
-      first_name: "Tal",
-      last_name: "Ariel Ziv",
-      user_pic: "/profilepics/talpic.jpg",
+      user_name: props.logedinuser.user_name,
+      first_name: props.logedinuser.first_name,
+      last_name: props.logedinuser.last_name,
+      user_pic: props.logedinuser.user_pic,
       time: "just now",
       text: props.inputFields.text,
       post_pic: props.inputFields.post_pic,
@@ -20,6 +20,10 @@ const PostButton = (props) => {
     };
     props.setid(props.id + 1);
     props.setSubmitting(false);
+    props.setInputFields({
+        text: "",
+        imgurl: "",
+      });
     props.setpostsList([post, ...props.postsList]);
   }, [props]);
 

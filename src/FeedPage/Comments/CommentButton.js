@@ -6,10 +6,10 @@ const CommentButton = (props) => {
     const comment = {
       key: props.id,
       id: props.id,
-      user_name: "tal144155",
-      first_name: "Tal",
-      last_name: "Ariel Ziv",
-      pic: "/profilepics/talpic.jpg",
+      user_name: props.logedinuser.user_name,
+      first_name: props.logedinuser.first_name,
+      last_name: props.logedinuser.last_name,
+      pic: props.logedinuser.user_pic,
       comment: props.inputFields.comment,
     };
     const arrayNewPost = [];
@@ -31,7 +31,7 @@ const CommentButton = (props) => {
     props.setid(props.id + 1);
     props.setSubmitting(false);
     props.setInputFields({
-      comment: "helllooo",
+      comment: ""
     });
   }, [props]);
 
