@@ -1,0 +1,17 @@
+#log-out {
+    margin-right: 80px;
+    border-radius: 50%;
+    font-size: 17px;
+    background-color: var(--top-bar-color);
+    border-color: var(--top-bar-color);
+    color: var(--primary-text-color);
+}
+
+#log-out:hover {
+    margin-right: 80px;
+    border-radius: 50%;
+    font-size: 17px;
+    background-color: var(--log-out-hover);
+    border-color: var(--log-out-hover);
+    color: var(--primary-text-color);
+}

@@ -11,6 +11,7 @@ import EditPostModal from "./EditPost/EditPostModal";
 import AddCommentModal from "./Comments/AddCommentModal";
 import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
+import LogOutButton from "./LogOut/logoutbutton";
 
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
@@ -120,6 +121,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
+          <LogOutButton />
           <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>

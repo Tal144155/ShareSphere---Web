@@ -17,6 +17,7 @@ body {
   --toggle-fg: #ffd000;
   --button-like:#f1f1f1;
   --button-like-hover:#b9b9b9;
+  --log-out-hover: #e6b3de;
 
 }
 
@@ -34,6 +35,8 @@ body {
   --buttn-edit-color-hover:rgb(179, 179, 179);
   --button-like:#797979;
   --button-like-hover:#5a5a5a;
+  --log-out-hover: #e787d7;
+
 }
 
 
