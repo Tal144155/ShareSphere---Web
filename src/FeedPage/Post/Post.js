@@ -21,15 +21,17 @@ function Post(props) {
   return (
     <div className="card" id="post-style">
       <div className="card-body">
-        <EditDeleteButton
-          setpostsList={props.setpostsList}
-          postsList={props.postsList}
-          id={props.id}
-          text={props.text}
-          img={props.post_pic}
-          handleDelete={props.handleDelete}
-          handleEdit={props.handleEdit}
-        />
+        {props.logedinuser.user_name === props.user_name && (
+          <EditDeleteButton
+            setpostsList={props.setpostsList}
+            postsList={props.postsList}
+            id={props.id}
+            text={props.text}
+            img={props.post_pic}
+            handleDelete={props.handleDelete}
+            handleEdit={props.handleEdit}
+          />
+        )}
         <PostHeader
           firstname={props.first_name}
           lastname={props.last_name}
@@ -89,6 +91,8 @@ function Post(props) {
                 postid={props.id}
                 handleDeleteComment={props.handleDeleteComment}
                 handleEditComment={props.handleEditComment}
+                logedinuser={props.logedinuser}
+                user_name_post={props.user_name}
               />
             ))}
           </div>
