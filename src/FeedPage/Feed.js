@@ -31,7 +31,6 @@ const Feed = (props) => {
 
   function handleAddComment(id) {
     setpostaddcomment(id);
-    console.log(postaddcomment);
   }
 
   function handleDelete(id) {

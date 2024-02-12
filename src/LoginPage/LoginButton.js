@@ -27,7 +27,6 @@ const LoginButton = ({ props, pref, unr }) => {
         last_name: list[0].last_name,
         user_pic: list[0].pic
       });
-      console.log(user_name, list[0].first_name, list[0].last_name, list[0].pic)
       const newRoute = "/feed";
       navigate(newRoute);
     }
