@@ -6,7 +6,7 @@ const PostButton = (props) => {
     const post = {
       key: props.id,
       id: props.id,
-      user_name: props.logedinuser.user_name,
+      user_name: props.logedinuser.username,
       first_name: props.logedinuser.first_name,
       last_name: props.logedinuser.last_name,
       user_pic: props.logedinuser.user_pic,
@@ -21,9 +21,9 @@ const PostButton = (props) => {
     props.setid(props.id + 1);
     props.setSubmitting(false);
     props.setInputFields({
-        text: "",
-        imgurl: "",
-      });
+      text: "",
+      imgurl: "",
+    });
     props.setpostsList([post, ...props.postsList]);
   }, [props]);
 
