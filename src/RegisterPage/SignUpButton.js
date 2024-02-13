@@ -28,7 +28,7 @@ const SignUpButton = (props) => {
     const list = props.usersList.filter(
       (user) => user.user_name === inputValues.username
     );
-    let regexname = /^[a-zA-Z]+$/;
+    let regexname = /^[a-zA-Z -]+$/;
     let regexPassword = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
     if (list.length !== 0) {
       errors.username = "User name already exists!";

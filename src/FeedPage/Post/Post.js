@@ -17,7 +17,7 @@ function Post(props) {
   };
 
   const comments = props.comments;
-  console.log(props.logedinuser.user_name);
+  console.log(props.logedinuser.username);
   console.log(props.user_name);
 
   return (
