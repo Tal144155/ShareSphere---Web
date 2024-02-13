@@ -137,7 +137,8 @@ test("check delete comment", () => {
 });
 
 test("check add post", async () => {
-  const { getByPlaceholderText, getByText } = render(<App />);
+  const { getByPlaceholderText, getByText, queryAllByText, getAllByText } =
+    render(<App />);
 
   await waitFor(() => {
     const user_name = getByPlaceholderText("User Name");
@@ -155,10 +156,43 @@ test("check add post", async () => {
   });
 
   await waitFor(() => {
-    const linkElement = getByText(/what are you thinking about/i);
-    expect(linkElement).toBeInTheDocument();
+    const expectedText = "Tal Ariel Ziv";
+    const linkElement = getAllByText(expectedText);
+    expect(linkElement.length).toBeGreaterThan(0);
   });
-  
 
+  await waitFor(() => {
+    const button = getByText("Tal, what are you thinking about?");
 
+    act(() => {
+      fireEvent.click(button);
+    });
+  });
+
+  await waitFor(() => {
+    const expectedText = "Write your thoughts on ShareSphere";
+    const linkElement = getAllByText(expectedText);
+    expect(linkElement.length).toBeGreaterThan(0);
+  });
+
+  await waitFor(() => {
+    const post_text = getByPlaceholderText("What are you thinking about?");
+    const button = getByText("Uplaod post!");
+
+    act(() => {
+      fireEvent.change(post_text, {
+        target: { value: "this is my new post!" },
+      });
+    });
+
+    act(() => {
+      fireEvent.click(button);
+    });
+  });
+
+  await waitFor(() => {
+    const expectedText = "this is my new post!";
+    const linkElement = getAllByText(expectedText);
+    expect(linkElement.length).toBeGreaterThan(0);
+  });
 });

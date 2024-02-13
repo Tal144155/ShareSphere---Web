@@ -10,7 +10,7 @@ const CommentText = (props) => {
                     type="text"
                     name="comment"
                     className="form-control"
-                    placeholder="What are you thinking about?"
+                    placeholder="What do you think about the post?"
                     onChange={handleChange}
                     value={props.inputFields.comment}
                   ></textarea >
