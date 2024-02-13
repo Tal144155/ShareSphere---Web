@@ -16,7 +16,7 @@ describe("login page check", () => {
     const usersList = [];
     const setlogedinuser = jest.fn();
 
-    const { getByPlaceholderText, getByText } = render(
+    const { getByPlaceholderText } = render(
       <MemoryRouter>
         <Login usersList={usersList} setlogedinuser={setlogedinuser} />
       </MemoryRouter>

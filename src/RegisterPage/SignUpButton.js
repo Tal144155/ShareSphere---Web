@@ -67,7 +67,6 @@ const SignUpButton = (props) => {
     event.preventDefault();
     props.setErrors(validateValues(props.inputFields));
     props.setSubmitting(true);
-    console.log(props.submitting);
   };
 
   return (
