@@ -21,11 +21,12 @@ function Login(props) {
               <form className="Login">
                 <div className="mb-3">
                   <TextBox
-                    type="user_name"
+                    type="text"
                     placeholder="User Name"
                     ref={user_name_Ref}
                     describedby="usernameDescription"
                     id="id"
+                    name={"user_name"}
                   />
                   <TextBox
                     type="password"
@@ -33,6 +34,7 @@ function Login(props) {
                     ref={password_ref}
                     describedby="passwordHelpBlock"
                     id="password"
+                    name={"password"}
                   />
                 </div>
                 <div id="wrongLogin"></div>
