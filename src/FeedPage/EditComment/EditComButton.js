@@ -23,7 +23,6 @@ const EditComButton = (props) => {
             arrayNewComment.push(newobj);
           }
         }
-        console.log(arrayNewComment);
         arrayNewPost.push({...props.postsList[i], comments: arrayNewComment});
       }
     }

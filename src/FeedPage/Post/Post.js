@@ -17,8 +17,7 @@ function Post(props) {
   };
 
   const comments = props.comments;
-  console.log(props.logedinuser.username);
-  console.log(props.user_name);
+
 
   return (
     <div className="card" id="post-style">
