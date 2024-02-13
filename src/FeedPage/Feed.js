@@ -13,6 +13,16 @@ import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 
+export function PostListAfterDelete(postsList, id) {
+  const arrayNewPost = [];
+  for (let i = 0; i < postsList.length; i++) {
+    if (postsList[i].id !== id) {
+      arrayNewPost.push(postsList[i]);
+    }
+  }
+  return arrayNewPost;
+}
+
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
   const [posttoedit, setposttoedit] = useState({
@@ -34,13 +44,7 @@ const Feed = (props) => {
   }
 
   function handleDelete(id) {
-    const arrayNewPost = [];
-    for (let i = 0; i < postsList.length; i++) {
-      if (postsList[i].id !== id) {
-        arrayNewPost.push(postsList[i]);
-      }
-    }
-    setpostsList(arrayNewPost);
+    setpostsList(PostListAfterDelete(postsList, id));
   }
 
   function handleEdit(id, text, img) {
@@ -73,6 +77,7 @@ const Feed = (props) => {
       }
     }
     setpostsList(arrayNewPost);
+    return arrayNewComment;
   }
 
   function handleEditComment(commentid, postid, comment) {
@@ -120,7 +125,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
-          <LogOutButton setlogedinuser={props.setlogedinuser}/>
+          <LogOutButton setlogedinuser={props.setlogedinuser} />
           <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>
