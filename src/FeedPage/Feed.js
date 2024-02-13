@@ -23,6 +23,16 @@ export function PostListAfterDelete(postsList, id) {
   return arrayNewPost;
 }
 
+export function CommentListAfterDelete(commentslist, commentid) {
+  const arrayNewComment = [];
+  for (let j = 0; j < commentslist.length; j++) {
+    if (commentslist[j].id !== commentid) {
+      arrayNewComment.push(commentslist[j]);
+    }
+  }
+  return arrayNewComment;
+}
+
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
   const [posttoedit, setposttoedit] = useState({
@@ -57,17 +67,12 @@ const Feed = (props) => {
 
   function handleDeleteComment(postid, commentid) {
     const arrayNewPost = [];
-    const arrayNewComment = [];
     for (let i = 0; i < postsList.length; i++) {
       if (postsList[i].id !== postid) {
         arrayNewPost.push(postsList[i]);
       } else {
         const commentslist = postsList[i].comments;
-        for (let j = 0; j < commentslist.length; j++) {
-          if (commentslist[j].id !== commentid) {
-            arrayNewComment.push(commentslist[j]);
-          }
-        }
+        const arrayNewComment = CommentListAfterDelete(commentslist, commentid);
         const newobj = {
           ...postsList[i],
           comment_number: postsList[i].comment_number - 1,
@@ -77,7 +82,6 @@ const Feed = (props) => {
       }
     }
     setpostsList(arrayNewPost);
-    return arrayNewComment;
   }
 
   function handleEditComment(commentid, postid, comment) {
@@ -87,6 +91,7 @@ const Feed = (props) => {
       postid: postid,
     });
   }
+
   const [isDark, setisDark] = useState(false);
 
   return (

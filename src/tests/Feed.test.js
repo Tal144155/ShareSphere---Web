@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Feed from "../FeedPage/Feed";
-import { PostListAfterDelete } from "../FeedPage/Feed";
+import { PostListAfterDelete, CommentListAfterDelete } from "../FeedPage/Feed";
 
 test("check removes post from postsList", () => {
   const initialPostsList = [
@@ -96,3 +96,35 @@ test("check removes post from postsList", () => {
       }
   ]);
 });
+
+test("check delete comment", () => {
+    const comments = [
+        {"key": 1,
+        "id": 1,
+        "user_name":"tal144155",
+            "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "pic" : "/profilepics/talpic.jpg",
+        "comment" :"hello1111111111hello1111111111hello1111111111hello1111111111hello1111111111hello1111111111hello1111111111"}, 
+        {"key": 2,
+        "id": 2,
+        "user_name":"tal144155",
+            "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "pic" : "/profilepics/talpic.jpg",
+        "comment" :"hello22222222222"}
+    ];
+
+    const CommentList = CommentListAfterDelete(comments, 1);
+    expect(CommentList).toEqual([
+        {"key": 2,
+        "id": 2,
+        "user_name":"tal144155",
+            "first_name":"Tal",
+        "last_name":"Ariel Ziv",
+        "pic" : "/profilepics/talpic.jpg",
+        "comment" :"hello22222222222"}
+    ])
+})
+
+
