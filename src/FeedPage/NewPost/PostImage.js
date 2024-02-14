@@ -1,5 +1,6 @@
 import "./PostImage.css";
 const PostImage = (props) => {
+  //setting the input list on every change
 
   const handleChange = (e) => {
     props.setInputFields({
@@ -14,7 +15,7 @@ const PostImage = (props) => {
         <div>
           <span>
             <img
-            id="image-in-center"
+              id="image-in-center"
               alt="not found"
               width={"250px"}
               value={props.inputFields.post_pic}

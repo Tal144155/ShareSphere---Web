@@ -1,6 +1,7 @@
 import "./NewPost.css";
 
 const NewPost = (props) => {
+  //this button opens the modal offering the user to add a new post.
   return (
     <div className="card" id="new-post">
       <div className="card-body">

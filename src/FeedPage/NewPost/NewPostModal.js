@@ -8,11 +8,13 @@ import "../Modals.css";
 
 
 const NewPostModal = (props) => {
+  //setting the input fileds to nothing as start
   const [inputFields, setInputFields] = useState({
     text: "",
     post_pic: "",
   });
 
+  //setting errors, is subbmitted and a state holding the next post id to be added
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [id, setid] = useState(11);
