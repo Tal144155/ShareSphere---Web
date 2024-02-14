@@ -16,7 +16,7 @@ const LikeButton = (props) => {
       className="btn btn-light white"
       onClick={handleSubmit}
     >
-      <i className="bi bi-hand-thumbs-up-fill">&nbsp;&nbsp;</i>Like
+      <i className="bi bi-hand-thumbs-up">&nbsp;&nbsp;</i>Like
     </button>
   ) : (
     <button

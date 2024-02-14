@@ -9,7 +9,6 @@ const PostImage = (props) => {
       ...props.inputFields,
       [e.target.name]: URL.createObjectURL(e.target.files[0]),
     });
-    console.log(e.target.name);
   };
 
   return (

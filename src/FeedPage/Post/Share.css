@@ -21,3 +21,14 @@
     color: var(--primary-text-color);
 
 }
+
+.button-to-share {
+    background-color: var(--button-like);
+    border-color: var(--button-like);
+    color: var(--primary-text-color);
+}
+.button-to-share:hover {
+    background-color: var(--button-like-hover);
+    border-color: var(--button-like-hover);
+    color: var(--primary-text-color);
+}

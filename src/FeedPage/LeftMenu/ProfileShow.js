@@ -1,6 +1,5 @@
 import "./ProfileShow.css";
 const ProfileShow = (props) => {
-  console.log(props.logedinuser.user_pic);
   return (
     <div>
       <div id="image-place">
