@@ -2,6 +2,7 @@ import DeleteButton from "./DeleteButton";
 import "./EditDelete.css";
 
 const EditDeleteButton = (props) => {
+  //drop sown list for deleting or editing a post
   return (
     <div id="edit-delete-design" className="btn-group dropend">
       <button

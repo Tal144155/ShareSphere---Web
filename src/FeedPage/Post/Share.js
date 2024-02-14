@@ -1,6 +1,7 @@
 import "./Share.css";
 
 const Share = () => {
+  //share options
   return (
     <div id="share-design" className="btn-group dropend">
       <button

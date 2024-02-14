@@ -1,5 +1,6 @@
 import "./PostHeader.css";
 const PostHeader = (props) => {
+  //returning the post header with name, photo, time
   return (
     <div>
       <div id="image-place">
