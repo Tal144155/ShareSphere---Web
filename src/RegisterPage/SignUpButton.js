@@ -33,7 +33,7 @@ const SignUpButton = (props) => {
     if (list.length !== 0) {
       errors.username = "User name already exists!";
     }
-    if (inputValues.password.length < 5) {
+    if (inputValues.password.length < 8) {
       errors.password = "Password is too short";
     }
     if(!regexname.test(inputValues.firstname)) {

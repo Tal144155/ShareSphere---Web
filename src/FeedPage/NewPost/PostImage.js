@@ -1,10 +1,7 @@
-import { useState } from "react";
 import "./PostImage.css";
 const PostImage = (props) => {
-  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleChange = (e) => {
-    setSelectedImage(e.target.files[0]);
     props.setInputFields({
       ...props.inputFields,
       [e.target.name]: URL.createObjectURL(e.target.files[0]),
@@ -13,15 +10,15 @@ const PostImage = (props) => {
 
   return (
     <div>
-      {selectedImage && (
+      {props.inputFields.post_pic && (
         <div>
           <span>
             <img
             id="image-in-center"
               alt="not found"
               width={"250px"}
-              value={URL.createObjectURL(selectedImage)}
-              src={URL.createObjectURL(selectedImage)}
+              value={props.inputFields.post_pic}
+              src={props.inputFields.post_pic}
             />
           </span>
           <br />

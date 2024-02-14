@@ -10,7 +10,7 @@ import "../Modals.css";
 const NewPostModal = (props) => {
   const [inputFields, setInputFields] = useState({
     text: "",
-    imgurl: "",
+    post_pic: "",
   });
 
   const [errors, setErrors] = useState({});
