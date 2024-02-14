@@ -1,6 +1,9 @@
 import './EditComment.css'
 
 const ComTextEdit = (props) => {
+
+    //setting the input list on every change
+
   const handleChange = (e) => {
     props.setInputFields({
       ...props.inputFields,
