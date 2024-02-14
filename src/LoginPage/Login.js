@@ -7,9 +7,12 @@ import TextBox from "./TextBox";
 import WrongLogin from "./WrongLogin";
 
 function Login(props) {
+
+  //crating refernces for the user name and password in order to get them when button is clicked
   const user_name_Ref = useRef(undefined);
   const password_ref = useRef(undefined);
 
+  //setting errors if the user name or password are incorrect
   const [error, seterror] = useState(false);
   return (
     <div id="login-grid" className="container text-center">
