@@ -11,6 +11,8 @@ import userEvent from "@testing-library/user-event";
 
 global.URL.createObjectURL = jest.fn();
 
+//test for checking that writing inside the input fileds acyually writes.
+
 describe("login page check", () => {
   test("input fileds updated", async () => {
     const usersList = [];
@@ -34,6 +36,8 @@ describe("login page check", () => {
     expect(password.value).toBe;
     ("tal2024");
   });
+  
+  //test for checking that wrong user name and password will not pass
 
   test("check failed login", async () => {
     const usersList = [

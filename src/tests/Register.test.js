@@ -9,6 +9,8 @@ import Register from "../RegisterPage/Register";
 
 global.URL.createObjectURL = jest.fn();
 
+//test for checking form validation
+
 describe("register page check", () => {
   test("check validation on form", async () => {
     const userslist = [
