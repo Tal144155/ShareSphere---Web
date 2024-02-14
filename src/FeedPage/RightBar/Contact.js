@@ -10,7 +10,7 @@ const Contact = (props) => {
     >
       <div>
         <div className="image-place">
-          <span className="circle-image2">
+          <span className="circle-image3">
             <img src={props.pic} alt="" />
           </span>
         </div>
