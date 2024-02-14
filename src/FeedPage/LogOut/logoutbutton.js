@@ -23,7 +23,7 @@ const LogOutButton = (props) => {
         className="btn btn-light white"
         onClick={handlelogout}
       >
-        <i class="bi bi-door-open"></i>
+        <i className="bi bi-door-open"></i>
       </button>
     </div>
   );

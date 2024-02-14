@@ -1,13 +1,16 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
 import Slogen from "../Slogen";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import LoginButton from "./LoginButton";
 import TextBox from "./TextBox";
+import WrongLogin from "./WrongLogin";
 
 function Login(props) {
   const user_name_Ref = useRef(undefined);
   const password_ref = useRef(undefined);
+
+  const [error, seterror] = useState(false);
   return (
     <div id="login-grid" className="container text-center">
       <div className="row">
@@ -18,11 +21,12 @@ function Login(props) {
               <form className="Login">
                 <div className="mb-3">
                   <TextBox
-                    type="user_name"
+                    type="text"
                     placeholder="User Name"
                     ref={user_name_Ref}
                     describedby="usernameDescription"
                     id="id"
+                    name={"user_name"}
                   />
                   <TextBox
                     type="password"
@@ -30,18 +34,18 @@ function Login(props) {
                     ref={password_ref}
                     describedby="passwordHelpBlock"
                     id="password"
+                    name={"password"}
                   />
                 </div>
                 <div id="wrongLogin"></div>
+                {error && <WrongLogin />}
                 <LoginButton
                   props={props}
                   pref={password_ref}
                   unr={user_name_Ref}
                   setlogedinuser={props.setlogedinuser}
+                  seterror={seterror}
                 />
-                <div id="forgot">
-                  <a href="/">Forgot password?</a>
-                </div>
                 <hr id="border-line"></hr>
                 <Link to="/register" id="new-account" className="btn btn-primary">
                   Create new account!

@@ -10,7 +10,7 @@
         "text" : "I have uploaded the image, but I need to preview it before uploading in ReactJS. Could someone assist me by providing the solution or a sample program? I have been stuck with this for quite some time. Please find my code below.",
         "post_pic" : "/postpics/pic1.jpg",
         "like_number" : 10,
-        "comment_number" :5,
+        "comment_number" :2,
         "did_like": false,
         "comments" : [
             {"key": 1,
@@ -40,7 +40,7 @@
         "text" : "heyyyyy",
         "post_pic" : "/profilepics/talpic.jpg",
         "like_number" : 10,
-        "comment_number" :5,
+        "comment_number" :1,
         "did_like": false,
         "comments" : [
             {"key": 3,

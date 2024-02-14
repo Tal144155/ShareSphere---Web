@@ -18,10 +18,11 @@ function Post(props) {
 
   const comments = props.comments;
 
+
   return (
     <div className="card" id="post-style">
       <div className="card-body">
-        {props.logedinuser.user_name === props.user_name && (
+        {props.logedinuser.username === props.user_name && (
           <EditDeleteButton
             setpostsList={props.setpostsList}
             postsList={props.postsList}

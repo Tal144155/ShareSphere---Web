@@ -13,6 +13,26 @@ import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 
+export function PostListAfterDelete(postsList, id) {
+  const arrayNewPost = [];
+  for (let i = 0; i < postsList.length; i++) {
+    if (postsList[i].id !== id) {
+      arrayNewPost.push(postsList[i]);
+    }
+  }
+  return arrayNewPost;
+}
+
+export function CommentListAfterDelete(commentslist, commentid) {
+  const arrayNewComment = [];
+  for (let j = 0; j < commentslist.length; j++) {
+    if (commentslist[j].id !== commentid) {
+      arrayNewComment.push(commentslist[j]);
+    }
+  }
+  return arrayNewComment;
+}
+
 const Feed = (props) => {
   const [postsList, setpostsList] = useState(posts);
   const [posttoedit, setposttoedit] = useState({
@@ -31,17 +51,10 @@ const Feed = (props) => {
 
   function handleAddComment(id) {
     setpostaddcomment(id);
-    console.log(postaddcomment);
   }
 
   function handleDelete(id) {
-    const arrayNewPost = [];
-    for (let i = 0; i < postsList.length; i++) {
-      if (postsList[i].id !== id) {
-        arrayNewPost.push(postsList[i]);
-      }
-    }
-    setpostsList(arrayNewPost);
+    setpostsList(PostListAfterDelete(postsList, id));
   }
 
   function handleEdit(id, text, img) {
@@ -54,17 +67,12 @@ const Feed = (props) => {
 
   function handleDeleteComment(postid, commentid) {
     const arrayNewPost = [];
-    const arrayNewComment = [];
     for (let i = 0; i < postsList.length; i++) {
       if (postsList[i].id !== postid) {
         arrayNewPost.push(postsList[i]);
       } else {
         const commentslist = postsList[i].comments;
-        for (let j = 0; j < commentslist.length; j++) {
-          if (commentslist[j].id !== commentid) {
-            arrayNewComment.push(commentslist[j]);
-          }
-        }
+        const arrayNewComment = CommentListAfterDelete(commentslist, commentid);
         const newobj = {
           ...postsList[i],
           comment_number: postsList[i].comment_number - 1,
@@ -83,6 +91,7 @@ const Feed = (props) => {
       postid: postid,
     });
   }
+
   const [isDark, setisDark] = useState(false);
 
   return (
@@ -121,7 +130,7 @@ const Feed = (props) => {
         <div className="container-fluid">
           <div id="slogen">ShareSphere</div>
           <SearchBox />
-          <LogOutButton setlogedinuser={props.setlogedinuser}/>
+          <LogOutButton setlogedinuser={props.setlogedinuser} />
           <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
         </div>
       </nav>

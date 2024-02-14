@@ -6,7 +6,7 @@ const CommentButton = (props) => {
     const comment = {
       key: props.id,
       id: props.id,
-      user_name: props.logedinuser.user_name,
+      user_name: props.logedinuser.username,
       first_name: props.logedinuser.first_name,
       last_name: props.logedinuser.last_name,
       pic: props.logedinuser.user_pic,

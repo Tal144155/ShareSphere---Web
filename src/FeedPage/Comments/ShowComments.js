@@ -10,7 +10,7 @@ const ShowComments = (props) => {
         </span>
       </div>
       <div id="comment-style">
-        {props.logedinuser.user_name === props.user_name && (
+        {props.logedinuser.username === props.user_name && (
           <CommentOption
             postid={props.postid}
             commentid={props.id}
