@@ -2,6 +2,8 @@ import "./LeftMenu.css";
 import ProfileShow from "./ProfileShow";
 
 const LeftMenu = (props) => {
+
+  //left menu containing: propfile show with the name and pic, and diffrent option for the user
   return (
     <div className="list-group" id="menu-style">
       <button
