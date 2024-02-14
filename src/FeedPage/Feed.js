@@ -164,7 +164,7 @@ const Feed = (props) => {
             ))}
           </div>
           <div className="col-3" id="right-bar">
-            <RightBar />
+            <RightBar logedinuser={props.logedinuser} usersList={props.usersList} />
           </div>
         </div>
       </div>
