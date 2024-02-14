@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TextArea = (props) =>{
+  //setting the input list on every change
     const handleChange = (e) => {
         props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
       };
