@@ -9,7 +9,6 @@ const UploadAndDisplayImage = (props) => {
       ...props.inputFields,
       [e.target.name]: URL.createObjectURL(e.target.files[0]),
     });
-    console.log(e.target.files[0]);
   };
 
   return (

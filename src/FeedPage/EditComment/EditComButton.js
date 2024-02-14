@@ -6,7 +6,6 @@ const EditComButton = (props) => {
     const finishSubmit = useCallback(() => {
     const arrayNewPost = [];
     const arrayNewComment = [];
-    console.log(props.postid);
     for (let i = 0; i < props.postsList.length; i++) {
       if (props.postsList[i].id !== props.postid) {
         arrayNewPost.push(props.postsList[i]);

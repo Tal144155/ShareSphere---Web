@@ -1,6 +1,5 @@
 const PostText = (props) => {
     const handleChange = (e) => {
-        console.log(e.target.value);
         props.setInputFields({ ...props.inputFields, [e.target.name]: e.target.value });
       };
     return(

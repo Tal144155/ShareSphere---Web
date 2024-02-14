@@ -2,7 +2,6 @@ import Contact from "./Contact";
 import "./RightBar.css";
 
 const RightBar = (props) => {
-  console.log(props.usersList);
   const usersList = props.usersList;
   return (
     <div className="list-group" id="menu-right">
