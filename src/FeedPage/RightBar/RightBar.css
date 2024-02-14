@@ -1,0 +1,29 @@
+#menu-right{
+    float: right;
+    width: 270px;
+    padding: 0 !important;
+}
+
+.buttons-style {
+    float: left;
+    font-size: 18px;
+}
+
+#contacts {
+    border-radius: 0%;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.button-color {
+    background-color: var(--butoon-color);
+    color: var(--primary-text-color);
+    border-color: var(--butoon-border-color);
+    border-radius: 0%;
+}
+
+.button-color:hover {
+    background-color: var(--butoon-color-hover);
+    color: var(--primary-text-color);
+}

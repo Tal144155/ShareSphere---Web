@@ -12,6 +12,7 @@ import AddCommentModal from "./Comments/AddCommentModal";
 import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
+import RightBar from "./RightBar/RightBar";
 
 export function PostListAfterDelete(postsList, id) {
   const arrayNewPost = [];
@@ -162,7 +163,9 @@ const Feed = (props) => {
               />
             ))}
           </div>
-          <div className="col-3"></div>
+          <div className="col-3" id="right-bar">
+            <RightBar />
+          </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,12 @@
 #left-bar {
     padding: 0 !important;
 }
+#right-bar {
+    position: fixed;
+    float: right;
+    right: 0;
+    padding: 0 !important;
+}
 
 #posts {
     margin-left: 65px;
