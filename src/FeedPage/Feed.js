@@ -129,7 +129,9 @@ const Feed = (props) => {
 
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
-          <div id="slogen">ShareSphere</div>
+          <div id="slogen">
+            <img id="image-style2" src="/logopic.png" alt=""></img>
+          </div>
           <SearchBox />
           <LogOutButton setlogedinuser={props.setlogedinuser} />
           <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
@@ -164,7 +166,10 @@ const Feed = (props) => {
             ))}
           </div>
           <div className="col-3" id="right-bar">
-            <RightBar logedinuser={props.logedinuser} usersList={props.usersList} />
+            <RightBar
+              logedinuser={props.logedinuser}
+              usersList={props.usersList}
+            />
           </div>
         </div>
       </div>

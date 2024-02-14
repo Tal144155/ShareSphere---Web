@@ -12,6 +12,10 @@
     font-weight: 700;
 }
 
+#image-style {
+    width: 460px;
+}
+
 #slogen2 {
     font-size: 25px;
     text-align: left;
