@@ -1,6 +1,7 @@
 import "./Contact.css";
 
 const Contact = (props) => {
+  //showing the contact with name and photo from props
   return (
     <button
       type="button"

@@ -2,6 +2,7 @@ import Contact from "./Contact";
 import "./RightBar.css";
 
 const RightBar = (props) => {
+    //right bar showing all the users in the json instead the logged in user
   const usersList = props.usersList;
   return (
     <div className="list-group" id="menu-right">
@@ -16,6 +17,7 @@ const RightBar = (props) => {
           <i className="bi bi-person-heart"></i> Contacts
         </div>
       </button>
+      {/*not showing the logged in user */}
       {usersList.map((user) => {
         if (user.user_name !== props.logedinuser.username) {
           return <Contact {...user} />;
@@ -43,8 +45,6 @@ const RightBar = (props) => {
           <br />
           <br />
           <br />
-
-
         </div>
       </button>
     </div>
