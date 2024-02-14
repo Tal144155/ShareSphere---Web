@@ -1,6 +1,7 @@
 import "./Toggle.css";
 
 const Toggle = ({ handleChange, isChecked }) => {
+  //the toggle changes the state of dark/light mode, with css from open source
     return (
         <div className="toggle-container">
         <input
