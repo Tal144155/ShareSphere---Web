@@ -7,9 +7,11 @@ import TextBox from "./TextBox";
 import WrongLogin from "./WrongLogin";
 
 function Login(props) {
+  //crating refernces for the user name and password in order to get them when button is clicked
   const user_name_Ref = useRef(undefined);
   const password_ref = useRef(undefined);
 
+  //setting errors if the user name or password are incorrect
   const [error, seterror] = useState(false);
   return (
     <div id="login-grid" className="container text-center">
@@ -38,6 +40,7 @@ function Login(props) {
                   />
                 </div>
                 <div id="wrongLogin"></div>
+                {/* Rendering the wrong login only if the info is wrong */}
                 {error && <WrongLogin />}
                 <LoginButton
                   props={props}
@@ -47,7 +50,11 @@ function Login(props) {
                   seterror={seterror}
                 />
                 <hr id="border-line"></hr>
-                <Link to="/register" id="new-account" className="btn btn-primary">
+                <Link
+                  to="/register"
+                  id="new-account"
+                  className="btn btn-primary"
+                >
                   Create new account!
                 </Link>
               </form>

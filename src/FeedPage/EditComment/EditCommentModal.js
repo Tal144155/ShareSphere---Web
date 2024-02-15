@@ -5,9 +5,12 @@ import EditComButton from "./EditComButton";
 import "../Modals.css";
 
 const EditCommentModal = (props) => {
+
+  //getting from arguments the comment to edit
   const inputFields = props.commenttoedit;
   const setInputFields = props.setcommenttoedit;
 
+  //setting the state for errors and submiting
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   return (

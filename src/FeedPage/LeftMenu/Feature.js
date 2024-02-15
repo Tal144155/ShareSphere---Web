@@ -2,6 +2,7 @@ import "./Feature.css";
 import "../Modals.css";
 
 const Feature = () => {
+  //this is the feature modal, showing all the features that will be added next
   return (
     <div
       className="modal fade"

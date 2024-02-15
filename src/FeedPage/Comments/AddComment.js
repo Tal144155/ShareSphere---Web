@@ -1,5 +1,6 @@
 import "./Comment.css";
-
+//this component is responsible for opening the modal for adding comment
+//after pressing the button, it calls a function in feed with the certian pst we want to add the comment.
 const AddComment = (props) => {
   return (
     <div>

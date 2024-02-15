@@ -1,5 +1,6 @@
 import "./ProfileShow.css";
 const ProfileShow = (props) => {
+  //showing the users name and last name, and pic from the props
   return (
     <div>
       <div id="image-place">

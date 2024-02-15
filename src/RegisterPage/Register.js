@@ -9,6 +9,8 @@ import SignUpButton from "./SignUpButton.js";
 import InvalidCom from "./InvalidCom.js";
 
 function Register(props) {
+  //creating a useState that will hold the users input in the form
+
   const [inputFields, setInputFields] = useState({
     firstname: "",
     lastname: "",
@@ -17,7 +19,11 @@ function Register(props) {
     repassword: "",
     imgurl: "",
   });
+
+  //creating useState for all the errors that needs to be shown
   const [errors, setErrors] = useState({});
+
+  //creating a useState for subbmiting the form
   const [submitting, setSubmitting] = useState(false);
 
   return (

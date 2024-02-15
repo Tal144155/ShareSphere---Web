@@ -4,6 +4,8 @@ const UploadAndDisplayImage = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleChange = (e) => {
+    //setting the input list on every change
+
     setSelectedImage(e.target.files[0]);
     props.setInputFields({
       ...props.inputFields,

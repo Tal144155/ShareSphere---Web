@@ -10,6 +10,7 @@ const ShowComments = (props) => {
         </span>
       </div>
       <div id="comment-style">
+        {/*showing the comment optin, delete and edit only if the comment is of the logged in user */}
         {props.logedinuser.username === props.user_name && (
           <CommentOption
             postid={props.postid}

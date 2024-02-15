@@ -1,4 +1,5 @@
 const DeleteComment = (props) => {
+  //calling the deleting function that appears on Feed with the post id and comment id
   return (
     <button
       className="dropdown-item"

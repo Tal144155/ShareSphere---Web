@@ -1,6 +1,7 @@
 import "./LikeButton.css";
 
 const LikeButton = (props) => {
+  //when a like button is pressed, change the like number as followed and change the button to look diffrent
   const handleSubmit = () => {
     if (props.like) {
       props.setnumLike(props.numlike - 1);

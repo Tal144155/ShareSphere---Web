@@ -5,6 +5,8 @@ import { MemoryRouter, Router } from "react-router-dom";
 import { waitFor, fireEvent } from "@testing-library/react";
 import App from "../App";
 
+//test for checking deleting of a post from the list
+
 test("check removes post from postsList", () => {
   const initialPostsList = [
     {
@@ -99,6 +101,8 @@ test("check removes post from postsList", () => {
   ]);
 });
 
+//test for checking comment has been deleted from list
+
 test("check delete comment", () => {
   const comments = [
     {
@@ -135,6 +139,8 @@ test("check delete comment", () => {
     },
   ]);
 });
+
+//test for addin post on the feed and checking it appears.
 
 test("check add post", async () => {
   const { getByPlaceholderText, getByText, queryAllByText, getAllByText } =

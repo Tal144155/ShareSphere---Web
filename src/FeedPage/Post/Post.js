@@ -8,10 +8,13 @@ import ShowComments from "../Comments/ShowComments";
 import AddComment from "../Comments/AddComment";
 
 function Post(props) {
+
+  //setting state for the like, num like and if the comments need to be shown
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
   const [showcomments, setShowcomments] = useState(false);
 
+    //if the show comments was pressed, update the state
   const showComments = () => {
     setShowcomments(!showcomments);
   };
@@ -77,6 +80,7 @@ function Post(props) {
           </div>
         </div>
       </div>
+      {/*show comments only if the user pressed the button to show */}
       {showcomments && (
         <div>
           <AddComment

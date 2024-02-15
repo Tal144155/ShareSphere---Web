@@ -1,6 +1,7 @@
-import './EditPost.css'
+import "./EditPost.css";
 
 const ImageEdit = (props) => {
+  //setting the input list on every change
 
   const handleChange = (e) => {
     props.setInputFields({
@@ -10,12 +11,12 @@ const ImageEdit = (props) => {
   };
 
   return (
-    <div >
-      { props.initvalue && (
+    <div>
+      {props.initvalue && (
         <div>
           <span>
             <img
-            id="image-center2"
+              id="image-center2"
               alt="not found"
               width={"250px"}
               value={props.initvalue}

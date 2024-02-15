@@ -14,27 +14,34 @@ import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 import RightBar from "./RightBar/RightBar";
 
+//this functin gets post array and id of a post, and deletes it from the array
 export function PostListAfterDelete(postsList, id) {
   const arrayNewPost = [];
   for (let i = 0; i < postsList.length; i++) {
+    //if the post id is not equal, push it to the new array
     if (postsList[i].id !== id) {
       arrayNewPost.push(postsList[i]);
     }
   }
+  //return the new array of posts
   return arrayNewPost;
 }
 
+//this function gets comments array and a comment id, and deletes it from the array
 export function CommentListAfterDelete(commentslist, commentid) {
   const arrayNewComment = [];
   for (let j = 0; j < commentslist.length; j++) {
+    //pushing the comment if the id is not equal to the one we search
     if (commentslist[j].id !== commentid) {
       arrayNewComment.push(commentslist[j]);
     }
   }
+  //returning the new array of comments
   return arrayNewComment;
 }
 
 const Feed = (props) => {
+  //creating the state of the posts list and the post need to be edited
   const [postsList, setpostsList] = useState(posts);
   const [posttoedit, setposttoedit] = useState({
     text: "",
@@ -42,22 +49,27 @@ const Feed = (props) => {
     id: "",
   });
 
+  //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
 
+  //getting the info of the comment that will be edited
   const [commenttoedit, setcommenttoedit] = useState({
     commentid: "",
     comment: "",
     postid: "",
   });
 
+  //handaling add comment, setting the post that the comment will be added to
   function handleAddComment(id) {
     setpostaddcomment(id);
   }
 
+  //setting the postslist after deleting a post
   function handleDelete(id) {
     setpostsList(PostListAfterDelete(postsList, id));
   }
 
+  //setting the content of the post to be edited
   function handleEdit(id, text, img) {
     setposttoedit({
       text: text,
@@ -66,12 +78,15 @@ const Feed = (props) => {
     });
   }
 
+  //deleting comments from the postslist
   function handleDeleteComment(postid, commentid) {
     const arrayNewPost = [];
     for (let i = 0; i < postsList.length; i++) {
+      //searching for the specific post
       if (postsList[i].id !== postid) {
         arrayNewPost.push(postsList[i]);
       } else {
+        //when found, get the new array of comments without the specific one
         const commentslist = postsList[i].comments;
         const arrayNewComment = CommentListAfterDelete(commentslist, commentid);
         const newobj = {
@@ -79,12 +94,15 @@ const Feed = (props) => {
           comment_number: postsList[i].comment_number - 1,
           comments: arrayNewComment,
         };
+        //push the new post
         arrayNewPost.push(newobj);
       }
     }
+    //set the posts list without the comment wanted
     setpostsList(arrayNewPost);
   }
 
+  //change the comment content to be edited
   function handleEditComment(commentid, postid, comment) {
     setcommenttoedit({
       commentid: commentid,
@@ -93,10 +111,13 @@ const Feed = (props) => {
     });
   }
 
+  //setting the state for dark/light mode
   const [isDark, setisDark] = useState(false);
 
   return (
     <div data-theme={isDark ? "dark" : "light"}>
+
+      {/*rendering all the modals */}
       <Feature />
       <AddCommentModal
         postid={postaddcomment}
@@ -127,6 +148,8 @@ const Feed = (props) => {
         id={posttoedit.id}
       />
 
+      {/*rendering the componnents of the feed */}
+
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
           <div id="slogen">
@@ -151,6 +174,7 @@ const Feed = (props) => {
           <div className="col-6" id="posts">
             <br />
             <NewPost logedinuser={props.logedinuser} />
+            {/*showing all the posts on the list */}
             {postsList.map((post) => (
               <Post
                 {...post}

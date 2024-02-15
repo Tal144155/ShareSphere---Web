@@ -7,9 +7,12 @@ import "../Modals.css";
 
 
 const EditPostModal = (props) => {
+
+  //getting the input filed from the arguments
   const inputFields = props.posttoedit;
   const setInputFields = props.setposttoedit;
 
+  //setting error and submitting
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   return (
