@@ -1,0 +1,68 @@
+#card-style {
+    width: 18rem;
+    left: 10%;
+    width: 370px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#id {
+    margin-bottom: 10px;
+    height: 45px;
+}
+#password {
+    padding: 10px;
+}
+
+#forgot {
+    margin-top: 10px;
+    color: rgb(46, 46, 193);
+    font-weight: 500;
+}
+
+#border-line {
+    border-width: 3px;
+    border-radius: 1px;
+}
+
+#new-account {
+    background-color: #c067b1;
+    border-color:  #c067b1;
+}
+
+#new-account:hover {
+    background-color: #be43aa;
+    border-color:  #be43aa;
+}
+
+#login-grid {
+    position: absolute;
+    top: 30%;
+    margin-top: -50px;
+    margin-left: 55px;
+}
+
+
+#name-slogen {
+    position: relative;
+    top:30%;
+    margin-top:40px;
+    left: 10%;
+    text-align: left;
+}
+#app-name {
+    font-size: 50px;
+    color: #8C3E7F;
+    text-align: left;
+    font-weight: 700;
+}
+
+#slogen {
+    font-size: 25px;
+    text-align: left;
+}
+
+#wrongLogin {
+    color: red;
+    text-align: left;
+    font-size: 17px;
+}

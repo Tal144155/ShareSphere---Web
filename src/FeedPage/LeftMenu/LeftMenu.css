@@ -1,0 +1,22 @@
+#menu-style {
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    width: 270px;
+    position: fixed;
+}
+
+.buttons-style {
+    float: left;
+    font-size: 18px;
+}
+
+.button-color {
+    background-color: var(--butoon-color);
+    color: var(--primary-text-color);
+    border-color: var(--butoon-border-color);
+}
+
+.button-color:hover {
+    background-color: var(--butoon-color-hover);
+    color: var(--primary-text-color);
+}

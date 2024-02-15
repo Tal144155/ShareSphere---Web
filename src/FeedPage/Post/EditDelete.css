@@ -1,0 +1,22 @@
+#edit-delete-design {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    float:right;
+    margin-left: 190px;
+    
+}
+
+#buttonedit {
+    border-radius: 50%;
+    background-color: var(--post-background);
+    border-color: var(--post-background);
+    color: var(--primary-text-color);
+}
+
+#buttonedit:hover {
+    border-radius: 50%;
+    background-color: var(--buttn-edit-color-hover);
+    border-color: var(--buttn-edit-color-hover);
+
+}

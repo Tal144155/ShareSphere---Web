@@ -1,0 +1,37 @@
+#button-like {
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: var(--button-like);
+    border-color: var(--button-like);
+    color: var(--primary-text-color);
+}
+
+#button-like:hover {
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: var(--button-like-hover);
+    border-color: var(--button-like-hover);
+    color: var(--primary-text-color);
+}
+
+#button-like-liked {
+    background-color: #8C3E7F;
+    border-color: #8C3E7F;
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#button-like-liked:hover {
+    background-color: #b974ad;
+    border-color: #b974ad;
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}

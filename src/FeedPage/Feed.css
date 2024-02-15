@@ -1,0 +1,32 @@
+#top-bar {
+    background-color: var(--top-bar-color) !important;
+}
+
+#slogen {
+    font-size: 25px;
+    color: #8C3E7F;
+    text-align: left;
+    font-weight: 700;
+}
+#image-style2{
+    width: 200px;
+}
+
+#feed-grid {
+    margin-top: 16px;
+    background-color: var(--background-color);
+}
+
+#left-bar {
+    padding: 0 !important;
+}
+#right-bar {
+    position: fixed;
+    float: right;
+    right: 0;
+    padding: 0 !important;
+}
+
+#posts {
+    margin-left: 65px;
+}
