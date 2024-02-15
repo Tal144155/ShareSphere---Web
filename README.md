@@ -6,11 +6,12 @@
 
 ## running the application
 
-- download the repository to your computer
-- changeg the directory in terminal to SahreSphere (there has been a typo in the name 😅)
+- Download the repository to your computer
+- Changeg the directory in terminal to SahreSphere (there has been a typo in the name 😅)
 - Install dependencies (for running the app) using **npm install**
 - Install react-router-dom by typing **npm install react-router-dom**
-- run the app using **npm start**
+- Run the app using **npm start**
+- In order to run the tests write **npm test**
 
 ## About the app:
 
@@ -36,8 +37,23 @@ The term "Sphere" brings the idea of a rounded or three-dimensional space. In th
 
 - **Please Notice:** you can only edit/delete your posts and comments, not all users posts and comments!
 
-- On the left you will se the menu bar with options that are not yet available, but **try pressing one** and see what happens 😁.
+- On the left you will see the menu bar with options that are not yet available, but **try pressing one** and see what happens 😁.
 
 - On the right you will be able to see the right menu bar with all the users on the site (except you), these are your contacts.
 
 - On the top menu you will be able to see the search box and 2 button: **Log Out button** that will redirect you to login page and set the logged-in user, and the **Night Mode button** that will change the theme of the site.
+
+# Pictures from the website:
+
+## Login page
+![pic1](./public/websitepics/pic1.jpg)
+
+## SignUp page
+
+![pic2](./public/websitepics/pic2.jpg)
+
+## Feed page
+
+![pic3](./public/websitepics/pic3.jpg)
+
+
