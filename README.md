@@ -2,7 +2,7 @@
 
 ![logopic](./public/logopic.png)
 
-The Share Sphere App is a social media platform that allows users to share posts and interact with each other. This README file provides an overview of the websites's features and functionalities.
+**The Share Sphere App is a social media platform that allows users to share posts and interact with each other. This README file provides an overview of the websites's features and functionalities.**
 
 ## running the application
 
