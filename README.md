@@ -12,6 +12,7 @@
 - Install react-router-dom by typing **npm install react-router-dom**
 - Run the app using **npm start**
 - In order to run the tests write **npm test**
+- Our suggestion is to login with the user: **user name: tal144155, password: tal2024**, even though it does not matter so much.
 
 ## About the app:
 
@@ -46,6 +47,7 @@ The term "Sphere" brings the idea of a rounded or three-dimensional space. In th
 # Pictures from the website:
 
 ## Login page
+
 ![pic1](./public/websitepics/pic1.jpg)
 
 ## SignUp page
@@ -55,5 +57,3 @@ The term "Sphere" brings the idea of a rounded or three-dimensional space. In th
 ## Feed page
 
 ![pic3](./public/websitepics/pic3.jpg)
-
-
