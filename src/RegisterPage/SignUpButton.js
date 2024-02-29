@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SignUpButton = (props) => {
   const navigate = useNavigate();
 
-  const finishSubmit = useCallback(() => {
+  const finishSubmit = useCallback(async () => {
     //if all went through well, finish the signup and update the list
     //creating new user
     const user = {
@@ -14,12 +14,20 @@ const SignUpButton = (props) => {
       last_name: props.inputFields.lastname,
       pic: props.inputFields.imgurl,
     };
-    //adding it to the list
-    props.setusersList([...props.usersList, user]);
-
-    //navigating to new route
-    const newRoute = "/";
-    navigate(newRoute);
+    const response = await fetch("http://localhost:8080/api/users", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const message = await response.json();
+    //adding it to the db
+    if (message.message) {
+      //navigating to new route
+      const newRoute = "/";
+      navigate(newRoute);
+    }
   }, [navigate, props]);
 
   useEffect(() => {
@@ -29,18 +37,24 @@ const SignUpButton = (props) => {
     }
   }, [props.errors, props.submitting, finishSubmit]);
 
-  const validateValues = (inputValues) => {
+  const validateValues = async (inputValues) => {
     //updating the error state with all the problems from the user each time he presses the signup button
     let errors = {};
     //checking if the user name already exists
-    const list = props.usersList.filter(
-      (user) => user.user_name === inputValues.username
-    );
+
+    const response = await fetch("http://localhost:8080/api/users", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        id: inputValues.username,
+      },
+    });
+    const user = await response.json();
     //creating rergex for name and password
     let regexname = /^[a-zA-Z -]+$/;
     let regexPassword = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
     //checking the user name doesnot exist
-    if (list.length !== 0) {
+    if (user.error) {
       errors.username = "User name already exists!";
     }
     //checking the password is long enough
@@ -79,10 +93,10 @@ const SignUpButton = (props) => {
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //triger when the button is clicked
     event.preventDefault();
-    props.setErrors(validateValues(props.inputFields));
+    props.setErrors(await validateValues(props.inputFields));
     props.setSubmitting(true);
   };
 

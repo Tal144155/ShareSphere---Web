@@ -5,12 +5,25 @@ const UploadAndDisplayImage = (props) => {
 
   const handleChange = (e) => {
     //setting the input list on every change
+    const file = e.target.files[0];
+    if (file) {
+      // Read the image file as a Data URL
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Update state with selected image and Base64 representation
+        setSelectedImage({
+          file: file,
+          base64: reader.result,
+        });
 
-    setSelectedImage(e.target.files[0]);
-    props.setInputFields({
-      ...props.inputFields,
-      [e.target.name]: URL.createObjectURL(e.target.files[0]),
-    });
+        // Update parent component's state if needed
+        props.setInputFields({
+          ...props.inputFields,
+          [e.target.name]: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -21,8 +34,8 @@ const UploadAndDisplayImage = (props) => {
             <img
               alt="not found"
               width={"250px"}
-              value={URL.createObjectURL(selectedImage)}
-              src={URL.createObjectURL(selectedImage)}
+              value={URL.createObjectURL(selectedImage.file)}
+              src={URL.createObjectURL(selectedImage.file)}
             />
           </span>
           <br />
