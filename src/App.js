@@ -17,6 +17,7 @@ function App() {
     user_pic: "",
   });
   const [postsList, setpostsList] = useState(posts);
+  const [token, settoken] = useState("");
 
   return (
     <BrowserRouter>
@@ -24,7 +25,11 @@ function App() {
         <Route
           path="/"
           element={
-            <Login usersList={usersList} setlogedinuser={setlogedinuser} />
+            <Login
+              usersList={usersList}
+              setlogedinuser={setlogedinuser}
+              settoken={settoken}
+            />
           }
         />
         <Route
@@ -43,6 +48,7 @@ function App() {
                 logedinuser={logedinuser}
                 postsList={postsList}
                 setpostsList={setpostsList}
+                token={token}
               />
             }
           />

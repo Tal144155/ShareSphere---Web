@@ -114,6 +114,8 @@ const Feed = (props) => {
   //setting the state for dark/light mode
   const [isDark, setisDark] = useState(false);
 
+  console.log(props.token);
+
   return (
     <div data-theme={isDark ? "dark" : "light"}>
 

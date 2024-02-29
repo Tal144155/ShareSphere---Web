@@ -1,32 +1,58 @@
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
-const LoginButton = ({ props, pref, unr, seterror }) => {
+const LoginButton = ({ props, pref, unr, seterror, setToken }) => {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     //getting the values from the input using Ref
     const user_name = unr.current.value;
     const password = pref.current.value;
-    //checking that there is a user like this
-    const list = props.usersList.filter(
-      (user) => user.user_name === user_name && user.password === password
-    );
-    //if not, alert and stop
+    let data = {
+      username: user_name,
+      password: password,
+    };
 
-    if (list.length === 0) {
+    const response = await fetch("http://localhost:8080/api/tokens", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const responseData = await response.json();
+    const token = responseData.token;
+    //checking that there is a user like this
+
+    if (token === undefined) {
       seterror(true);
     } else {
       //if yes, set the logged in user and navigate
-      props.setlogedinuser({
-        username: user_name,
-        first_name: list[0].first_name,
-        last_name: list[0].last_name,
-        user_pic: list[0].pic,
-      });
-      const newRoute = "/feed";
-      navigate(newRoute);
+      const response = await fetch(
+        "http://localhost:8080/api/users/" + user_name,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
+      const user = await response.json();
+      if (!user.error) {
+        props.setlogedinuser({
+          username: user_name,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          user_pic: user.pic,
+        });
+        setToken(token);
+        const newRoute = "/feed";
+        navigate(newRoute);
+      } else {
+        seterror(true);
+      }
     }
   };
 

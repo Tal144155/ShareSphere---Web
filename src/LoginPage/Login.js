@@ -13,6 +13,7 @@ function Login(props) {
 
   //setting errors if the user name or password are incorrect
   const [error, seterror] = useState(false);
+
   return (
     <div id="login-grid" className="container text-center">
       <div className="row">
@@ -48,6 +49,7 @@ function Login(props) {
                   unr={user_name_Ref}
                   setlogedinuser={props.setlogedinuser}
                   seterror={seterror}
+                  setToken={props.settoken}
                 />
                 <hr id="border-line"></hr>
                 <Link
