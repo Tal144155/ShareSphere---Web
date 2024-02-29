@@ -6,21 +6,20 @@ import Share from "./Share";
 import EditDeleteButton from "./EditDeleteButton";
 import ShowComments from "../Comments/ShowComments";
 import AddComment from "../Comments/AddComment";
+import { formatDistanceToNow } from "date-fns";
 
 function Post(props) {
-
   //setting state for the like, num like and if the comments need to be shown
   const [like, setLike] = useState(false);
   const [numlike, setnumLike] = useState(props.like_number);
   const [showcomments, setShowcomments] = useState(false);
 
-    //if the show comments was pressed, update the state
+  //if the show comments was pressed, update the state
   const showComments = () => {
     setShowcomments(!showcomments);
   };
 
   const comments = props.comments;
-
 
   return (
     <div className="card" id="post-style">
@@ -39,17 +38,19 @@ function Post(props) {
         <PostHeader
           firstname={props.first_name}
           lastname={props.last_name}
-          time={props.time}
-          user_pic={props.user_pic}
+          time={formatDistanceToNow(new Date(props.publish_date), {
+            addSuffix: true,
+          })}
+          user_pic={props.profile}
         />
 
         <p className="card-text" id="text-style">
-          {props.text}
+          {props.content}
         </p>
       </div>
-      <img src={props.post_pic} className="card-img-bottom-top" alt=""></img>
+      <img src={props.pic} className="card-img-bottom-top" alt=""></img>
       <div id="likecomments">
-        <i className="bi bi-hand-thumbs-up-fill"></i> {numlike}
+        <i className="bi bi-hand-thumbs-up-fill"></i> {props.likes}
         &nbsp;&nbsp;
         <i className="bi bi-chat-fill"></i> {props.comment_number}
       </div>

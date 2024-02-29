@@ -20,7 +20,7 @@ function App() {
   const [postsList, setpostsList] = useState(posts);
   const [token, settoken] = useState("");
 
-  const [watchUser, setWatchUser] = useState({username: ""});
+  const [watchUser, setWatchUser] = useState({ username: "" });
 
   return (
     <BrowserRouter>
@@ -59,11 +59,14 @@ function App() {
           <Route
             path="/feed"
             element={
-              <Login usersList={usersList} setlogedinuser={setlogedinuser} />
+              <Login
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                settoken={settoken}
+              />
             }
           />
         )}
-        
       </Routes>
     </BrowserRouter>
   );
