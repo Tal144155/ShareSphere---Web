@@ -63,10 +63,7 @@ function App() {
             }
           />
         )}
-        <Route path="/profile"
-          element={
-            <ProfilePage usersList={usersList} setusersList={setusersList} />
-          } />
+        
       </Routes>
     </BrowserRouter>
   );

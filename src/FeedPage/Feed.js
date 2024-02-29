@@ -13,6 +13,7 @@ import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 import RightBar from "./RightBar/RightBar";
+import { useEffect } from "react";
 
 //this functin gets post array and id of a post, and deletes it from the array
 export function PostListAfterDelete(postsList, id) {
@@ -42,12 +43,34 @@ export function CommentListAfterDelete(commentslist, commentid) {
 
 const Feed = (props) => {
   //creating the state of the posts list and the post need to be edited
-  const [postsList, setpostsList] = useState(posts);
+
+  const [postsList, setpostsList] = useState([]);
   const [posttoedit, setposttoedit] = useState({
     text: "",
     imgurl: "",
     id: "",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/posts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        });
+        const posts = await response.json();
+        setpostsList(posts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [props.logedinuser.username, props.token]);
 
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
@@ -114,11 +137,8 @@ const Feed = (props) => {
   //setting the state for dark/light mode
   const [isDark, setisDark] = useState(false);
 
-  console.log(props.token);
-
   return (
     <div data-theme={isDark ? "dark" : "light"}>
-
       {/*rendering all the modals */}
       <Feature />
       <AddCommentModal
