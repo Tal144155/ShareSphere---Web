@@ -40,7 +40,7 @@ export function CommentListAfterDelete(commentslist, commentid) {
   return arrayNewComment;
 }
 
-const Feed = (props) => {
+const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
   const [postsList, setpostsList] = useState(posts);
   const [posttoedit, setposttoedit] = useState({
@@ -203,4 +203,4 @@ const Feed = (props) => {
     </div>
   );
 };
-export default Feed;
+export default ProfilePage;

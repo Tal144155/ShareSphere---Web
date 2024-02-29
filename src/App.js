@@ -6,6 +6,7 @@ import { useState } from "react";
 import Register from "./RegisterPage/Register.js";
 import Feed from "./FeedPage/Feed.js";
 import posts from "./data/posts.json";
+import ProfilePage from "./ProfilePage/ProfilePage.js";
 
 function App() {
   //creating useState for the userslist, for the logedIn user, and for the posts ist so they can be accesed from all components
@@ -18,6 +19,8 @@ function App() {
   });
   const [postsList, setpostsList] = useState(posts);
   const [token, settoken] = useState("");
+
+  const [watchUser, setWatchUser] = useState({username: ""});
 
   return (
     <BrowserRouter>
@@ -60,6 +63,10 @@ function App() {
             }
           />
         )}
+        <Route path="/profile"
+          element={
+            <ProfilePage usersList={usersList} setusersList={setusersList} />
+          } />
       </Routes>
     </BrowserRouter>
   );
