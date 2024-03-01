@@ -171,6 +171,7 @@ const Feed = (props) => {
         img={posttoedit.imgurl}
         id={posttoedit.id}
         token={props.token}
+        logedinuser={props.logedinuser}
       />
 
       {/*rendering the componnents of the feed */}

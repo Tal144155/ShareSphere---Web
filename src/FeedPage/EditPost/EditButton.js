@@ -4,27 +4,41 @@ const EditButton = (props) => {
   //creating a state that changes the upload post button state, checking if the form can be subbmited
   const [buttonPost, setbuttonPost] = useState(false);
 
-  const finishSubmit = useCallback(() => {
-    //creating new array of posts with the edit
-    const arrayNewPost = [];
-    for (let i = 0; i < props.postsList.length; i++) {
-      //search for the specific post id
-      if (props.postsList[i].id !== props.id) {
-        arrayNewPost.push(props.postsList[i]);
-      } else {
-        //when found, create the new post
-        const newobj = {
-          ...props.postsList[i],
-          text: props.inputFields.text,
-          post_pic: props.inputFields.imgurl,
-        };
-        //push the new post to the array
-        arrayNewPost.push(newobj);
-      }
+  const finishSubmit = useCallback(async () => {
+    try {
+      const comment = {
+        content: props.inputFields.text,
+        pic: props.inputFields.imgurl,
+      };
+      await fetch(
+        "http://localhost:8080/api/users/" +
+          props.logedinuser.username +
+          "/posts/" +
+          props.id,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+          },
+          body: JSON.stringify(comment),
+        }
+      );
+    } catch (error) {
+      console.log("error...");
     }
     props.setSubmitting(false);
+    const response = await fetch("http://localhost:8080/api/posts", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: props.token,
+        username: props.logedinuser.username,
+      },
+    });
+    const posts = await response.json();
+    props.setpostsList(posts);
     //set the posts list with the edited post
-    props.setpostsList(arrayNewPost);
   }, [props]);
 
   useEffect(() => {

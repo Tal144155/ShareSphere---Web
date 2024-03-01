@@ -5,9 +5,7 @@ import EditButton from "./EditButton";
 import InvalidCom from "../../RegisterPage/InvalidCom";
 import "../Modals.css";
 
-
 const EditPostModal = (props) => {
-
   //getting the input filed from the arguments
   const inputFields = props.posttoedit;
   const setInputFields = props.setposttoedit;
@@ -42,7 +40,7 @@ const EditPostModal = (props) => {
               setInputFields={setInputFields}
               initvalue={props.text}
             />
-            <InvalidCom errors={errors.text}/>
+            <InvalidCom errors={errors.text} />
             <br />
             <ImageEdit
               inputFields={inputFields}
@@ -60,6 +58,8 @@ const EditPostModal = (props) => {
               errors={errors}
               postsList={props.postsList}
               setpostsList={props.setpostsList}
+              token={props.token}
+              logedinuser={props.logedinuser}
             />
           </div>
         </div>
