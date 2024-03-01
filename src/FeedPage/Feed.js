@@ -160,6 +160,7 @@ const Feed = (props) => {
         commenttoedit={commenttoedit}
         setcommenttoedit={setcommenttoedit}
         token={props.token}
+        logedinuser={props.logedinuser}
       />
 
       <EditPostModal
