@@ -3,32 +3,38 @@ import React, { useEffect, useCallback, useState } from "react";
 const PostButton = (props) => {
   //setting the state of submmiting to false
   const [buttonPost, setbuttonPost] = useState(false);
-  const finishSubmit = useCallback(() => {
+  const finishSubmit = useCallback(async () => {
     //adding the new post to the posts list
     const post = {
-      key: props.id,
-      id: props.id,
       user_name: props.logedinuser.username,
       first_name: props.logedinuser.first_name,
       last_name: props.logedinuser.last_name,
-      user_pic: props.logedinuser.user_pic,
-      time: "just now",
-      text: props.inputFields.text,
-      post_pic: props.inputFields.post_pic,
-      like_number: 0,
-      comment_number: 0,
-      did_like: false,
-      comments: [],
+      pic: props.inputFields.post_pic,
+      profile: props.logedinuser.user_pic,
+      content: props.inputFields.text,
     };
     //setting the id for the next post
-    props.setid(props.id + 1);
     props.setSubmitting(false);
     //setting the input fileds for the next post
     props.setInputFields({
       text: "",
       post_pic: "",
     });
-    props.setpostsList([post, ...props.postsList]);
+    const reponse = await fetch(
+      "http://localhost:8080/api/users/" +
+        props.logedinuser.username +
+        "/posts",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+        },
+        body: JSON.stringify(post),
+      }
+    );
+    const responseData = await reponse.json();
+    props.setpostsList([responseData, ...props.postsList]);
   }, [props]);
 
   useEffect(() => {

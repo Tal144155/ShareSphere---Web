@@ -17,7 +17,6 @@ const NewPostModal = (props) => {
   //setting errors, is subbmitted and a state holding the next post id to be added
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-  const [id, setid] = useState(11);
   return (
     <div
       className="modal fade"
@@ -59,10 +58,9 @@ const NewPostModal = (props) => {
                     errors={errors}
                     postsList={props.postsList}
                     setpostsList={props.setpostsList}
-                    id={id}
-                    setid={setid}
                     logedinuser={props.logedinuser}
                     setInputFields={setInputFields}
+                    token={props.token}
                     />
           </div>
         </div>
