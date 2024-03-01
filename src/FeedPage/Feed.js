@@ -4,7 +4,6 @@ import SearchBox from "./TopBar/SearchBox";
 import Feature from "./LeftMenu/Feature";
 import Post from "./Post/Post";
 import { useState } from "react";
-import posts from "../data/posts.json";
 import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";

@@ -20,7 +20,9 @@ function Post(props) {
     setShowcomments(!showcomments);
   };
   //need to fetch comments from server
-  const [comments,setcomments ] = useState([]);
+  const [comments, setcomments] = useState([]);
+
+  //need to fetch like
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,15 +43,15 @@ function Post(props) {
           }
         );
         const commentsList = await response.json();
-        console.log(commentsList);
         setcomments(commentsList);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
-  }, [props]);
-  console.log(comments);
+    if(showcomments) {
+      fetchData(); 
+    }
+  }, [props, showcomments]);
 
   return (
     <div className="card" id="post-style">
@@ -58,9 +60,9 @@ function Post(props) {
           <EditDeleteButton
             setpostsList={props.setpostsList}
             postsList={props.postsList}
-            id={props.id}
-            text={props.text}
-            img={props.post_pic}
+            id={props._id}
+            text={props.content}
+            img={props.pic}
             handleDelete={props.handleDelete}
             handleEdit={props.handleEdit}
           />
@@ -89,6 +91,7 @@ function Post(props) {
         <div className="row">
           <div id="containers-option" className="col-4">
             <LikeButton
+              id={props._id}
               like={like}
               setLike={setLike}
               numlike={numlike}
@@ -116,7 +119,7 @@ function Post(props) {
         <div>
           <AddComment
             pic={"/profilepics/talpic.jpg"}
-            postid={props.id}
+            postid={props._id}
             handleAddComment={props.handleAddComment}
             logedinuser={props.logedinuser}
           />
@@ -124,7 +127,7 @@ function Post(props) {
             {comments.map((comment) => (
               <ShowComments
                 {...comment}
-                postid={props.id}
+                postid={props._id}
                 handleDeleteComment={props.handleDeleteComment}
                 handleEditComment={props.handleEditComment}
                 logedinuser={props.logedinuser}

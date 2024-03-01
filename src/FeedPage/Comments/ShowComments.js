@@ -14,8 +14,8 @@ const ShowComments = (props) => {
         {props.logedinuser.username === props.user_name && (
           <CommentOption
             postid={props.postid}
-            commentid={props.id}
-            comment={props.comment}
+            commentid={props._id}
+            comment={props.content}
             handleDeleteComment={props.handleDeleteComment}
             handleEditComment={props.handleEditComment}
           />
