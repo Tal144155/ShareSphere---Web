@@ -51,25 +51,25 @@ const Feed = (props) => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/posts", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: props.token,
-            username: props.logedinuser.username,
-          },
-        });
-        const posts = await response.json();
-        setpostsList(posts);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
   }, [props.logedinuser.username, props.token]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/posts", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+          username: props.logedinuser.username,
+        },
+      });
+      const posts = await response.json();
+      setpostsList(posts);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
@@ -99,16 +99,7 @@ const Feed = (props) => {
         },
       }
     );
-    const response = await fetch("http://localhost:8080/api/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: props.token,
-        username: username,
-      },
-    });
-    const posts = await response.json();
-    setpostsList(posts);
+    fetchData();
     ///
     //setpostsList(PostListAfterDelete(postsList, id));
   }
@@ -123,27 +114,23 @@ const Feed = (props) => {
   }
 
   //deleting comments from the postslist
-  function handleDeleteComment(postid, commentid) {
-    const arrayNewPost = [];
-    for (let i = 0; i < postsList.length; i++) {
-      //searching for the specific post
-      if (postsList[i].id !== postid) {
-        arrayNewPost.push(postsList[i]);
-      } else {
-        //when found, get the new array of comments without the specific one
-        const commentslist = postsList[i].comments;
-        const arrayNewComment = CommentListAfterDelete(commentslist, commentid);
-        const newobj = {
-          ...postsList[i],
-          comment_number: postsList[i].comment_number - 1,
-          comments: arrayNewComment,
-        };
-        //push the new post
-        arrayNewPost.push(newobj);
+  async function handleDeleteComment(postid, commentid) {
+    await fetch(
+      "http://localhost:8080/api/users/" +
+        props.logedinuser.username +
+        "/posts/" +
+        postid +
+        "/comments/" +
+        commentid,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+        },
       }
-    }
-    //set the posts list without the comment wanted
-    setpostsList(arrayNewPost);
+    );
+    fetchData();
   }
 
   //change the comment content to be edited
