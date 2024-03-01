@@ -24,7 +24,7 @@ const ShowComments = (props) => {
           {props.first_name} {props.last_name}
         </div>
         <br />
-        <div id="comment-placing">{props.comment}</div>
+        <div id="comment-placing">{props.content}</div>
       </div>
     </div>
   );

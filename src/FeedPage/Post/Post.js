@@ -7,6 +7,7 @@ import EditDeleteButton from "./EditDeleteButton";
 import ShowComments from "../Comments/ShowComments";
 import AddComment from "../Comments/AddComment";
 import { formatDistanceToNow } from "date-fns";
+import { useEffect } from "react";
 
 function Post(props) {
   //setting state for the like, num like and if the comments need to be shown
@@ -18,8 +19,37 @@ function Post(props) {
   const showComments = () => {
     setShowcomments(!showcomments);
   };
+  //need to fetch comments from server
+  const [comments,setcomments ] = useState([]);
 
-  const comments = props.comments;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/api/users/" +
+            props.logedinuser.username +
+            "/posts/" +
+            props._id +
+            "/comments/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: props.token,
+              username: props.logedinuser.username,
+            },
+          }
+        );
+        const commentsList = await response.json();
+        console.log(commentsList);
+        setcomments(commentsList);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [props]);
+  console.log(comments);
 
   return (
     <div className="card" id="post-style">

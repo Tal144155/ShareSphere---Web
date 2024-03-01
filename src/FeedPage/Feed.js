@@ -208,6 +208,7 @@ const Feed = (props) => {
                 handleDeleteComment={handleDeleteComment}
                 handleEditComment={handleEditComment}
                 logedinuser={props.logedinuser}
+                token={props.token}
               />
             ))}
           </div>
