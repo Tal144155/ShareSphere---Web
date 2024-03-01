@@ -151,7 +151,7 @@ const Feed = (props) => {
         postsList={postsList}
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
-        token = {props.token}
+        token={props.token}
       />
 
       <EditCommentModal
@@ -159,6 +159,7 @@ const Feed = (props) => {
         setpostsList={setpostsList}
         commenttoedit={commenttoedit}
         setcommenttoedit={setcommenttoedit}
+        token={props.token}
       />
 
       <EditPostModal
@@ -169,6 +170,7 @@ const Feed = (props) => {
         text={posttoedit.text}
         img={posttoedit.imgurl}
         id={posttoedit.id}
+        token={props.token}
       />
 
       {/*rendering the componnents of the feed */}
