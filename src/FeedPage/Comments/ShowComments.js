@@ -6,7 +6,7 @@ const ShowComments = (props) => {
     <div>
       <div id="placing-image">
         <span className="img-round-comment">
-          <img src={props.pic} alt=""></img>
+          <img src={props.profile} alt=""></img>
         </span>
       </div>
       <div id="comment-style">
