@@ -23,6 +23,5 @@
   
   #time {
     color: gray;
-    padding-right: 380px;
-    width:600px;
+    float: left;
   }

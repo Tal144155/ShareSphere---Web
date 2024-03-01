@@ -87,8 +87,30 @@ const Feed = (props) => {
   }
 
   //setting the postslist after deleting a post
-  function handleDelete(id) {
-    setpostsList(PostListAfterDelete(postsList, id));
+  async function handleDelete(id) {
+    let username = props.logedinuser.username;
+    await fetch(
+      "http://localhost:8080/api/users/" + username + "/posts/" + id,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+        },
+      }
+    );
+    const response = await fetch("http://localhost:8080/api/posts", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: props.token,
+        username: username,
+      },
+    });
+    const posts = await response.json();
+    setpostsList(posts);
+    ///
+    //setpostsList(PostListAfterDelete(postsList, id));
   }
 
   //setting the content of the post to be edited

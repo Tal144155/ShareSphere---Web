@@ -75,6 +75,7 @@ function Post(props) {
           })}
           user_pic={props.profile}
         />
+        <br/>
 
         <p className="card-text" id="text-style">
           {props.content}
