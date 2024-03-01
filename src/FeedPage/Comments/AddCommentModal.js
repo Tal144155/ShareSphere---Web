@@ -16,7 +16,6 @@ const AddCommentModal = (props) => {
   //setting submit if the user pressed the button
   const [submitting, setSubmitting] = useState(false);
   //setting the id of the comment to start at 10
-  const [id, setid] = useState(10);
   return (
     <div
       className="modal fade"
@@ -54,10 +53,9 @@ const AddCommentModal = (props) => {
               errors={errors}
               postsList={props.postsList}
               setpostsList={props.setpostsList}
-              id={id}
-              setid={setid}
               postid={props.postid}
               logedinuser={props.logedinuser}
+              token={props.token}
             />
           </div>
         </div>

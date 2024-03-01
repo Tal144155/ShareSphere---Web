@@ -145,6 +145,7 @@ const Feed = (props) => {
         postsList={postsList}
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
+        token={props.token}
       />
       <NewPostModal
         postsList={postsList}

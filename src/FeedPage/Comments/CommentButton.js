@@ -3,45 +3,45 @@ import React, { useEffect, useCallback, useState } from "react";
 const CommentButton = (props) => {
   //creating a useState for preesing the button, and if when we press it the modal nwwd to closr or not
   const [buttonPost, setbuttonPost] = useState(false);
-  const finishSubmit = useCallback(() => {
+  const finishSubmit = useCallback(async () => {
     //creating new comment
     const comment = {
-      key: props.id,
-      id: props.id,
-      user_name: props.logedinuser.username,
-      first_name: props.logedinuser.first_name,
-      last_name: props.logedinuser.last_name,
-      pic: props.logedinuser.user_pic,
-      comment: props.inputFields.comment,
+      content: props.inputFields.comment,
     };
-
-    //pushing the comment inside the posts list in the desired post
-    const arrayNewPost = [];
-    for (let i = 0; i < props.postsList.length; i++) {
-      //search for the specicif post id
-      if (props.postsList[i].id !== props.postid) {
-        arrayNewPost.push(props.postsList[i]);
-      } else {
-        //when found, push to the comment array the new comment
-        const commentslist = props.postsList[i].comments;
-        commentslist.push(comment);
-        const newobj = {
-          ...props.postsList[i],
-          comment_number: props.postsList[i].comment_number + 1,
-          comments: commentslist,
-        };
-        //add to the new posts list the new post
-        arrayNewPost.push(newobj);
-      }
+    try {
+      await fetch(
+        "http://localhost:8080/api/users/" +
+          props.logedinuser.username +
+          "/posts/" +
+          props.postid +
+          "/comments",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+          },
+          body: JSON.stringify(comment),
+        }
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-    //set the posts list with the new comment
-    props.setpostsList(arrayNewPost);
-    props.setid(props.id + 1);
     props.setSubmitting(false);
     //set the comment input filed
     props.setInputFields({
       comment: "",
     });
+    const response = await fetch("http://localhost:8080/api/posts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        });
+        const posts = await response.json();
+        props.setpostsList(posts);
   }, [props]);
 
   useEffect(() => {
