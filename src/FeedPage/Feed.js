@@ -50,7 +50,7 @@ const Feed = (props) => {
     id: "",
   });
 
-  useEffect(() => {
+  useEffect( () => {
     fetchData();
   }, [props.logedinuser.username, props.token]);
 
@@ -223,6 +223,7 @@ const Feed = (props) => {
                 handleEditComment={handleEditComment}
                 logedinuser={props.logedinuser}
                 token={props.token}
+                fetchData={fetchData}
               />
             ))}
           </div>

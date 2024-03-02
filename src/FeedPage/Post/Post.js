@@ -12,7 +12,7 @@ import { useEffect } from "react";
 function Post(props) {
   //setting state for the like, num like and if the comments need to be shown
   const [like, setLike] = useState(false);
-  const [numlike, setnumLike] = useState(props.like_number);
+  const [numlike, setnumLike] = useState(props.likes);
   const [showcomments, setShowcomments] = useState(false);
 
   //if the show comments was pressed, update the state
@@ -48,11 +48,35 @@ function Post(props) {
         console.error("Error fetching data:", error);
       }
     };
-    if(showcomments) {
-      fetchData(); 
-    }
-  }, [props, showcomments]);
 
+    const likeData = async () => {
+      try {
+        const reponse = await fetch(
+          "http://localhost:8080/api/users/" +
+            props.logedinuser.username +
+            "/posts/" +
+            props._id +
+            "/likes",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: props.token,
+            },
+          }
+        );
+        const responseData = await reponse.json();
+        setLike(responseData.isLiked);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    if (showcomments) {
+       fetchData();
+    } else {
+       likeData();
+    }
+  }, [props, showcomments, like]);
   return (
     <div className="card" id="post-style">
       <div className="card-body">
@@ -75,7 +99,7 @@ function Post(props) {
           })}
           user_pic={props.profile}
         />
-        <br/>
+        <br />
 
         <p className="card-text" id="text-style">
           {props.content}
@@ -97,7 +121,9 @@ function Post(props) {
               setLike={setLike}
               numlike={numlike}
               setnumLike={setnumLike}
-              setpostslist={props.setpostsList}
+              logedinuser={props.logedinuser}
+              token = {props.token}
+              fetchData={props.fetchData}
             />
           </div>
           <div id="containers-option" className="col-4">
