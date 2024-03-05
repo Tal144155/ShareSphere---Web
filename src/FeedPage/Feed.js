@@ -13,6 +13,7 @@ import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 import RightBar from "./RightBar/RightBar";
 import { useEffect } from "react";
+import FriendsModal from "./Friends/FriendsModal";
 
 //this functin gets post array and id of a post, and deletes it from the array
 export function PostListAfterDelete(postsList, id) {
@@ -50,7 +51,7 @@ const Feed = (props) => {
     id: "",
   });
 
-  useEffect( () => {
+  useEffect(() => {
     fetchData();
   }, [props.logedinuser.username, props.token]);
 
@@ -68,11 +69,17 @@ const Feed = (props) => {
       setpostsList(posts);
     } catch (error) {
       console.error("Error fetching data:", error);
-    } 
+    }
   };
 
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
+  //user to approve or delete request
+  const [userRequest, setUserRequest] = useState({
+    user_name: "",
+    first_name: "",
+    last_name: "",
+  });
 
   //getting the info of the comment that will be edited
   const [commenttoedit, setcommenttoedit] = useState({
@@ -84,6 +91,14 @@ const Feed = (props) => {
   //handaling add comment, setting the post that the comment will be added to
   function handleAddComment(id) {
     setpostaddcomment(id);
+  }
+  //set user to delete or approve
+  function handleFriendRequest(user_name, first_name, last_name) {
+    setUserRequest({
+      user_name: user_name,
+      first_name: first_name,
+      last_name: last_name,
+    });
   }
 
   //setting the postslist after deleting a post
@@ -149,6 +164,7 @@ const Feed = (props) => {
     <div data-theme={isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
+      <FriendsModal logedinuser={props.logedinuser} userRequest={userRequest}/>
       <AddCommentModal
         postid={postaddcomment}
         postsList={postsList}
@@ -232,6 +248,7 @@ const Feed = (props) => {
               logedinuser={props.logedinuser}
               usersList={props.usersList}
               token={props.token}
+              handleFriendRequest={handleFriendRequest}
             />
           </div>
         </div>

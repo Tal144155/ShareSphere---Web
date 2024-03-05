@@ -43,7 +43,7 @@ const RightBar = (props) => {
       </div>
       {/*not showing the logged in user */}
       {friendsRequest.map((user) => (
-        <Contact {...user} />
+        <Contact {...user} handleFriendRequest={props.handleFriendRequest} />
       ))}
       <button
         type="button"
