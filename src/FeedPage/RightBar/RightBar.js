@@ -36,6 +36,14 @@ const RightBar = (props) => {
           <br />
           <br />
           <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
       </button>
     </div>

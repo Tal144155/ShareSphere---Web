@@ -189,7 +189,12 @@ const Feed = (props) => {
     <div data-theme={isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
-      <FriendsModal logedinuser={props.logedinuser} userRequest={userRequest}/>
+      <FriendsModal
+        logedinuser={props.logedinuser}
+        userRequest={userRequest}
+        fetchDataFriends={fetchDataFriends}
+        token={props.token}
+      />
       <AddCommentModal
         postid={postaddcomment}
         postsList={postsList}
