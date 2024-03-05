@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Contact from "./Contact";
 import "./RightBar.css";
 

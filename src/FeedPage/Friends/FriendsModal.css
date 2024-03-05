@@ -1,0 +1,13 @@
+.button-friends {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    align-content: center;
+}
+
+.vertical-center {
+
+   margin-left: 160px;
+  }
