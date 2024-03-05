@@ -53,6 +53,7 @@ const Feed = (props) => {
 
   useEffect(() => {
     fetchData();
+    fetchDataFriends();
   }, [props.logedinuser.username, props.token]);
 
   const fetchData = async () => {
@@ -67,6 +68,30 @@ const Feed = (props) => {
       });
       const posts = await response.json();
       setpostsList(posts);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  //creating list of request friends
+  const [friendsRequest, setRequest] = useState([]);
+  const fetchDataFriends = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/users/" +
+          props.logedinuser.username +
+          "/friendsReq/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        }
+      );
+      const users = await response.json();
+      setRequest(users);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -249,6 +274,7 @@ const Feed = (props) => {
               usersList={props.usersList}
               token={props.token}
               handleFriendRequest={handleFriendRequest}
+              friendsRequest={friendsRequest}
             />
           </div>
         </div>

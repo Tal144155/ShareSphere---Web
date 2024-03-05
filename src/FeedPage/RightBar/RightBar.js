@@ -3,33 +3,6 @@ import Contact from "./Contact";
 import "./RightBar.css";
 
 const RightBar = (props) => {
-  const [friendsRequest, setRequest] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, [props]);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:8080/api/users/" +
-          props.logedinuser.username +
-          "/friendsReq/",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: props.token,
-            username: props.logedinuser.username,
-          },
-        }
-      );
-      const users = await response.json();
-      setRequest(users);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   //right bar showing all the users in the json instead the logged in user
   return (
     <div className="list-group" id="menu-right">
@@ -42,7 +15,7 @@ const RightBar = (props) => {
         </div>
       </div>
       {/*not showing the logged in user */}
-      {friendsRequest.map((user) => (
+      {props.friendsRequest.map((user) => (
         <Contact {...user} handleFriendRequest={props.handleFriendRequest} />
       ))}
       <button
