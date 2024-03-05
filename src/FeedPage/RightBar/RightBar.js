@@ -1,31 +1,50 @@
+import { useState, useEffect } from "react";
 import Contact from "./Contact";
 import "./RightBar.css";
 
 const RightBar = (props) => {
-    //right bar showing all the users in the json instead the logged in user
-  const usersList = props.usersList;
+  const [friendsRequest, setRequest] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, [props]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/users/" +
+          props.logedinuser.username +
+          "/friendsReq/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        }
+      );
+      const users = await response.json();
+      setRequest(users);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  //right bar showing all the users in the json instead the logged in user
   return (
     <div className="list-group" id="menu-right">
-      <button
+      <div
         id="contacts"
-        type="button"
-        className="list-group-item list-group-item-action button-color"
-        data-bs-toggle="modal"
-        data-bs-target="#featureModal"
+        className="list-group-item list-group-item-action button-color-nohover"
       >
-        <div className="buttons-style">
-          <i className="bi bi-person-heart"></i> Contacts
+        <div id="contacts" className="buttons-style">
+          <i className="bi bi-person-heart"></i> Friends requests
         </div>
-      </button>
+      </div>
       {/*not showing the logged in user */}
-      {usersList.map((user) => {
-        if (user.user_name !== props.logedinuser.username) {
-          return <Contact {...user} />;
-        }
-        else {
-            return null
-        }
-      })}
+      {friendsRequest.map((user) => (
+        <Contact {...user} />
+      ))}
       <button
         type="button"
         className="list-group-item list-group-item-action button-color-n"

@@ -68,7 +68,7 @@ const Feed = (props) => {
       setpostsList(posts);
     } catch (error) {
       console.error("Error fetching data:", error);
-    }
+    } 
   };
 
   //creating the state of the post that the comment that will be added
@@ -231,6 +231,7 @@ const Feed = (props) => {
             <RightBar
               logedinuser={props.logedinuser}
               usersList={props.usersList}
+              token={props.token}
             />
           </div>
         </div>
