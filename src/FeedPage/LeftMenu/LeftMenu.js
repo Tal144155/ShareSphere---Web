@@ -6,7 +6,7 @@ const LeftMenu = (props) => {
   const navigate = useNavigate();
 
   const navigateProfile = () => {
-    const newRoute = "/register";
+    const newRoute = "/profile";
     navigate(newRoute);
   };
 

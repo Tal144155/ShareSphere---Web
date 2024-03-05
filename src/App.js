@@ -67,6 +67,32 @@ function App() {
             }
           />
         )}
+        {logedinuser.username ? (
+          <Route
+            path="/profile"
+            element={
+              <ProfilePage
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                logedinuser={logedinuser}
+                postsList={postsList}
+                setpostsList={setpostsList}
+                token={token}
+              />
+            }
+          />
+        ) : (
+          <Route
+            path="/profile"
+            element={
+              <Login
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                settoken={settoken}
+              />
+            }
+          />
+        )}
       </Routes>
     </BrowserRouter>
   );
