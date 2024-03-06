@@ -13,7 +13,6 @@ import RightBar from "../FeedPage/RightBar/RightBar";
 import { useEffect } from "react";
 import FriendsModal from "../FeedPage/Friends/FriendsModal";
 
-
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
 
@@ -154,7 +153,7 @@ const ProfilePage = (props) => {
     });
   }
 
-  
+  console.log(props.watchUser);
 
   return (
     <div data-theme={props.isDark ? "dark" : "light"}>
@@ -173,7 +172,6 @@ const ProfilePage = (props) => {
         logedinuser={props.logedinuser}
         token={props.token}
       />
-      
 
       <EditCommentModal
         postsList={postsList}
@@ -205,7 +203,10 @@ const ProfilePage = (props) => {
           </div>
           <SearchBox />
           <LogOutButton setlogedinuser={props.setlogedinuser} />
-          <Toggle isChecked={props.isDark} handleChange={() => props.setisDark(!props.isDark)} />
+          <Toggle
+            isChecked={props.isDark}
+            handleChange={() => props.setisDark(!props.isDark)}
+          />
         </div>
       </nav>
       <div id="top-bar">
@@ -214,9 +215,7 @@ const ProfilePage = (props) => {
       <div id="feed-grid" className="container-fluid text-center .d-flex">
         <div className="row">
           <div className="col-3" id="left-bar">
-            <LeftMenu
-              logedinuser={props.logedinuser}
-            />
+            <LeftMenu logedinuser={props.logedinuser} />
           </div>
           <div className="col-6" id="posts">
             <br />
@@ -234,6 +233,7 @@ const ProfilePage = (props) => {
                 logedinuser={props.logedinuser}
                 token={props.token}
                 fetchData={fetchData}
+                setWatchUser={props.setWatchUser}
               />
             ))}
           </div>

@@ -98,6 +98,8 @@ function Post(props) {
             addSuffix: true,
           })}
           user_pic={props.profile}
+          setWatchUser={props.setWatchUser}
+          username={props.user_name}
         />
         <br />
 

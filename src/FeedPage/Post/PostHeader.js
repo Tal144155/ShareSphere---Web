@@ -1,8 +1,23 @@
 import "./PostHeader.css";
+
+import { useNavigate } from "react-router-dom";
+
 const PostHeader = (props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    props.setWatchUser({
+      username: props.username,
+      first_name: props.firstname,
+      last_name: props.lastname,
+      user_pic: props.user_pic,
+    });
+    const newRoute = "/profile";
+    navigate(newRoute);
+  };
   //returning the post header with name, photo, time
   return (
-    <div>
+    <div onClick={handleClick}>
       <div id="image-place">
         <span className="circle-image2">
           <img src={props.user_pic} alt="" />

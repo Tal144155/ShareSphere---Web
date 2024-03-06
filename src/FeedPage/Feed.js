@@ -182,7 +182,6 @@ const Feed = (props) => {
     });
   }
 
-
   return (
     <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
@@ -237,7 +236,10 @@ const Feed = (props) => {
           </div>
           <SearchBox />
           <LogOutButton setlogedinuser={props.setlogedinuser} />
-          <Toggle isChecked={props.isDark} handleChange={() => props.setisDark(!props.isDark)} />
+          <Toggle
+            isChecked={props.isDark}
+            handleChange={() => props.setisDark(!props.isDark)}
+          />
         </div>
       </nav>
       <div id="top-bar">
@@ -269,6 +271,7 @@ const Feed = (props) => {
                 logedinuser={props.logedinuser}
                 token={props.token}
                 fetchData={fetchData}
+                setWatchUser={props.setWatchUser}
               />
             ))}
           </div>

@@ -92,6 +92,7 @@ function App() {
                 setisDark={setisDark}
                 isDark={isDark}
                 watchUser={watchUser}
+                setWatchUser={setWatchUser}
               />
             }
           />
