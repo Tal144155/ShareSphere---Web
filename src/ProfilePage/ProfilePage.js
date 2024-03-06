@@ -21,7 +21,9 @@ const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
 
   const [postsList, setpostsList] = useState([]);
+  const [hasSentReq, setHasSentReq] = useState(false);
   const [areFriends, setAreFriends] = useState(false);
+
   const [posttoedit, setposttoedit] = useState({
     text: "",
     imgurl: "",
@@ -34,6 +36,7 @@ const ProfilePage = (props) => {
       fetchDataFriends();
     } else {
       fetchDataOtherFriends();
+      checkHasBeenSentRequest();
     }
   }, [props.logedinuser.username, props.token, props.watchUser]);
 
@@ -56,7 +59,6 @@ const ProfilePage = (props) => {
       const posts = await response.json();
       if (!posts.error) {
         setpostsList(posts);
-        setAreFriends(true);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -64,7 +66,7 @@ const ProfilePage = (props) => {
   };
 
   //creating list of request friends
-  const [friends, setRequest] = useState([]);
+  const [friends, setFriends] = useState([]);
   const fetchDataFriends = async () => {
     try {
       const response = await fetch(
@@ -82,7 +84,8 @@ const ProfilePage = (props) => {
       );
       const users = await response.json();
       if (!users.error) {
-        setRequest(users);
+        setFriends(users);
+        setAreFriends(true);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -106,16 +109,40 @@ const ProfilePage = (props) => {
       );
       const users = await response.json();
       if (!users.error) {
-        setRequest(users);
+        setFriends(users);
+        setAreFriends(true);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  const checkHasBeenSentRequest = async () => {
+    try {
+        const response = await fetch(
+          "http://localhost:8080/api/users/" +
+            props.watchUser.username +
+            "/friends/checkRequest/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: props.token,
+              username: props.logedinuser.username,
+            },
+          }
+        );
+        const answer = await response.json();
+        if (answer.answer) {
+          setHasSentReq(true);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+  }
+
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
-  
 
   //getting the info of the comment that will be edited
   const [commenttoedit, setcommenttoedit] = useState({
@@ -128,7 +155,6 @@ const ProfilePage = (props) => {
   function handleAddComment(id) {
     setpostaddcomment(id);
   }
-  
 
   //setting the postslist after deleting a post
   async function handleDelete(id) {
@@ -209,7 +235,7 @@ const ProfilePage = (props) => {
     <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
-      
+
       <AddCommentModal
         postid={postaddcomment}
         postsList={postsList}
@@ -298,6 +324,7 @@ const ProfilePage = (props) => {
                   setlogedinuser={props.setlogedinuser}
                 />
               )}
+              {areFriends || hasSentReq ? console.log("dont show") : console.log("show")}
             </div>
 
             {/*showing all the posts on the list */}
@@ -324,7 +351,7 @@ const ProfilePage = (props) => {
             ) : (
               <RightBar
                 friends={friends}
-                details={props.watchUser.first_name+"'s"}
+                details={props.watchUser.first_name + "'s"}
               />
             )}
           </div>
