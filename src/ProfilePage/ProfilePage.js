@@ -17,6 +17,7 @@ const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
 
   const [postsList, setpostsList] = useState([]);
+  const [areFriends, setAreFriends] = useState(false);
   const [posttoedit, setposttoedit] = useState({
     text: "",
     imgurl: "",
@@ -45,7 +46,10 @@ const ProfilePage = (props) => {
         }
       );
       const posts = await response.json();
-      setpostsList(posts);
+      if (!posts.error) {
+        setpostsList(posts);
+        setAreFriends(true);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
