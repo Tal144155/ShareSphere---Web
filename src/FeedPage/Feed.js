@@ -182,11 +182,9 @@ const Feed = (props) => {
     });
   }
 
-  //setting the state for dark/light mode
-  const [isDark, setisDark] = useState(false);
 
   return (
-    <div data-theme={isDark ? "dark" : "light"}>
+    <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
       <FriendsModal
@@ -239,7 +237,7 @@ const Feed = (props) => {
           </div>
           <SearchBox />
           <LogOutButton setlogedinuser={props.setlogedinuser} />
-          <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
+          <Toggle isChecked={props.isDark} handleChange={() => props.setisDark(!props.isDark)} />
         </div>
       </nav>
       <div id="top-bar">
