@@ -21,6 +21,7 @@ const FriendsModal = (props) => {
         throw new Error(`Request failed with status ${response.status}`);
       }
       await props.fetchDataFriends();
+      await props.fetchData();
     } catch (error) {
       console.error("Error:", error);
     }
@@ -48,7 +49,6 @@ const FriendsModal = (props) => {
       }
       await props.fetchDataFriends();
       await props.fetchData();
-
     } catch (error) {
       console.error("Error:", error);
     }

@@ -163,7 +163,6 @@ const ProfilePage = (props) => {
     });
   }
 
-  console.log(props.watchUser);
 
   return (
     <div data-theme={props.isDark ? "dark" : "light"}>
