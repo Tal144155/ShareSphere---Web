@@ -238,9 +238,9 @@ const ProfilePage = (props) => {
             />
           </div>
           <div className="col-6" id="posts">
+            <br />
             <div id="headers-style">
-                
-
+              <img id="headers-style" src="/postpics/galaxy.jpg" alt=""></img>
             </div>
             <br />
             {/*showing all the posts on the list */}
