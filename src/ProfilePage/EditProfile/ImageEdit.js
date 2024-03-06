@@ -24,7 +24,7 @@ const ImageEdit = (props) => {
   return (
     <div>
       {props.initvalue && (
-        <div>
+        <div id="image-put-center">
           <span className="circle-image10">
             <img
               alt="not found"
@@ -32,9 +32,9 @@ const ImageEdit = (props) => {
               src={props.initvalue}
             />
           </span>
-          <br />
         </div>
       )}
+      <br />
       <input
         type="file"
         name="user_pic"

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import TextProfileEdit from "./TextProfileEdit";
 import ImageEdit from "./ImageEdit";
+
 const EditProfileModal = (props) => {
   const inputFields = props.inputFields;
   const setInputFields = props.setInputFields;
+
+  //setting error and submitting
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <div
