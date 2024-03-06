@@ -15,6 +15,7 @@ import FriendsModal from "../FeedPage/Friends/FriendsModal";
 import "./ProfilePage.css";
 import { useNavigate } from "react-router-dom";
 import EditProfileButton from "./EditProfileButton";
+import EditProfileModal from "./EditProfile/EditProfileModal";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -212,6 +213,12 @@ const ProfilePage = (props) => {
         logedinuser={props.logedinuser}
       />
 
+      <EditProfileModal
+        token={props.token}
+        logedinuser={props.logedinuser}
+        setlogedinuser={props.setlogedinuser}
+      />
+
       {/*rendering the componnents of the feed */}
 
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
@@ -249,7 +256,6 @@ const ProfilePage = (props) => {
               <span className="circle-image3">
                 <img src={props.watchUser.user_pic} alt="" id="image-place3" />
               </span>
-              
 
               <div id="text-placing-user">
                 {props.watchUser.first_name} {props.watchUser.last_name}
