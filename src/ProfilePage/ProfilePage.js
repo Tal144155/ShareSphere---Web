@@ -28,9 +28,10 @@ const ProfilePage = (props) => {
     fetchDataFriends();
   }, [props.logedinuser.username, props.token]);
 
+  //fetching posts
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/posts", {
+      const response = await fetch("http://localhost:8080/api/users/"+props.watchUser.username+"/posts", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -164,6 +165,7 @@ const ProfilePage = (props) => {
         userRequest={userRequest}
         fetchDataFriends={fetchDataFriends}
         token={props.token}
+        fetchData={fetchData}
       />
       <AddCommentModal
         postid={postaddcomment}

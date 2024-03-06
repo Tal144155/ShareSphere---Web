@@ -191,6 +191,7 @@ const Feed = (props) => {
         userRequest={userRequest}
         fetchDataFriends={fetchDataFriends}
         token={props.token}
+        fetchData={fetchData}
       />
       <AddCommentModal
         postid={postaddcomment}

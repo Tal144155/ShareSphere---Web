@@ -47,6 +47,8 @@ const FriendsModal = (props) => {
         throw new Error(`Request failed with status ${response.status}`);
       }
       await props.fetchDataFriends();
+      await props.fetchData();
+
     } catch (error) {
       console.error("Error:", error);
     }
@@ -76,20 +78,20 @@ const FriendsModal = (props) => {
           <div className="modal-body vertical-center">
             <button
               type="button"
-              class="btn btn-primary button-friends"
+              className="btn btn-primary button-friends"
               onClick={onClickApprove}
               data-bs-dismiss="modal"
             >
-              <i class="bi bi-check2"></i>
+              <i className="bi bi-check2"></i>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button
               type="button"
-              class="btn btn-danger button-friends"
+              className="btn btn-danger button-friends"
               data-bs-dismiss="modal"
               onClick={onClickDelete}
             >
-              <i class="bi bi-x-lg"></i>
+              <i className="bi bi-x-lg"></i>
             </button>
           </div>
           <div className="modal-footer">
