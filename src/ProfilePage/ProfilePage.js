@@ -238,6 +238,10 @@ const ProfilePage = (props) => {
             />
           </div>
           <div className="col-6" id="posts">
+            <div id="headers-style">
+                
+
+            </div>
             <br />
             {/*showing all the posts on the list */}
             {postsList.map((post) => (
