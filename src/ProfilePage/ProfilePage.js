@@ -240,9 +240,21 @@ const ProfilePage = (props) => {
           <div className="col-6" id="posts">
             <br />
             <div id="headers-style">
-              <img id="headers-style" src="/postpics/galaxy.jpg" alt=""></img>
+                <img
+                  id="image-headers-style"
+                  src="/postpics/galaxy.jpg"
+                  alt=""
+                ></img>
+                <span className="circle-image3">
+                  <img
+                    src={props.watchUser.user_pic}
+                    alt=""
+                    id="image-place3"
+                  />
+                </span>
+                <div id="text-placing-user">{props.watchUser.first_name} {props.watchUser.last_name}</div>
             </div>
-            <br />
+
             {/*showing all the posts on the list */}
             {postsList.map((post) => (
               <Post
