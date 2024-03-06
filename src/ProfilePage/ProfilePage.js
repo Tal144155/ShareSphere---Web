@@ -12,6 +12,8 @@ import LogOutButton from "../FeedPage/LogOut/logoutbutton";
 import RightBar from "../FeedPage/RightBar/RightBar";
 import { useEffect } from "react";
 import FriendsModal from "../FeedPage/Friends/FriendsModal";
+import "./ProfilePage.css";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -162,7 +164,12 @@ const ProfilePage = (props) => {
       postid: postid,
     });
   }
+  const navigate = useNavigate();
 
+  const HomaPage = () => {
+    const newRoute = "/feed";
+    navigate(newRoute);
+  };
 
   return (
     <div data-theme={props.isDark ? "dark" : "light"}>
@@ -208,7 +215,7 @@ const ProfilePage = (props) => {
 
       <nav className="navbar fixed-top bg-body-tertiary" id="top-bar">
         <div className="container-fluid">
-          <div id="slogen">
+          <div id="slogen" onClick={HomaPage}>
             <img id="image-style2" src="/logopic.png" alt=""></img>
           </div>
           <SearchBox />
