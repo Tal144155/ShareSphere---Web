@@ -1,4 +1,12 @@
+import { useState } from "react";
+import TextProfileEdit from "./TextProfileEdit";
 const EditProfileModal = (props) => {
+  const [inputFields, setInputFields] = useState({
+    first_name: props.logedinuser.first_name,
+    last_name: props.logedinuser.last_name,
+    user_pic: props.logedinuser.user_pic,
+  });
+
   return (
     <div
       className="modal fade"
@@ -20,7 +28,28 @@ const EditProfileModal = (props) => {
               aria-label="Close"
             ></button>
           </div>
-          <div className="modal-body"></div>
+          <div className="modal-body">
+            <div className="row">
+              <div className="col-md-6">
+                <TextProfileEdit
+                  name={"first_name"}
+                  placeholder={"First Name"}
+                  setInputFields={setInputFields}
+                  inputFields={inputFields}
+                  initvalue={inputFields.first_name}
+                />
+              </div>
+              <div className="col-md-6">
+                <TextProfileEdit
+                  name={"last_name"}
+                  placeholder={"Last Name"}
+                  setInputFields={setInputFields}
+                  inputFields={inputFields}
+                  initvalue={inputFields.last_name}
+                />
+              </div>
+            </div>
+          </div>
           <div className="modal-footer"></div>
         </div>
       </div>
