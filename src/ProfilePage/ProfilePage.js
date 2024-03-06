@@ -233,6 +233,8 @@ const ProfilePage = (props) => {
         setlogedinuser={props.setlogedinuser}
         inputFields={inputFields}
         setInputFields={setInputFields}
+        setWatchUser={props.setWatchUser}
+        fetchData={fetchData}
       />
 
       {/*rendering the componnents of the feed */}
@@ -277,7 +279,12 @@ const ProfilePage = (props) => {
                 {props.watchUser.first_name} {props.watchUser.last_name}
               </div>
               {props.watchUser.username === props.logedinuser.username && (
-                <EditProfileButton setUserDetails={setUserDetails} />
+                <EditProfileButton
+                  setUserDetails={setUserDetails}
+                  token={props.token}
+                  logedinuser={props.logedinuser}
+                  setlogedinuser={props.setlogedinuser}
+                />
               )}
             </div>
 

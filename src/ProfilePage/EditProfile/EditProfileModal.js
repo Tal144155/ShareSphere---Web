@@ -1,6 +1,8 @@
 import { useState } from "react";
 import TextProfileEdit from "./TextProfileEdit";
 import ImageEdit from "./ImageEdit";
+import SubmitEditButton from "./SubmitEditButton";
+import InvalidCom from "../../RegisterPage/InvalidCom";
 
 const EditProfileModal = (props) => {
   const inputFields = props.inputFields;
@@ -49,6 +51,7 @@ const EditProfileModal = (props) => {
                   inputFields={inputFields}
                   initvalue={inputFields.first_name}
                 />
+                <InvalidCom errors={errors.first_name} />
               </div>
               <div className="col-md-6">
                 <TextProfileEdit
@@ -58,10 +61,24 @@ const EditProfileModal = (props) => {
                   inputFields={inputFields}
                   initvalue={inputFields.last_name}
                 />
+                <InvalidCom errors={errors.last_name} />
               </div>
             </div>
           </div>
-          <div className="modal-footer"></div>
+          <div className="modal-footer">
+            <SubmitEditButton
+              inputFields={inputFields}
+              setErrors={setErrors}
+              setSubmitting={setSubmitting}
+              submitting={submitting}
+              errors={errors}
+              logedinuser={props.logedinuser}
+              setlogedinuser={props.setlogedinuser}
+              token={props.token}
+              setWatchUser={props.setWatchUser}
+              fetchData={props.fetchData}
+            />
+          </div>
         </div>
       </div>
     </div>
