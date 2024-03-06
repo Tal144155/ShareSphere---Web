@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import FriendsModal from "../FeedPage/Friends/FriendsModal";
 import "./ProfilePage.css";
 import { useNavigate } from "react-router-dom";
+import EditProfileButton from "./EditProfileButton";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -240,19 +241,22 @@ const ProfilePage = (props) => {
           <div className="col-6" id="posts">
             <br />
             <div id="headers-style">
-                <img
-                  id="image-headers-style"
-                  src="/postpics/galaxy.jpg"
-                  alt=""
-                ></img>
-                <span className="circle-image3">
-                  <img
-                    src={props.watchUser.user_pic}
-                    alt=""
-                    id="image-place3"
-                  />
-                </span>
-                <div id="text-placing-user">{props.watchUser.first_name} {props.watchUser.last_name}</div>
+              <img
+                id="image-headers-style"
+                src="/postpics/galaxy.jpg"
+                alt=""
+              ></img>
+              <span className="circle-image3">
+                <img src={props.watchUser.user_pic} alt="" id="image-place3" />
+              </span>
+              
+
+              <div id="text-placing-user">
+                {props.watchUser.first_name} {props.watchUser.last_name}
+              </div>
+              {props.watchUser.username === props.logedinuser.username && (
+                <EditProfileButton />
+              )}
             </div>
 
             {/*showing all the posts on the list */}
