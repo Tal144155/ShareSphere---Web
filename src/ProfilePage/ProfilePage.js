@@ -26,19 +26,24 @@ const ProfilePage = (props) => {
   useEffect(() => {
     fetchData();
     fetchDataFriends();
-  }, [props.logedinuser.username, props.token]);
+  }, [props.logedinuser.username, props.token, props.watchUser]);
 
   //fetching posts
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/users/"+props.watchUser.username+"/posts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: props.token,
-          username: props.logedinuser.username,
-        },
-      });
+      const response = await fetch(
+        "http://localhost:8080/api/users/" +
+          props.watchUser.username +
+          "/posts",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        }
+      );
       const posts = await response.json();
       setpostsList(posts);
     } catch (error) {
@@ -217,7 +222,10 @@ const ProfilePage = (props) => {
       <div id="feed-grid" className="container-fluid text-center .d-flex">
         <div className="row">
           <div className="col-3" id="left-bar">
-            <LeftMenu logedinuser={props.logedinuser} />
+            <LeftMenu
+              logedinuser={props.logedinuser}
+              setWatchUser={props.setWatchUser}
+            />
           </div>
           <div className="col-6" id="posts">
             <br />
