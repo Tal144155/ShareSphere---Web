@@ -11,7 +11,7 @@ import ProfilePage from "./ProfilePage/ProfilePage.js";
 function App() {
   //creating useState for the userslist, for the logedIn user, and for the posts ist so they can be accesed from all components
   const [usersList, setusersList] = useState(users);
-    //setting the state for dark/light mode
+  //setting the state for dark/light mode
 
   const [isDark, setisDark] = useState(false);
   const [logedinuser, setlogedinuser] = useState({
@@ -23,7 +23,12 @@ function App() {
   const [postsList, setpostsList] = useState(posts);
   const [token, settoken] = useState("");
 
-  const [watchUser, setWatchUser] = useState({ username: "" });
+  const [watchUser, setWatchUser] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    user_pic: "",
+  });
 
   return (
     <BrowserRouter>
@@ -57,6 +62,7 @@ function App() {
                 token={token}
                 setisDark={setisDark}
                 isDark={isDark}
+                setWatchUser={setWatchUser}
               />
             }
           />
@@ -85,6 +91,7 @@ function App() {
                 token={token}
                 setisDark={setisDark}
                 isDark={isDark}
+                watchUser={watchUser}
               />
             }
           />

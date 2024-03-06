@@ -47,7 +47,6 @@ const LoginButton = ({ props, pref, unr, seterror, setToken }) => {
           last_name: user.last_name,
           user_pic: user.pic,
         });
-        console.log(setToken);
         setToken(token);
         const newRoute = "/feed";
         navigate(newRoute);

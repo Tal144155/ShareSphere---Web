@@ -249,6 +249,7 @@ const Feed = (props) => {
             <LeftMenu
               usersList={props.usersList}
               logedinuser={props.logedinuser}
+              setWatchUser={props.setWatchUser}
             />
           </div>
           <div className="col-6" id="posts">

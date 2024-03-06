@@ -6,6 +6,7 @@ const LeftMenu = (props) => {
   const navigate = useNavigate();
 
   const navigateProfile = () => {
+    props.setWatchUser(props.logedinuser);
     const newRoute = "/profile";
     navigate(newRoute);
   };
