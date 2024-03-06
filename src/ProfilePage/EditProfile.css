@@ -20,3 +20,26 @@
     background-color: #f0f0f0;
     border-color: #f0f0f0;
 }
+
+#button-request {
+    position: relative;
+    bottom: 190px;
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    left: 220px;
+    color: black;
+    background-color: #fff;
+    border-color: white;
+}
+#button-request:hover {
+    position: relative;
+    bottom: 190px;
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    left: 220px;
+    color: black;
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+}

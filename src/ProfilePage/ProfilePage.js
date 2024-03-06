@@ -11,11 +11,11 @@ import Toggle from "../FeedPage/Toggle/Toggle";
 import LogOutButton from "../FeedPage/LogOut/logoutbutton";
 import RightBar from "./RightBarFriends/RightBar.js";
 import { useEffect } from "react";
-import FriendsModal from "../FeedPage/Friends/FriendsModal";
 import "./ProfilePage.css";
 import { useNavigate } from "react-router-dom";
 import EditProfileButton from "./EditProfileButton";
 import EditProfileModal from "./EditProfile/EditProfileModal";
+import FriendsReqButton from "./FriendsReqButton.js";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -119,27 +119,27 @@ const ProfilePage = (props) => {
 
   const checkHasBeenSentRequest = async () => {
     try {
-        const response = await fetch(
-          "http://localhost:8080/api/users/" +
-            props.watchUser.username +
-            "/friends/checkRequest/",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: props.token,
-              username: props.logedinuser.username,
-            },
-          }
-        );
-        const answer = await response.json();
-        if (answer.answer) {
-          setHasSentReq(true);
+      const response = await fetch(
+        "http://localhost:8080/api/users/" +
+          props.watchUser.username +
+          "/friends/checkRequest/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
         }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      );
+      const answer = await response.json();
+      if (answer.answer) {
+        setHasSentReq(true);
       }
-  }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
@@ -324,7 +324,16 @@ const ProfilePage = (props) => {
                   setlogedinuser={props.setlogedinuser}
                 />
               )}
-              {areFriends || hasSentReq ? console.log("dont show") : console.log("show")}
+              {areFriends || hasSentReq ? (
+                null
+              ) : (
+                <FriendsReqButton
+                  setHasSentReq={setHasSentReq}
+                  token={props.token}
+                  logedinuser={props.logedinuser}
+                  watchUser = {props.watchUser}
+                />
+              )}
             </div>
 
             {/*showing all the posts on the list */}
