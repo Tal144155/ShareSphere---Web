@@ -40,12 +40,12 @@ const PostButton = (props) => {
   useEffect(() => {
     //if there is text, change the submititing to ready!
 
-    if (props.inputFields.text.length !== 0) {
+    if (props.inputFields.text.length !== 0 && props.inputFields.post_pic) {
       setbuttonPost(true);
     } else {
       setbuttonPost(false);
     }
-  }, [props.inputFields.text.length, buttonPost, setbuttonPost]);
+  }, [props.inputFields.text.length, props.inputFields.post_pic, buttonPost, setbuttonPost]);
 
   useEffect(() => {
     //when button is pressed and the text is not null, finish
@@ -61,6 +61,9 @@ const PostButton = (props) => {
     let errors = {};
     if (inputValues.text.length === 0) {
       errors.text = "Must write some text!";
+    }
+    if (!inputValues.post_pic) {
+      errors.pic = "Must upload picture!";
     }
     return errors;
   };

@@ -49,6 +49,7 @@ const NewPostModal = (props) => {
               inputFields={inputFields}
               setInputFields={setInputFields}
             />
+            <InvalidCom errors={errors.pic} />
           </div>
           <div className="modal-footer">
             <PostButton inputFields={inputFields}
