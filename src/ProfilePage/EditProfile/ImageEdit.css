@@ -1,0 +1,12 @@
+.circle-image10{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+  }
+  .circle-image10 img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }

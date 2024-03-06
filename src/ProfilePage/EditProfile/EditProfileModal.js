@@ -1,11 +1,9 @@
 import { useState } from "react";
 import TextProfileEdit from "./TextProfileEdit";
+import ImageEdit from "./ImageEdit";
 const EditProfileModal = (props) => {
-  const [inputFields, setInputFields] = useState({
-    first_name: props.logedinuser.first_name,
-    last_name: props.logedinuser.last_name,
-    user_pic: props.logedinuser.user_pic,
-  });
+  const inputFields = props.inputFields;
+  const setInputFields = props.setInputFields;
 
   return (
     <div
@@ -29,6 +27,14 @@ const EditProfileModal = (props) => {
             ></button>
           </div>
           <div className="modal-body">
+            <div className="col-md-12">
+              <ImageEdit
+                initvalue={inputFields.user_pic}
+                setInputFields={setInputFields}
+                inputFields={inputFields}
+              />
+            </div>
+            <br />
             <div className="row">
               <div className="col-md-6">
                 <TextProfileEdit

@@ -173,6 +173,20 @@ const ProfilePage = (props) => {
     navigate(newRoute);
   };
 
+  const [inputFields, setInputFields] = useState({
+    first_name: props.logedinuser.first_name,
+    last_name: props.logedinuser.last_name,
+    user_pic: props.logedinuser.user_pic,
+  });
+
+  const setUserDetails = () => {
+    setInputFields({
+      first_name: props.logedinuser.first_name,
+      last_name: props.logedinuser.last_name,
+      user_pic: props.logedinuser.user_pic,
+    });
+  };
+
   return (
     <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
@@ -217,6 +231,8 @@ const ProfilePage = (props) => {
         token={props.token}
         logedinuser={props.logedinuser}
         setlogedinuser={props.setlogedinuser}
+        inputFields={inputFields}
+        setInputFields={setInputFields}
       />
 
       {/*rendering the componnents of the feed */}
@@ -261,7 +277,7 @@ const ProfilePage = (props) => {
                 {props.watchUser.first_name} {props.watchUser.last_name}
               </div>
               {props.watchUser.username === props.logedinuser.username && (
-                <EditProfileButton />
+                <EditProfileButton setUserDetails={setUserDetails} />
               )}
             </div>
 

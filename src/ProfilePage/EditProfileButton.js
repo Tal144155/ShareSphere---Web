@@ -7,6 +7,7 @@ const EditProfileButton = (props) => {
       id="button-edit-profile"
       data-bs-toggle="modal"
       data-bs-target="#editProfileModal"
+      onClick={props.setUserDetails}
     >
       <i className="bi bi-pen"></i>
     </button>
