@@ -9,7 +9,7 @@ import AddCommentModal from "../FeedPage/Comments/AddCommentModal";
 import EditCommentModal from "../FeedPage/EditComment/EditCommentModal";
 import Toggle from "../FeedPage/Toggle/Toggle";
 import LogOutButton from "../FeedPage/LogOut/logoutbutton";
-import RightBar from "../FeedPage/RightBar/RightBar";
+import RightBar from "./RightBarFriends/RightBar.js";
 import { useEffect } from "react";
 import FriendsModal from "../FeedPage/Friends/FriendsModal";
 import "./ProfilePage.css";
@@ -30,7 +30,11 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
     fetchData();
-    fetchDataFriends();
+    if (props.watchUser.username === props.logedinuser.username) {
+      fetchDataFriends();
+    } else {
+      fetchDataOtherFriends();
+    }
   }, [props.logedinuser.username, props.token, props.watchUser]);
 
   //fetching posts
@@ -60,13 +64,13 @@ const ProfilePage = (props) => {
   };
 
   //creating list of request friends
-  const [friendsRequest, setRequest] = useState([]);
+  const [friends, setRequest] = useState([]);
   const fetchDataFriends = async () => {
     try {
       const response = await fetch(
         "http://localhost:8080/api/users/" +
           props.logedinuser.username +
-          "/friendsReq/",
+          "/friends/",
         {
           method: "GET",
           headers: {
@@ -77,7 +81,33 @@ const ProfilePage = (props) => {
         }
       );
       const users = await response.json();
-      setRequest(users);
+      if (!users.error) {
+        setRequest(users);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const fetchDataOtherFriends = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/users/" +
+          props.watchUser.username +
+          "/friends/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        }
+      );
+      const users = await response.json();
+      if (!users.error) {
+        setRequest(users);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -85,12 +115,7 @@ const ProfilePage = (props) => {
 
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
-  //user to approve or delete request
-  const [userRequest, setUserRequest] = useState({
-    user_name: "",
-    first_name: "",
-    last_name: "",
-  });
+  
 
   //getting the info of the comment that will be edited
   const [commenttoedit, setcommenttoedit] = useState({
@@ -103,14 +128,7 @@ const ProfilePage = (props) => {
   function handleAddComment(id) {
     setpostaddcomment(id);
   }
-  //set user to delete or approve
-  function handleFriendRequest(user_name, first_name, last_name) {
-    setUserRequest({
-      user_name: user_name,
-      first_name: first_name,
-      last_name: last_name,
-    });
-  }
+  
 
   //setting the postslist after deleting a post
   async function handleDelete(id) {
@@ -191,13 +209,7 @@ const ProfilePage = (props) => {
     <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
-      <FriendsModal
-        logedinuser={props.logedinuser}
-        userRequest={userRequest}
-        fetchDataFriends={fetchDataFriends}
-        token={props.token}
-        fetchData={fetchData}
-      />
+      
       <AddCommentModal
         postid={postaddcomment}
         postsList={postsList}
@@ -307,12 +319,14 @@ const ProfilePage = (props) => {
             ))}
           </div>
           <div className="col-3" id="right-bar">
-            <RightBar
-              logedinuser={props.logedinuser}
-              token={props.token}
-              handleFriendRequest={handleFriendRequest}
-              friendsRequest={friendsRequest}
-            />
+            {props.watchUser.username === props.logedinuser.username ? (
+              <RightBar friends={friends} details={"Your"} />
+            ) : (
+              <RightBar
+                friends={friends}
+                details={props.watchUser.first_name+"'s"}
+              />
+            )}
           </div>
         </div>
       </div>
