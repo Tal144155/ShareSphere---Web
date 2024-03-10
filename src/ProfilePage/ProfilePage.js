@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import EditProfileButton from "./EditProfileButton";
 import EditProfileModal from "./EditProfile/EditProfileModal";
 import FriendsReqButton from "./FriendsReqButton.js";
+import DeleteUser from "./DeleteUser.js";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -324,14 +325,19 @@ const ProfilePage = (props) => {
                   setlogedinuser={props.setlogedinuser}
                 />
               )}
-              {areFriends || hasSentReq ? (
-                null
-              ) : (
+              {props.watchUser.username === props.logedinuser.username && (
+                <DeleteUser
+                  token={props.token}
+                  logedinuser={props.logedinuser}
+                  setlogedinuser={props.setlogedinuser}
+                />
+              )}
+              {areFriends || hasSentReq ? null : (
                 <FriendsReqButton
                   setHasSentReq={setHasSentReq}
                   token={props.token}
                   logedinuser={props.logedinuser}
-                  watchUser = {props.watchUser}
+                  watchUser={props.watchUser}
                 />
               )}
             </div>
