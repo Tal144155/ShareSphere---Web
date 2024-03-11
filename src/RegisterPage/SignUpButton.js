@@ -14,7 +14,7 @@ const SignUpButton = (props) => {
       last_name: props.inputFields.lastname,
       pic: props.inputFields.imgurl,
     };
-    const response = await fetch("http://localhost:8080/api/users", {
+    const response = await fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -42,7 +42,7 @@ const SignUpButton = (props) => {
     let errors = {};
     //checking if the user name already exists
 
-    const response = await fetch("http://localhost:8080/api/users", {
+    const response = await fetch("/api/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

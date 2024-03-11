@@ -11,7 +11,7 @@ const EditButton = (props) => {
         pic: props.inputFields.imgurl,
       };
       await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.logedinuser.username +
           "/posts/" +
           props.id,
@@ -28,7 +28,7 @@ const EditButton = (props) => {
       console.log("error...");
     }
     props.setSubmitting(false);
-    const response = await fetch("http://localhost:8080/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

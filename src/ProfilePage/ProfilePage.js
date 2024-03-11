@@ -45,7 +45,7 @@ const ProfilePage = (props) => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.watchUser.username +
           "/posts",
         {
@@ -71,7 +71,7 @@ const ProfilePage = (props) => {
   const fetchDataFriends = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.logedinuser.username +
           "/friends/",
         {
@@ -96,7 +96,7 @@ const ProfilePage = (props) => {
   const fetchDataOtherFriends = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.watchUser.username +
           "/friends/",
         {
@@ -121,7 +121,7 @@ const ProfilePage = (props) => {
   const checkHasBeenSentRequest = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.watchUser.username +
           "/friends/checkRequest/",
         {
@@ -161,7 +161,7 @@ const ProfilePage = (props) => {
   async function handleDelete(id) {
     let username = props.logedinuser.username;
     await fetch(
-      "http://localhost:8080/api/users/" + username + "/posts/" + id,
+      "/api/users/" + username + "/posts/" + id,
       {
         method: "delete",
         headers: {
@@ -186,7 +186,7 @@ const ProfilePage = (props) => {
   //deleting comments from the postslist
   async function handleDeleteComment(postid, commentid) {
     await fetch(
-      "http://localhost:8080/api/users/" +
+      "/api/users/" +
         props.logedinuser.username +
         "/posts/" +
         postid +

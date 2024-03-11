@@ -8,7 +8,7 @@ const DeleteUser = (props) => {
     try {
       let username = props.logedinuser.username;
       const response = await fetch(
-        "http://localhost:8080/api/users/" + username,
+        "/api/users/" + username,
         {
           method: "DELETE",
           headers: {

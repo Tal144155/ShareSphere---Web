@@ -21,7 +21,7 @@ const PostButton = (props) => {
       post_pic: "",
     });
     const reponse = await fetch(
-      "http://localhost:8080/api/users/" +
+      "/api/users/" +
         props.logedinuser.username +
         "/posts",
       {

@@ -6,7 +6,7 @@ const FriendsReqButton = (props) => {
       let username = props.logedinuser.username;
       let req_user_name = props.watchUser.username;
       const response = await fetch(
-        "http://localhost:8080/api/users/" + req_user_name + "/friends",
+        "/api/users/" + req_user_name + "/friends",
         {
           method: "POST",
           headers: {

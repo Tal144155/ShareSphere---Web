@@ -58,7 +58,7 @@ const Feed = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/posts", {
+      const response = await fetch("/api/posts", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +78,7 @@ const Feed = (props) => {
   const fetchDataFriends = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.logedinuser.username +
           "/friendsReq/",
         {
@@ -130,7 +130,7 @@ const Feed = (props) => {
   async function handleDelete(id) {
     let username = props.logedinuser.username;
     await fetch(
-      "http://localhost:8080/api/users/" + username + "/posts/" + id,
+      "/api/users/" + username + "/posts/" + id,
       {
         method: "delete",
         headers: {
@@ -156,7 +156,7 @@ const Feed = (props) => {
   //deleting comments from the postslist
   async function handleDeleteComment(postid, commentid) {
     await fetch(
-      "http://localhost:8080/api/users/" +
+      "/api/users/" +
         props.logedinuser.username +
         "/posts/" +
         postid +

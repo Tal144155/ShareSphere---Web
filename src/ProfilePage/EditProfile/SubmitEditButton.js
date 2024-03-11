@@ -14,7 +14,7 @@ const SubmitEditButton = (props) => {
         pic: props.inputFields.user_pic
       };
       await fetch(
-        "http://localhost:8080/api/users/" +
+        "/api/users/" +
           props.logedinuser.username,
         {
           method: "PATCH",

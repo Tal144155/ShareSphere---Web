@@ -6,7 +6,7 @@ const EditComButton = (props) => {
 
   const finishSubmit = useCallback(async () => {
     await fetch(
-      "http://localhost:8080/api/users/" +
+      "/api/users/" +
         props.logedinuser.username +
         "/posts/" +
         props.postid +
@@ -21,7 +21,7 @@ const EditComButton = (props) => {
         },
       }
     );
-    const response = await fetch("http://localhost:8080/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

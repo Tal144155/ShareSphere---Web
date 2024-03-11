@@ -14,7 +14,7 @@ const LoginButton = ({ props, pref, unr, seterror, setToken }) => {
       password: password,
     };
 
-    const response = await fetch("http://localhost:8080/api/tokens", {
+    const response = await fetch("/api/tokens", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -29,16 +29,13 @@ const LoginButton = ({ props, pref, unr, seterror, setToken }) => {
       seterror(true);
     } else {
       //if yes, set the logged in user and navigate
-      const response = await fetch(
-        "http://localhost:8080/api/users/" + user_name,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token,
-          },
-        }
-      );
+      const response = await fetch("/api/users/" + user_name, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
       const user = await response.json();
       if (!user.error) {
         props.setlogedinuser({

@@ -28,7 +28,7 @@ function Post(props) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/api/users/" +
+          "/api/users/" +
             props.logedinuser.username +
             "/posts/" +
             props._id +
@@ -52,7 +52,7 @@ function Post(props) {
     const likeData = async () => {
       try {
         const reponse = await fetch(
-          "http://localhost:8080/api/users/" +
+          "/api/users/" +
             props.logedinuser.username +
             "/posts/" +
             props._id +

@@ -6,7 +6,7 @@ const FriendsModal = (props) => {
       let username = props.logedinuser.username;
       let friend = props.userRequest.user_name;
       const response = await fetch(
-        `http://localhost:8080/api/users/${username}/friends/${friend}`,
+        `/api/users/${username}/friends/${friend}`,
         {
           method: "PATCH",
           headers: {
@@ -33,7 +33,7 @@ const FriendsModal = (props) => {
       let username = props.logedinuser.username;
       let friend = props.userRequest.user_name;
       const response = await fetch(
-        `http://localhost:8080/api/users/${username}/friends/${friend}`,
+        `/api/users/${username}/friends/${friend}`,
         {
           method: "DELETE",
           headers: {

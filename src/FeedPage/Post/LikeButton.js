@@ -9,7 +9,7 @@ const LikeButton = (props) => {
       props.setnumLike(props.numlike + 1);
     }
     await fetch(
-      "http://localhost:8080/api/users/" +
+      "/api/users/" +
         props.logedinuser.username +
         "/posts/" +
         props.id +
