@@ -46,14 +46,4 @@ The term "Sphere" brings the idea of a rounded or three-dimensional space. In th
 
 # Pictures from the website:
 
-## Login page
-
-![pic1](./public/websitepics/pic1.jpg)
-
-## SignUp page
-
-![pic2](./public/websitepics/pic2.jpg)
-
-## Feed page
-
-![pic3](./public/websitepics/pic3.jpg)
+# add here new pics
