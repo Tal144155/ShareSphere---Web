@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# ShareSphere
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![logopic](./public/logopic.png)
 
-## Available Scripts
+**The Share Sphere App is a social media platform that allows users to share posts and interact with each other. This README file provides an overview of the websites's features and functionalities.**
 
-In the project directory, you can run:
+## running the application
 
-### `npm start`
+- Download the repository to your computer
+- Changeg the directory in terminal to SahreSphere (there has been a typo in the name 😅)
+- Install dependencies (for running the app) using **npm install**
+- Install react-router-dom by typing **npm install react-router-dom**
+- Run the app using **npm start**
+- In order to run the tests write **npm test**
+- Our suggestion is to login with the user: **user name: tal144155, password: tal2024**, even though it does not matter so much.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About the app:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The name "ShareSpere" is a fusion of two key concepts: "Share" and "Sphere," each contributing to the essence of our social media platform.
 
-### `npm test`
+### Share
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+At ShareSpere, sharing lies at the heart of our community. Whether it's sharing moments, ideas, or experiences, our platform is designed to facilitate seamless sharing among users. Connect with friends, family, and the world by effortlessly exchanging content in an inclusive and engaging environment.
 
-### `npm run build`
+### Sphere
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The term "Sphere" brings the idea of a rounded or three-dimensional space. In the context of ShareSpere, it signifies the virtual space where our community thrives. It represents the interconnectedness of our users and the inclusive environment we strive to create.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## App features:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- When opening the ShareSphere website, you are given the opportunity to log in to the website. If you dont have an account, press the button **Create new account!** that will redirect you to the signup page.
 
-### `npm run eject`
+- On the signup page, you can create your new account. Please notice: **you must upload your profile pic**, **your full name can only include letters**, **your user name must be unique**, **your password must containt 8 letters and numbers, and match the re-enter password**.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- After signup, you will be able to login and enter the feed page.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- On the feed page you can see all of the posts on ShareSphere. You can add a new post, edit it and delete it. You can also comment on posts, press like and share the post.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Please Notice:** you can only edit/delete your posts and comments, not all users posts and comments!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- On the left you will see the menu bar with options that are not yet available, but **try pressing one** and see what happens 😁.
 
-## Learn More
+- On the right you will be able to see the right menu bar with all the users on the site (except you), these are your contacts.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- On the top menu you will be able to see the search box and 2 button: **Log Out button** that will redirect you to login page and set the logged-in user, and the **Night Mode button** that will change the theme of the site.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Pictures from the website:
 
-### Code Splitting
+## Login page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![pic1](./public/websitepics/pic1.jpg)
 
-### Analyzing the Bundle Size
+## SignUp page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![pic2](./public/websitepics/pic2.jpg)
 
-### Making a Progressive Web App
+## Feed page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![pic3](./public/websitepics/pic3.jpg)
