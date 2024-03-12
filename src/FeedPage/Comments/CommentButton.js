@@ -32,16 +32,7 @@ const CommentButton = (props) => {
     props.setInputFields({
       comment: "",
     });
-    const response = await fetch("/api/posts", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: props.token,
-            username: props.logedinuser.username,
-          },
-        });
-        const posts = await response.json();
-        props.setpostsList(posts);
+    props.fetchData();
   }, [props]);
 
   useEffect(() => {

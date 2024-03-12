@@ -28,16 +28,7 @@ const EditButton = (props) => {
       console.log("error...");
     }
     props.setSubmitting(false);
-    const response = await fetch("/api/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: props.token,
-        username: props.logedinuser.username,
-      },
-    });
-    const posts = await response.json();
-    props.setpostsList(posts);
+    props.fetchData();
     //set the posts list with the edited post
   }, [props]);
 

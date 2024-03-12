@@ -199,6 +199,7 @@ const Feed = (props) => {
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
         token={props.token}
+        fetchData={fetchData}
       />
       <NewPostModal
         postsList={postsList}
@@ -214,6 +215,7 @@ const Feed = (props) => {
         setcommenttoedit={setcommenttoedit}
         token={props.token}
         logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       <EditPostModal
@@ -226,6 +228,7 @@ const Feed = (props) => {
         id={posttoedit.id}
         token={props.token}
         logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       {/*rendering the componnents of the feed */}

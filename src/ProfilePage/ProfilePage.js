@@ -243,6 +243,7 @@ const ProfilePage = (props) => {
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
         token={props.token}
+        fetchData={fetchData}
       />
 
       <EditCommentModal
@@ -252,6 +253,7 @@ const ProfilePage = (props) => {
         setcommenttoedit={setcommenttoedit}
         token={props.token}
         logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       <EditPostModal
@@ -264,6 +266,7 @@ const ProfilePage = (props) => {
         id={posttoedit.id}
         token={props.token}
         logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       <EditProfileModal

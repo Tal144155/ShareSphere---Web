@@ -56,6 +56,7 @@ const AddCommentModal = (props) => {
               postid={props.postid}
               logedinuser={props.logedinuser}
               token={props.token}
+              fetchData={props.fetchData}
             />
           </div>
         </div>

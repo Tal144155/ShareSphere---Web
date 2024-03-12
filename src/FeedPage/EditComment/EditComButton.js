@@ -21,16 +21,7 @@ const EditComButton = (props) => {
         },
       }
     );
-    const response = await fetch("/api/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: props.token,
-        username: props.logedinuser.username,
-      },
-    });
-    const posts = await response.json();
-    props.setpostsList(posts);
+    props.fetchData();
 
     //setting the submmiting to false
     props.setSubmitting(false);

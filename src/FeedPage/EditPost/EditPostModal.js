@@ -60,6 +60,7 @@ const EditPostModal = (props) => {
               setpostsList={props.setpostsList}
               token={props.token}
               logedinuser={props.logedinuser}
+              fetchData={props.fetchData}
             />
           </div>
         </div>
