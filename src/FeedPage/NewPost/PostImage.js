@@ -8,7 +8,7 @@ const PostImage = (props) => {
   useEffect(() => {
     // Reset file input value when the component is mounted or props.inputFields.post_pic changes
     setFileInputKey((prevKey) => prevKey + 1); // Update key to trigger re-render and reset file input value
-  }, [props.inputFields.post_pic]);
+  }, [props.inputFields.new_post]);
 
   const handleChange = (e) => {
     const file = e.target.files[0];

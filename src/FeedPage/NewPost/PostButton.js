@@ -19,6 +19,7 @@ const PostButton = (props) => {
     props.setInputFields({
       text: "",
       post_pic: "",
+      new_post: (!props.inputFields.new_post)
     });
     const reponse = await fetch(
       "/api/users/" +

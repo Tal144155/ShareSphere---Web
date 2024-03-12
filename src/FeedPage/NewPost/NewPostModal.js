@@ -12,6 +12,7 @@ const NewPostModal = (props) => {
   const [inputFields, setInputFields] = useState({
     text: "",
     post_pic: "",
+    new_post: true
   });
 
   //setting errors, is subbmitted and a state holding the next post id to be added
