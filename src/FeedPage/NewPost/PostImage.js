@@ -1,6 +1,14 @@
 import "./PostImage.css";
+import React, { useState, useEffect } from "react";
+
 const PostImage = (props) => {
   //setting the input list on every change
+  const [fileInputKey, setFileInputKey] = useState(0);
+
+  useEffect(() => {
+    // Reset file input value when the component is mounted or props.inputFields.post_pic changes
+    setFileInputKey((prevKey) => prevKey + 1); // Update key to trigger re-render and reset file input value
+  }, [props.inputFields.post_pic]);
 
   const handleChange = (e) => {
     const file = e.target.files[0];
@@ -37,6 +45,7 @@ const PostImage = (props) => {
         </div>
       )}
       <input
+        key={fileInputKey}
         type="file"
         name="post_pic"
         className="form-control"
