@@ -17,6 +17,7 @@ import EditProfileButton from "./EditProfileButton";
 import EditProfileModal from "./EditProfile/EditProfileModal";
 import FriendsReqButton from "./FriendsReqButton.js";
 import DeleteUser from "./DeleteUser.js";
+import DeleteFriend from "./DeleteFriend.js";
 
 const ProfilePage = (props) => {
   //creating the state of the posts list and the post need to be edited
@@ -45,9 +46,7 @@ const ProfilePage = (props) => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "/api/users/" +
-          props.watchUser.username +
-          "/posts",
+        "/api/users/" + props.watchUser.username + "/posts",
         {
           method: "GET",
           headers: {
@@ -71,9 +70,7 @@ const ProfilePage = (props) => {
   const fetchDataFriends = async () => {
     try {
       const response = await fetch(
-        "/api/users/" +
-          props.logedinuser.username +
-          "/friends/",
+        "/api/users/" + props.logedinuser.username + "/friends/",
         {
           method: "GET",
           headers: {
@@ -96,9 +93,7 @@ const ProfilePage = (props) => {
   const fetchDataOtherFriends = async () => {
     try {
       const response = await fetch(
-        "/api/users/" +
-          props.watchUser.username +
-          "/friends/",
+        "/api/users/" + props.watchUser.username + "/friends/",
         {
           method: "GET",
           headers: {
@@ -121,9 +116,7 @@ const ProfilePage = (props) => {
   const checkHasBeenSentRequest = async () => {
     try {
       const response = await fetch(
-        "/api/users/" +
-          props.watchUser.username +
-          "/friends/checkRequest/",
+        "/api/users/" + props.watchUser.username + "/friends/checkRequest/",
         {
           method: "GET",
           headers: {
@@ -160,16 +153,13 @@ const ProfilePage = (props) => {
   //setting the postslist after deleting a post
   async function handleDelete(id) {
     let username = props.logedinuser.username;
-    await fetch(
-      "/api/users/" + username + "/posts/" + id,
-      {
-        method: "delete",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: props.token,
-        },
-      }
-    );
+    await fetch("/api/users/" + username + "/posts/" + id, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      },
+    });
     fetchData();
     ///
   }
@@ -343,6 +333,14 @@ const ProfilePage = (props) => {
                   watchUser={props.watchUser}
                 />
               )}
+              {areFriends &&
+              props.watchUser.username !== props.logedinuser.username ? (
+                <DeleteFriend
+                  token={props.token}
+                  logedinuser={props.logedinuser}
+                  watchUser={props.watchUser}
+                />
+              ) : null}
             </div>
 
             {/*showing all the posts on the list */}
