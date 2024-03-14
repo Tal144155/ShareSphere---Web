@@ -6,10 +6,14 @@ import { useState } from "react";
 import Register from "./RegisterPage/Register.js";
 import Feed from "./FeedPage/Feed.js";
 import posts from "./data/posts.json";
+import ProfilePage from "./ProfilePage/ProfilePage.js";
 
 function App() {
   //creating useState for the userslist, for the logedIn user, and for the posts ist so they can be accesed from all components
   const [usersList, setusersList] = useState(users);
+  //setting the state for dark/light mode
+
+  const [isDark, setisDark] = useState(false);
   const [logedinuser, setlogedinuser] = useState({
     username: "",
     first_name: "",
@@ -17,6 +21,14 @@ function App() {
     user_pic: "",
   });
   const [postsList, setpostsList] = useState(posts);
+  const [token, settoken] = useState("");
+
+  const [watchUser, setWatchUser] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    user_pic: "",
+  });
 
   return (
     <BrowserRouter>
@@ -24,7 +36,11 @@ function App() {
         <Route
           path="/"
           element={
-            <Login usersList={usersList} setlogedinuser={setlogedinuser} />
+            <Login
+              usersList={usersList}
+              setlogedinuser={setlogedinuser}
+              settoken={settoken}
+            />
           }
         />
         <Route
@@ -43,6 +59,10 @@ function App() {
                 logedinuser={logedinuser}
                 postsList={postsList}
                 setpostsList={setpostsList}
+                token={token}
+                setisDark={setisDark}
+                isDark={isDark}
+                setWatchUser={setWatchUser}
               />
             }
           />
@@ -50,7 +70,41 @@ function App() {
           <Route
             path="/feed"
             element={
-              <Login usersList={usersList} setlogedinuser={setlogedinuser} />
+              <Login
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                settoken={settoken}
+              />
+            }
+          />
+        )}
+        {logedinuser.username ? (
+          <Route
+            path="/profile"
+            element={
+              <ProfilePage
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                logedinuser={logedinuser}
+                postsList={postsList}
+                setpostsList={setpostsList}
+                token={token}
+                setisDark={setisDark}
+                isDark={isDark}
+                watchUser={watchUser}
+                setWatchUser={setWatchUser}
+              />
+            }
+          />
+        ) : (
+          <Route
+            path="/profile"
+            element={
+              <Login
+                usersList={usersList}
+                setlogedinuser={setlogedinuser}
+                settoken={settoken}
+              />
             }
           />
         )}

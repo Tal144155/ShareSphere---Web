@@ -6,9 +6,6 @@ const Contact = (props) => {
     <button
       type="button"
       className="list-group-item list-group-item-action button-color"
-      data-bs-toggle="modal"
-      data-bs-target="#friendsModal"
-      onClick={() => props.handleFriendRequest(props.user_name, props.first_name, props.last_name)}
     >
       <div>
         <div className="image-place">

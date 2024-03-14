@@ -1,0 +1,42 @@
+#headers-style {
+    width: 500px;
+    height: 250px;
+}
+
+#image-headers-style {
+    width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.circle-image3{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    bottom: 80px;
+    right: 180px;
+    
+  }
+  .circle-image3 img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    
+  }
+
+  #text-placing-user {
+    position: relative;
+    color: white;
+    bottom: 150px;
+    left: -52px;
+
+    font-size: 25px;
+    font-weight: 600;
+  }
+  

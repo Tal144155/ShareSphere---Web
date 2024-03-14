@@ -1,4 +1,4 @@
-import "./EditPost.css";
+import "./ImageEdit.css";
 
 const ImageEdit = (props) => {
   //setting the input list on every change
@@ -24,22 +24,20 @@ const ImageEdit = (props) => {
   return (
     <div>
       {props.initvalue && (
-        <div>
-          <span>
+        <div id="image-put-center">
+          <span className="circle-image10">
             <img
-              id="image-center2"
               alt="not found"
-              width={"250px"}
               value={props.initvalue}
               src={props.initvalue}
             />
           </span>
-          <br />
         </div>
       )}
+      <br />
       <input
         type="file"
-        name="imgurl"
+        name="user_pic"
         className="form-control"
         onChange={handleChange}
       ></input>

@@ -1,7 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import "./LeftMenu.css";
 import ProfileShow from "./ProfileShow";
 
 const LeftMenu = (props) => {
+  const navigate = useNavigate();
+
+  const navigateProfile = () => {
+    props.setWatchUser(props.logedinuser);
+    const newRoute = "/profile";
+    navigate(newRoute);
+  };
 
   //left menu containing: propfile show with the name and pic, and diffrent option for the user
   return (
@@ -10,6 +18,7 @@ const LeftMenu = (props) => {
         type="button"
         className="list-group-item list-group-item-action button-color"
         aria-current="true"
+        onClick={navigateProfile}
       >
         <ProfileShow
           usersList={props.usersList}

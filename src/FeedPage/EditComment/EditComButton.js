@@ -4,38 +4,28 @@ const EditComButton = (props) => {
   //creating a state that changes the upload comment button state, checking if the form can be subbmited
   const [buttonPost, setbuttonPost] = useState(false);
 
-  const finishSubmit = useCallback(() => {
-    //if the procces if finished, we want to update the comment
-    const arrayNewPost = [];
-    const arrayNewComment = [];
-    for (let i = 0; i < props.postsList.length; i++) {
-      //search for the specific post
-      if (props.postsList[i].id !== props.postid) {
-        arrayNewPost.push(props.postsList[i]);
-      } else {
-        //when we found it, search for the specific comment
-        const commentslist = props.postsList[i].comments;
-        for (let j = 0; j < commentslist.length; j++) {
-          if (commentslist[j].id !== props.commentid) {
-            arrayNewComment.push(commentslist[j]);
-          } else {
-            //when found, change the text
-            const newobj = {
-              ...commentslist[j],
-              comment: props.inputFields.comment,
-            };
-            //push it to the new array
-            arrayNewComment.push(newobj);
-          }
-        }
-        //push all the posts with the cange
-        arrayNewPost.push({ ...props.postsList[i], comments: arrayNewComment });
+  const finishSubmit = useCallback(async () => {
+    await fetch(
+      "/api/users/" +
+        props.logedinuser.username +
+        "/posts/" +
+        props.postid +
+        "/comments/" +
+        props.commentid,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+          content: props.inputFields.comment,
+        },
       }
-    }
+    );
+    props.fetchData();
+
     //setting the submmiting to false
     props.setSubmitting(false);
     //setting the new posts list
-    props.setpostsList(arrayNewPost);
   }, [props]);
 
   useEffect(() => {

@@ -6,22 +6,77 @@ import Share from "./Share";
 import EditDeleteButton from "./EditDeleteButton";
 import ShowComments from "../Comments/ShowComments";
 import AddComment from "../Comments/AddComment";
+import { formatDistanceToNow } from "date-fns";
+import { useEffect } from "react";
 
 function Post(props) {
-
   //setting state for the like, num like and if the comments need to be shown
   const [like, setLike] = useState(false);
-  const [numlike, setnumLike] = useState(props.like_number);
+  const [numlike, setnumLike] = useState(props.likes);
   const [showcomments, setShowcomments] = useState(false);
 
-    //if the show comments was pressed, update the state
+  //if the show comments was pressed, update the state
   const showComments = () => {
     setShowcomments(!showcomments);
   };
+  //need to fetch comments from server
+  const [comments, setcomments] = useState([]);
 
-  const comments = props.comments;
+  //need to fetch like
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "/api/users/" +
+            props.logedinuser.username +
+            "/posts/" +
+            props._id +
+            "/comments/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: props.token,
+              username: props.logedinuser.username,
+            },
+          }
+        );
+        const commentsList = await response.json();
+        setcomments(commentsList);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    const likeData = async () => {
+      try {
+        const reponse = await fetch(
+          "/api/users/" +
+            props.logedinuser.username +
+            "/posts/" +
+            props._id +
+            "/likes",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: props.token,
+            },
+          }
+        );
+        const responseData = await reponse.json();
+        setLike(responseData.isLiked);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    if (showcomments) {
+       fetchData();
+    } else {
+       likeData();
+    }
+  }, [props, showcomments, like]);
   return (
     <div className="card" id="post-style">
       <div className="card-body">
@@ -29,9 +84,9 @@ function Post(props) {
           <EditDeleteButton
             setpostsList={props.setpostsList}
             postsList={props.postsList}
-            id={props.id}
-            text={props.text}
-            img={props.post_pic}
+            id={props._id}
+            text={props.content}
+            img={props.pic}
             handleDelete={props.handleDelete}
             handleEdit={props.handleEdit}
           />
@@ -39,30 +94,38 @@ function Post(props) {
         <PostHeader
           firstname={props.first_name}
           lastname={props.last_name}
-          time={props.time}
-          user_pic={props.user_pic}
+          time={formatDistanceToNow(new Date(props.publish_date), {
+            addSuffix: true,
+          })}
+          user_pic={props.profile}
+          setWatchUser={props.setWatchUser}
+          username={props.user_name}
         />
+        <br />
 
         <p className="card-text" id="text-style">
-          {props.text}
+          {props.content}
         </p>
       </div>
-      <img src={props.post_pic} className="card-img-bottom-top" alt=""></img>
+      <img src={props.pic} className="card-img-bottom-top" alt=""></img>
       <div id="likecomments">
-        <i className="bi bi-hand-thumbs-up-fill"></i> {numlike}
+        <i className="bi bi-hand-thumbs-up-fill"></i> {props.likes}
         &nbsp;&nbsp;
-        <i className="bi bi-chat-fill"></i> {props.comment_number}
+        <i className="bi bi-chat-fill"></i> {props.comments}
       </div>
       <hr id="border-line2"></hr>
       <div className="container-fluid">
         <div className="row">
           <div id="containers-option" className="col-4">
             <LikeButton
+              id={props._id}
               like={like}
               setLike={setLike}
               numlike={numlike}
               setnumLike={setnumLike}
-              setpostslist={props.setpostsList}
+              logedinuser={props.logedinuser}
+              token = {props.token}
+              fetchData={props.fetchData}
             />
           </div>
           <div id="containers-option" className="col-4">
@@ -85,7 +148,7 @@ function Post(props) {
         <div>
           <AddComment
             pic={"/profilepics/talpic.jpg"}
-            postid={props.id}
+            postid={props._id}
             handleAddComment={props.handleAddComment}
             logedinuser={props.logedinuser}
           />
@@ -93,7 +156,7 @@ function Post(props) {
             {comments.map((comment) => (
               <ShowComments
                 {...comment}
-                postid={props.id}
+                postid={props._id}
                 handleDeleteComment={props.handleDeleteComment}
                 handleEditComment={props.handleEditComment}
                 logedinuser={props.logedinuser}

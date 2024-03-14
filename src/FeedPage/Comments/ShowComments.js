@@ -6,7 +6,7 @@ const ShowComments = (props) => {
     <div>
       <div id="placing-image">
         <span className="img-round-comment">
-          <img src={props.pic} alt=""></img>
+          <img src={props.profile} alt=""></img>
         </span>
       </div>
       <div id="comment-style">
@@ -14,8 +14,8 @@ const ShowComments = (props) => {
         {props.logedinuser.username === props.user_name && (
           <CommentOption
             postid={props.postid}
-            commentid={props.id}
-            comment={props.comment}
+            commentid={props._id}
+            comment={props.content}
             handleDeleteComment={props.handleDeleteComment}
             handleEditComment={props.handleEditComment}
           />
@@ -24,7 +24,7 @@ const ShowComments = (props) => {
           {props.first_name} {props.last_name}
         </div>
         <br />
-        <div id="comment-placing">{props.comment}</div>
+        <div id="comment-placing">{props.content}</div>
       </div>
     </div>
   );

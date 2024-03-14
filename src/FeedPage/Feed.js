@@ -4,7 +4,6 @@ import SearchBox from "./TopBar/SearchBox";
 import Feature from "./LeftMenu/Feature";
 import Post from "./Post/Post";
 import { useState } from "react";
-import posts from "../data/posts.json";
 import NewPost from "./NewPost/NewPost";
 import NewPostModal from "./NewPost/NewPostModal";
 import EditPostModal from "./EditPost/EditPostModal";
@@ -13,6 +12,8 @@ import EditCommentModal from "./EditComment/EditCommentModal";
 import Toggle from "./Toggle/Toggle";
 import LogOutButton from "./LogOut/logoutbutton";
 import RightBar from "./RightBar/RightBar";
+import { useEffect } from "react";
+import FriendsModal from "./Friends/FriendsModal";
 
 //this functin gets post array and id of a post, and deletes it from the array
 export function PostListAfterDelete(postsList, id) {
@@ -42,15 +43,68 @@ export function CommentListAfterDelete(commentslist, commentid) {
 
 const Feed = (props) => {
   //creating the state of the posts list and the post need to be edited
-  const [postsList, setpostsList] = useState(posts);
+
+  const [postsList, setpostsList] = useState([]);
   const [posttoedit, setposttoedit] = useState({
     text: "",
     imgurl: "",
     id: "",
   });
 
+  useEffect(() => {
+    fetchData();
+    fetchDataFriends();
+  }, [props.logedinuser.username, props.token]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/api/posts", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+          username: props.logedinuser.username,
+        },
+      });
+      const posts = await response.json();
+      setpostsList(posts);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  //creating list of request friends
+  const [friendsRequest, setRequest] = useState([]);
+  const fetchDataFriends = async () => {
+    try {
+      const response = await fetch(
+        "/api/users/" +
+          props.logedinuser.username +
+          "/friendsReq/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: props.token,
+            username: props.logedinuser.username,
+          },
+        }
+      );
+      const users = await response.json();
+      setRequest(users);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   //creating the state of the post that the comment that will be added
   const [postaddcomment, setpostaddcomment] = useState(0);
+  //user to approve or delete request
+  const [userRequest, setUserRequest] = useState({
+    user_name: "",
+    first_name: "",
+    last_name: "",
+  });
 
   //getting the info of the comment that will be edited
   const [commenttoedit, setcommenttoedit] = useState({
@@ -63,10 +117,31 @@ const Feed = (props) => {
   function handleAddComment(id) {
     setpostaddcomment(id);
   }
+  //set user to delete or approve
+  function handleFriendRequest(user_name, first_name, last_name) {
+    setUserRequest({
+      user_name: user_name,
+      first_name: first_name,
+      last_name: last_name,
+    });
+  }
 
   //setting the postslist after deleting a post
-  function handleDelete(id) {
-    setpostsList(PostListAfterDelete(postsList, id));
+  async function handleDelete(id) {
+    let username = props.logedinuser.username;
+    await fetch(
+      "/api/users/" + username + "/posts/" + id,
+      {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+        },
+      }
+    );
+    fetchData();
+    ///
+    //setpostsList(PostListAfterDelete(postsList, id));
   }
 
   //setting the content of the post to be edited
@@ -79,27 +154,23 @@ const Feed = (props) => {
   }
 
   //deleting comments from the postslist
-  function handleDeleteComment(postid, commentid) {
-    const arrayNewPost = [];
-    for (let i = 0; i < postsList.length; i++) {
-      //searching for the specific post
-      if (postsList[i].id !== postid) {
-        arrayNewPost.push(postsList[i]);
-      } else {
-        //when found, get the new array of comments without the specific one
-        const commentslist = postsList[i].comments;
-        const arrayNewComment = CommentListAfterDelete(commentslist, commentid);
-        const newobj = {
-          ...postsList[i],
-          comment_number: postsList[i].comment_number - 1,
-          comments: arrayNewComment,
-        };
-        //push the new post
-        arrayNewPost.push(newobj);
+  async function handleDeleteComment(postid, commentid) {
+    await fetch(
+      "/api/users/" +
+        props.logedinuser.username +
+        "/posts/" +
+        postid +
+        "/comments/" +
+        commentid,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: props.token,
+        },
       }
-    }
-    //set the posts list without the comment wanted
-    setpostsList(arrayNewPost);
+    );
+    fetchData();
   }
 
   //change the comment content to be edited
@@ -111,24 +182,30 @@ const Feed = (props) => {
     });
   }
 
-  //setting the state for dark/light mode
-  const [isDark, setisDark] = useState(false);
-
   return (
-    <div data-theme={isDark ? "dark" : "light"}>
-
+    <div data-theme={props.isDark ? "dark" : "light"}>
       {/*rendering all the modals */}
       <Feature />
+      <FriendsModal
+        logedinuser={props.logedinuser}
+        userRequest={userRequest}
+        fetchDataFriends={fetchDataFriends}
+        token={props.token}
+        fetchData={fetchData}
+      />
       <AddCommentModal
         postid={postaddcomment}
         postsList={postsList}
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
+        token={props.token}
+        fetchData={fetchData}
       />
       <NewPostModal
         postsList={postsList}
         setpostsList={setpostsList}
         logedinuser={props.logedinuser}
+        token={props.token}
       />
 
       <EditCommentModal
@@ -136,6 +213,9 @@ const Feed = (props) => {
         setpostsList={setpostsList}
         commenttoedit={commenttoedit}
         setcommenttoedit={setcommenttoedit}
+        token={props.token}
+        logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       <EditPostModal
@@ -146,6 +226,9 @@ const Feed = (props) => {
         text={posttoedit.text}
         img={posttoedit.imgurl}
         id={posttoedit.id}
+        token={props.token}
+        logedinuser={props.logedinuser}
+        fetchData={fetchData}
       />
 
       {/*rendering the componnents of the feed */}
@@ -157,7 +240,10 @@ const Feed = (props) => {
           </div>
           <SearchBox />
           <LogOutButton setlogedinuser={props.setlogedinuser} />
-          <Toggle isChecked={isDark} handleChange={() => setisDark(!isDark)} />
+          <Toggle
+            isChecked={props.isDark}
+            handleChange={() => props.setisDark(!props.isDark)}
+          />
         </div>
       </nav>
       <div id="top-bar">
@@ -169,6 +255,7 @@ const Feed = (props) => {
             <LeftMenu
               usersList={props.usersList}
               logedinuser={props.logedinuser}
+              setWatchUser={props.setWatchUser}
             />
           </div>
           <div className="col-6" id="posts">
@@ -186,6 +273,9 @@ const Feed = (props) => {
                 handleDeleteComment={handleDeleteComment}
                 handleEditComment={handleEditComment}
                 logedinuser={props.logedinuser}
+                token={props.token}
+                fetchData={fetchData}
+                setWatchUser={props.setWatchUser}
               />
             ))}
           </div>
@@ -193,6 +283,9 @@ const Feed = (props) => {
             <RightBar
               logedinuser={props.logedinuser}
               usersList={props.usersList}
+              token={props.token}
+              handleFriendRequest={handleFriendRequest}
+              friendsRequest={friendsRequest}
             />
           </div>
         </div>

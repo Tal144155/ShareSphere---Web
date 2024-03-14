@@ -1,12 +1,31 @@
 import "./PostImage.css";
+import React, { useState, useEffect } from "react";
+
 const PostImage = (props) => {
   //setting the input list on every change
+  const [fileInputKey, setFileInputKey] = useState(0);
+
+  useEffect(() => {
+    // Reset file input value when the component is mounted or props.inputFields.post_pic changes
+    setFileInputKey((prevKey) => prevKey + 1); // Update key to trigger re-render and reset file input value
+  }, [props.inputFields.new_post]);
 
   const handleChange = (e) => {
-    props.setInputFields({
-      ...props.inputFields,
-      [e.target.name]: URL.createObjectURL(e.target.files[0]),
-    });
+    const file = e.target.files[0];
+    if (file) {
+      // Read the image file as a Data URL
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Update state with selected image and Base64 representation
+
+        // Update parent component's state if needed
+        props.setInputFields({
+          ...props.inputFields,
+          [e.target.name]: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -26,6 +45,7 @@ const PostImage = (props) => {
         </div>
       )}
       <input
+        key={fileInputKey}
         type="file"
         name="post_pic"
         className="form-control"

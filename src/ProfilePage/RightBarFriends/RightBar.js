@@ -10,12 +10,12 @@ const RightBar = (props) => {
         className="list-group-item list-group-item-action button-color-nohover"
       >
         <div id="contacts" className="buttons-style">
-          <i className="bi bi-person-heart"></i> Friends requests
+          <i className="bi bi-person-heart"></i> {props.details} friends
         </div>
       </div>
       {/*not showing the logged in user */}
-      {props.friendsRequest.map((user) => (
-        <Contact {...user} handleFriendRequest={props.handleFriendRequest} />
+      {props.friends.map((user) => (
+        <Contact {...user} />
       ))}
       <button
         type="button"

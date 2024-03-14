@@ -53,6 +53,9 @@ const EditCommentModal = (props) => {
               errors={errors}
               postsList={props.postsList}
               setpostsList={props.setpostsList}
+              token={props.token}
+              logedinuser={props.logedinuser}
+              fetchData={props.fetchData}
             />
           </div>
         </div>
