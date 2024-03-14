@@ -111,7 +111,7 @@ function Post(props) {
       <div id="likecomments">
         <i className="bi bi-hand-thumbs-up-fill"></i> {props.likes}
         &nbsp;&nbsp;
-        <i className="bi bi-chat-fill"></i> {props.comments.length}
+        <i className="bi bi-chat-fill"></i> {props.comments}
       </div>
       <hr id="border-line2"></hr>
       <div className="container-fluid">
