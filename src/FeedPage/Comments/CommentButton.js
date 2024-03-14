@@ -32,7 +32,7 @@ const CommentButton = (props) => {
     props.setInputFields({
       comment: "",
     });
-    props.fetchData();
+    await props.fetchData();
   }, [props]);
 
   useEffect(() => {
