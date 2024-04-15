@@ -39,13 +39,13 @@ const PostButton = (props) => {
   useEffect(() => {
     //if there is text, change the submititing to ready!
 
-    if (props.inputFields.text.length !== 0 && props.inputFields.post_pic && props.errors.links.length===0) {
+    if (props.inputFields.text.length !== 0 && props.inputFields.post_pic && props.errors.links) {
       setbuttonPost(true);
     } else {
       setbuttonPost(false);
     }
   }, [
-    props.errors.links.length,
+    props.errors.links,
     props.inputFields.text.length,
     props.inputFields.post_pic,
     buttonPost,
@@ -73,7 +73,7 @@ const PostButton = (props) => {
 
     const urlsArray = matches ? matches : [];
 
-    const reponse = await fetch("http://localhost:8080/api/posts/links", {
+    const reponse = await fetch("/api/posts/links", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,10 +94,10 @@ const PostButton = (props) => {
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //handle submit when button is pressed
     event.preventDefault();
-    props.setErrors(validateValues(props.inputFields));
+    props.setErrors(await validateValues(props.inputFields));
     props.setSubmitting(true);
   };
   //if the user entered the text, render the button that will submit. if not, render a button that will do nothing
