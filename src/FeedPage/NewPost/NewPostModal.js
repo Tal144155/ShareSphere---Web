@@ -45,6 +45,7 @@ const NewPostModal = (props) => {
               setInputFields={setInputFields}
             />
             <InvalidCom errors={errors.text} />
+            <InvalidCom errors={errors.links} />
             <br/>
             <PostImage
               inputFields={inputFields}
