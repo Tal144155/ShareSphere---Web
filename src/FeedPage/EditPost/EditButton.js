@@ -53,12 +53,6 @@ const EditButton = (props) => {
   const validateValues = async (inputValues) => {
     //if there is no text, alert
     let errors = {};
-    const httpRegex =
-      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%.\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%\+.~#?&\/=]*)$/;
-
-    const matches = inputValues.text.match(httpRegex);
-
-    const urlsArray = matches ? matches : [];
 
     const reponse = await fetch("/api/posts/links", {
       method: "POST",
@@ -66,7 +60,7 @@ const EditButton = (props) => {
         "Content-Type": "application/json",
         Authorization: props.token,
       },
-      body: JSON.stringify({ listurl: urlsArray }),
+      body: JSON.stringify({ content: inputValues.text }),
     });
     const answer = await reponse.json();
     if (!answer.isValid) {
