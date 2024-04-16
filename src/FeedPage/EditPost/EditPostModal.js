@@ -41,6 +41,7 @@ const EditPostModal = (props) => {
               initvalue={props.text}
             />
             <InvalidCom errors={errors.text} />
+            <InvalidCom errors={errors.links} />
             <br />
             <ImageEdit
               inputFields={inputFields}

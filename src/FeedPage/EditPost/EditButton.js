@@ -35,12 +35,12 @@ const EditButton = (props) => {
   useEffect(() => {
     //if there is text, change the submititing to ready!
 
-    if (props.inputFields.text.length !== 0) {
+    if (props.inputFields.text.length !== 0 && props.errors.links) {
       setbuttonPost(true);
     } else {
       setbuttonPost(false);
     }
-  }, [props.inputFields.text.length, buttonPost, setbuttonPost]);
+  }, [props.inputFields.text.length, props.errors.links, buttonPost, setbuttonPost]);
 
   useEffect(() => {
     //when button is pressed and the text is not null, finish
@@ -50,19 +50,32 @@ const EditButton = (props) => {
     }
   }, [props.errors, props.submitting, finishSubmit]);
 
-  const validateValues = (inputValues) => {
+  const validateValues = async (inputValues) => {
     //if there is no text, alert
     let errors = {};
+
+    const reponse = await fetch("/api/posts/links", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      },
+      body: JSON.stringify({ content: inputValues.text }),
+    });
+    const answer = await reponse.json();
+    if (!answer.isValid) {
+      errors.links = "Links attached to the post are illegal";
+    }
     if (inputValues.text.length === 0) {
       errors.text = "Must write some text!";
     }
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //handle submit and edit post
     event.preventDefault();
-    props.setErrors(validateValues(props.inputFields));
+    props.setErrors(await validateValues(props.inputFields));
     props.setSubmitting(true);
   };
   //if the user entered the text, render the button that will submit. if not, render a button that will do nothing

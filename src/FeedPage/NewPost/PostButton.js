@@ -19,12 +19,10 @@ const PostButton = (props) => {
     props.setInputFields({
       text: "",
       post_pic: "",
-      new_post: (!props.inputFields.new_post)
+      new_post: !props.inputFields.new_post,
     });
     const reponse = await fetch(
-      "/api/users/" +
-        props.logedinuser.username +
-        "/posts",
+      "/api/users/" + props.logedinuser.username + "/posts",
       {
         method: "post",
         headers: {
@@ -41,12 +39,18 @@ const PostButton = (props) => {
   useEffect(() => {
     //if there is text, change the submititing to ready!
 
-    if (props.inputFields.text.length !== 0 && props.inputFields.post_pic) {
+    if (props.inputFields.text.length !== 0 && props.inputFields.post_pic && props.errors.links) {
       setbuttonPost(true);
     } else {
       setbuttonPost(false);
     }
-  }, [props.inputFields.text.length, props.inputFields.post_pic, buttonPost, setbuttonPost]);
+  }, [
+    props.errors.links,
+    props.inputFields.text.length,
+    props.inputFields.post_pic,
+    buttonPost,
+    setbuttonPost,
+  ]);
 
   useEffect(() => {
     //when button is pressed and the text is not null, finish
@@ -56,10 +60,24 @@ const PostButton = (props) => {
     }
   }, [props.errors, props.submitting, finishSubmit]);
 
-  const validateValues = (inputValues) => {
+  const validateValues = async (inputValues) => {
     //if there is no text, alert
 
     let errors = {};
+    //creating array of links
+
+    const reponse = await fetch("/api/posts/links", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      },
+      body: JSON.stringify({ content: inputValues.text }),
+    });
+    const answer = await reponse.json();
+    if (!answer.isValid) {
+      errors.links = "Links attached to the post are illegal";
+    }
     if (inputValues.text.length === 0) {
       errors.text = "Must write some text!";
     }
@@ -69,10 +87,10 @@ const PostButton = (props) => {
     return errors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     //handle submit when button is pressed
     event.preventDefault();
-    props.setErrors(validateValues(props.inputFields));
+    props.setErrors(await validateValues(props.inputFields));
     props.setSubmitting(true);
   };
   //if the user entered the text, render the button that will submit. if not, render a button that will do nothing
